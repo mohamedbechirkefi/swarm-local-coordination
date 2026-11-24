@@ -1,0 +1,34 @@
+# SPDX-License-Identifier: LicenseRef-SWARM-NC-Research-1.0
+[project]
+name = "swarm-research"
+version = "0.0.0"
+description = "SWARM: local interaction rules and collective coordination under disturbances (simulation study)."
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+# Licence: SWARM Source-Available Non-Commercial Research License v1.0 (custom, see LICENSE and NOTICE.md).
+license-files = ["LICENSE", "NOTICE.md"]
+dependencies = [
+    "numpy>=2.1",
+    "jsonschema>=4.23",
+    "matplotlib>=3.9",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3",
+    "hypothesis>=6.112",
+]
+
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/swarm"]
+
+[tool.uv]
+# Only versions released at least two weeks before 2026-11-24 (decision DL-004).
+exclude-newer = "2026-11-10T00:00:00Z"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

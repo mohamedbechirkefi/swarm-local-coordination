@@ -35,3 +35,11 @@ Mohamed Bechir Kefi is the project owner and lead maintainer, and the only perso
 ## 5. Privacy and disclosure
 
 Never commit an e-mail address, a name or any other personal identifier in code, logs, fixtures or results. Report security issues privately through GitHub's private vulnerability reporting.
+
+## 6. Development commands
+
+    uv sync --frozen        # install the locked environment (uv.lock)
+    uv run pytest -q        # run the test suite (no tests exist at M0)
+    uv lock                 # re-lock; respects exclude-newer in pyproject.toml (decision DL-004)
+
+Simulation, analysis and report commands are added in M2 (see `research/experiments/EXP-*/protocol.md`).

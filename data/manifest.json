@@ -1,0 +1,17 @@
+{
+  "schema_version": "0.1",
+  "updated": "2026-11-24",
+  "policy": "Simulation-only project (decision DL-003). All experimental data are synthetic, regenerated from configs and seeds; raw outputs are not committed (results/raw/ is git-ignored).",
+  "external_datasets": [],
+  "synthetic_generators": [
+    {
+      "name": "swarm simulator",
+      "status": "not yet implemented (M2)",
+      "version": null,
+      "parameters": "see research/experiments/EXP-*/protocol.md",
+      "seeds": "recorded per run in run_manifest.json"
+    }
+  ],
+  "fixtures": [],
+  "notes": "Any external dataset requires source URL or DOI, retrieval date, version, licence, redistribution status, SHA-256, schema, transformations, missingness and exclusions before use."
+}
