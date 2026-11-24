@@ -1,7 +1,7 @@
 <!-- SPDX-License-Identifier: LicenseRef-SWARM-NC-Research-1.0 -->
 # SWARM research protocol
 
-**Status: DRAFT v0.1 (2026-11-24). Not frozen.** Freezing is the owner's decision (gate G-FREEZE). Until the owner records approval in `research/decision_log.md` with the commit hash and SHA-256 of this file, every run is exploratory.
+**Status: v1.0, frozen (owner-approved 2026-11-24).** Draft v0.1 plus the owner-approved amendments in section 13. The freeze record is `research/protocol_freeze.json` (SHA-256 of this file, of the EXP-002 and EXP-003 protocols and of their configs; git revision). Any later change is a dated post-freeze amendment (section 12).
 
 Per-experiment protocols: `research/experiments/EXP-001/protocol.md`, `EXP-002/protocol.md`, `EXP-003/protocol.md`. Where this file and an experiment protocol disagree, the experiment protocol is more specific and wins for that experiment; the conflict must be logged.
 
@@ -19,10 +19,10 @@ Operational form (proposal): in a 2-D self-propelled particle model with constan
 - **Noise.** Each step, heading noise xi_i(t) ~ Uniform(-eta*pi, eta*pi), eta in [0, 1] (dimensionless).
 - **Arms (rules).**
   - **A0 Alignment-only (baseline).** Vicsek-style: theta_i(t+1) = arg( sum_{j in N_i ∪ {i}} e^{i theta_j(t)} ) + xi_i(t).
-  - **A1 Separation + cohesion + alignment.** Desired direction d_i = w_a * a_i + w_s * s_i + w_c * c_i, where a_i is the unit mean neighbour heading (including self), s_i is the unit repulsion vector from neighbours within r_s = 0.25 r (sum of -(x_j - x_i)/|x_j - x_i|), c_i is the unit vector to the neighbour centroid. Zonal priority as in Couzin et al. (2002): if any neighbour is within r_s, d_i = s_i; otherwise d_i = w_a a_i + w_c c_i. Default w_a = 1, w_c = 1 (EXP-003 varies w_c). Maximum turn per step: none in the primary design (same as A0). theta_i(t+1) = arg(d_i) + xi_i(t).
+  - **A1 Separation + cohesion + alignment.** Desired direction d_i = w_a * a_i + w_s * s_i + w_c * c_i, where a_i is the unit mean neighbour heading (including self), s_i is the unit repulsion vector from neighbours within r_s = 0.25 r (sum of -(x_j - x_i)/|x_j - x_i|), c_i is the unit vector to the neighbour centroid. Zonal priority as in Couzin et al. (2002): if any neighbour is within r_s, d_i = s_i; otherwise d_i = w_a a_i + w_c c_i. Default w_a = 1, w_c = 0.5 (amended AM-1; draft value 1; EXP-003 varies w_c). Maximum turn per step: none in the primary design (same as A0). theta_i(t+1) = arg(d_i) + xi_i(t).
   - **A2 Centralized reference.** Every agent aligns to the global mean heading of all N agents (an omniscient leader-free broadcast), plus the same noise. It is a reference ceiling for alignment, not a candidate local rule.
 - **Disturbance.** At step t_d, a heading shock: a fraction f = 0.5 of agents, chosen by the run's disturbance RNG, receive headings drawn uniformly on (-pi, pi]. The same agents and the same new headings are used in every arm for a given seed (common random numbers).
-- **Run length.** Burn-in t_d = 500 steps, post-disturbance window W = 500 steps, T = 1000.
+- **Run length.** Burn-in t_d = 3000 steps (amended AM-2 by rule R-BI; draft value 500), post-disturbance window W = 500 steps, T = 3500.
 
 ## 3. Hypotheses (draft)
 
@@ -46,12 +46,12 @@ What would contradict H1: a 95% CI for Delta that contains zero. What would cont
 
 - **Experimental unit:** one simulation run, identified by (arm, density, noise, radius, seed). Arms are compared within seed: the seed fixes initial positions, initial headings, the per-step noise stream and the disturbance draw for all arms (common random numbers). The independent unit for inference is the (cell, seed) pair; time steps within a run are never treated as independent.
 - **Factors (full matrix, EXP-002):** arm in {A0, A1, A2}; density rho = N/L^2 in {0.5, 1.0, 2.0} with N = 200 fixed (L adjusted); noise eta in {0.1, 0.3, 0.5}; radius r in {0.5, 1.0}; speed v0 = 0.05 u per step. That is 3 x 3 x 2 = 18 cells x 3 arms.
-- **Seeds:** 10 per cell (above the minimum of 5), the same 10 seeds in every arm. Full matrix: 18 x 3 x 10 = 540 runs.
+- **Seeds:** 20 per cell (amended AM-3; draft value 10), the same 20 seeds in every arm. Full matrix: 18 x 3 x 20 = 1080 runs.
 - **Smoke matrix (EXP-001, exploratory):** 3 arms x 1 cell (rho = 1, eta = 0.3, r = 1) x 5 seeds = 15 runs, T = 1000.
 
 ## 6. Sample-size rationale
 
-Planning assumption, not a measurement: if the standard deviation of per-seed paired differences in phi_post is at most 0.2 within a cell, the pooled estimate over 180 independent (cell, seed) pairs has a standard error near 0.2 / sqrt(180) = 0.015, giving a 95% CI half-width near 0.03, below delta = 0.05. EXP-001 (exploratory) measures this standard deviation; if it exceeds 0.3, the seed count is raised before the freeze (the owner decides). Seeds are cheap if the measured runtime allows it.
+Planning assumption, not a measurement: if the standard deviation of per-seed paired differences in phi_post is at most 0.2 within a cell, the pooled estimate over 360 independent (cell, seed) pairs (20 seeds, AM-3; the draft had 180) has a standard error near 0.2 / sqrt(360) = 0.011, giving a 95% CI half-width near 0.02, below delta = 0.05. EXP-001 (exploratory) measures this standard deviation; if it exceeds 0.3, the seed count is raised before the freeze (the owner decides). Seeds are cheap if the measured runtime allows it.
 
 ## 7. Analysis and uncertainty
 
@@ -64,7 +64,7 @@ Planning assumption, not a measurement: if the standard deviation of per-seed pa
 ## 8. Exclusion and stopping rules
 
 - **Exclusion:** a run is excluded only for a recorded software failure (exception, non-finite state, invariant violation). Every excluded run is reported with its reason; there is no outcome-based exclusion. If more than 5% of runs in any arm fail, the experiment stops and the failure is diagnosed before any analysis.
-- **Stopping:** fixed design; all 540 runs are executed; no interim looks at the primary outcome. Compute budget: the full matrix must finish within 4 hours of wall-clock on the reference machine; if EXP-001 projects more, N or T is reduced *before the freeze*, never after.
+- **Stopping:** fixed design; all 1080 runs are executed; no interim looks at the primary outcome. Compute budget: the full matrix must finish within 4 hours of wall-clock on the reference machine; if EXP-001 projects more, N or T is reduced *before the freeze*, never after. Measured projection for the amended matrix (AM-4): 15.3 min serial, about 1.9 min with 8 workers.
 
 ## 9. Controls and confounders
 
@@ -79,7 +79,7 @@ Planning assumption, not a measurement: if the standard deviation of per-seed pa
 Each could invalidate the main interpretation if the sign of Delta flips or its CI moves across zero:
 
 - S1 topological neighbours (k = 7) instead of metric;
-- S2 cohesion weight w_c in {0.5, 2.0};
+- S2 cohesion weight w_c in {0.25, 1.0} (half and double the primary value; amended with AM-1, draft {0.5, 2.0} around the draft value 1);
 - S3 reflecting boundary instead of periodic;
 - S4 recovery threshold 0.8 and 0.95 instead of 0.9 (affects the secondary metric only).
 
@@ -87,15 +87,15 @@ Each could invalidate the main interpretation if the sign of Delta flips or its 
 
 No claim of biological fidelity, of universal distributed-system guarantees, or of real-world robot or animal behaviour. Results are statements about this simulated model within the tested parameter ranges.
 
-## 12. Amendments
+## 12. Amendments after freeze
 
 None. Any amendment after freezing is dated, justified, versioned and kept separate from the frozen analysis.
 
 ## 13. Amendments before freeze (owner-approved 2026-11-24)
 
-The owner approved four SWARM amendments on 2026-11-24 (`/Users/bechir/research/labs/_shared/owner-approvals-2026-11-24.md`, quoted in `research/protocol_freeze_record.md`). They are applied here and in the EXP-002 and EXP-003 protocols. Sections 1 to 12 above are the draft as it stood before the amendments; where they disagree with this section, this section wins.
+The owner approved four SWARM amendments on 2026-11-24 (quoted in the freeze record `research/protocol_freeze.json`). They are applied here and in the EXP-002 and EXP-003 protocols. Sections 1 to 12 above are the draft as it stood before the amendments; where they disagree with this section, this section wins.
 
-### AM-2 burn-in rule R-BI (pre-stated 2026-11-24, before the data that apply it were generated)
+### AM-2 Burn-in rule R-BI (pre-stated 2026-11-24, before the data that apply it were generated)
 
 Approval: "Lengthen the burn-in until A0 is aligned before the shock, under a pre-stated rule."
 
@@ -106,3 +106,16 @@ Approval: "Lengthen the burn-in until A0 is aligned before the shock, under a pr
 - **Choice.** t_d is the smallest candidate in {500, 1000, 1500, 2000, 3000, 4000} at which A0 is aligned in every orderable cell. The post-disturbance window stays W = 500, so T = t_d + 500.
 - **Cells that are not orderable.** Lengthening the burn-in cannot align A0 where the alignment-only model is disordered at stationarity (expected at high noise; EXP-001 summary). Such cells stay in the matrix and in the pooled estimand (no outcome-based exclusion, section 8); they are flagged "A0 not aligned before the shock at any tested burn-in" in every per-cell table.
 - **Application.** `experiments/EXP-001/apply_burnin_rule.py` computes the choice; its output is `results/exploratory/EXP-001-burnin-rule-decision.{json,md}`.
+- **Result** (`results/exploratory/EXP-001-burnin-rule-decision.md`, journal EXPL-007; 90 A0 runs, 0 failed). Orderable cells: 8 of 18 (all eta = 0.1 cells, and eta = 0.3 with r = 1 at rho = 1 and 2). The smallest candidate at which A0 is aligned in all 8 is **t_d = 3000** (at 2000, rho = 0.5, eta = 0.1, r = 0.5 has m = 0.369). So T = 3500. The other 10 cells (every eta = 0.5 cell, and eta = 0.3 except the two above) have m(4000) between 0.070 and 0.347: A0 is not aligned before the shock there at any tested burn-in. They are kept and flagged as stated above. This residual is a limitation of the design, not something lengthening can fix.
+
+### AM-1 Cohesion weight of A1
+
+Approval: "Set A1's cohesion weight to 0.5, fixed now without tuning on the contrast." Applied: w_c = 0.5 in A1 for EXP-002 and for EXP-003 S1 and S3 (draft value 1). The value is set by the owner's statement, not chosen from data; no run was made to select it. The only pre-freeze evidence at w_c = 0.5 is the burn-in diagnostic EXPL-006 (rho = 2, eta = 0.1, r = 1, T = 500, no shock): A1 mean phi_pre 0.251 with r_s/r = 0.25. A1 may therefore still be weakly ordered before the shock in many cells; this is reported, not corrected. **Consequential edit:** EXP-003 S2 was {0.5, 2.0}, half and double the draft value 1; 0.5 is now the primary value, so S2 keeps the same design (half and double the primary value) and becomes {0.25, 1.0}.
+
+### AM-3 Seeds
+
+Approval: "20 seeds." Applied: EXP-002 and EXP-003 use seeds 1001 to 1020 in every arm and cell (draft 1001 to 1010). EXP-003 reuses EXP-002 A0 runs for S2, which requires the same seeds.
+
+### AM-4 Budget
+
+Approval: "Budget headroom as measured." Applied: the 4-hour cap for EXP-002 and the 2-hour cap for EXP-003 are kept, and the measured projection for the amended design is recorded (`results/exploratory/EXP-001-burnin-rule-decision.md`, quiet machine, load average about 1.7 on 10 cores): EXP-002 1080 runs at T = 3500, 15.3 min serial, about 1.9 min with 8 workers; EXP-003 at most 640 runs, 13.5 min serial, about 1.7 min with 8 workers. Method: A0 seconds per step per cell from the R-BI scan, times the arm runtime ratio from the smoke cell (A1 1.29, A2 0.45), times the steps; linear parallel scaling assumed. The headroom (more than 10 times) is what allowed the longer burn-in and the doubled seeds.

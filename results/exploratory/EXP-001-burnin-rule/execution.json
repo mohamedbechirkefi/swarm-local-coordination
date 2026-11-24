@@ -1,0 +1,18 @@
+{
+ "experiment_id": "EXP-001",
+ "label": "exploratory",
+ "experiment_config_hash": "e1183b25e27d0e93cd873293d781e4ad70924c75658e18a9d0dcdd829a7440e3",
+ "runs": 90,
+ "failed": 0,
+ "workers": 8,
+ "elapsed_s": 13.046250957999291,
+ "cpu_count": 10,
+ "git_revision": "2330f79ce923903b9ccc8e89991e5a1a39aff0d9",
+ "git_dirty": false,
+ "package_version": "0.1.0",
+ "python": "3.12.1",
+ "numpy": "2.5.4",
+ "os": "Darwin 24.3.0 (macOS-15.3.1-arm64-arm-64bit)",
+ "cpu": "Apple M1 Pro",
+ "finished_utc": "2026-11-24T17:45:58.178969Z"
+}

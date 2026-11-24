@@ -1,9 +1,9 @@
 <!-- SPDX-License-Identifier: LicenseRef-SWARM-NC-Research-1.0 -->
 # EXP-002: Local rules and recovery from a heading disturbance (primary comparison)
 
-- **Status:** planned (protocol draft, awaiting owner freeze). Confirmatory only after the owner freezes this protocol and records approval.
-- **Version:** draft 0.1, 2026-11-24. Protocol hash: recorded at freeze.
-- **Depends on:** EXP-001 passed (all verification checks), budget projection within 4 hours.
+- **Status:** frozen (owner-approved 2026-11-24), not yet run.
+- **Version:** 1.0, 2026-11-24 (draft 0.1 plus the owner-approved amendments in section 14). Protocol hash: recorded in `research/protocol_freeze.json`.
+- **Depends on:** EXP-001 passed (all verification checks), budget projection within 4 hours (measured: 15.3 min serial, section 14).
 
 ## 1. Precise question
 
@@ -29,7 +29,7 @@ In the SWARM 2-D model, does adding separation and cohesion to alignment (A1) ch
 ## 5. Variables
 
 - Independent: arm (A0, A1, A2); density rho in {0.5, 1.0, 2.0} (N = 200); noise eta in {0.1, 0.3, 0.5}; radius r in {0.5, 1.0}.
-- Fixed: v0 = 0.05 u/step, T = 1000, t_d = 500, W = 500, shock fraction f = 0.5, separation radius r_s = 0.25 r, w_a = w_c = 1, periodic boundary, metric neighbourhoods.
+- Fixed: v0 = 0.05 u/step, T = 3500, t_d = 3000, W = 500, shock fraction f = 0.5, separation radius r_s = 0.25 r, w_a = 1, w_c = 0.5, periodic boundary, metric neighbourhoods (t_d, T and w_c amended, section 14).
 - Dependent: phi_post (primary); tau, C, K, neighbour evaluations and wall-clock per step, phi_pre (secondary). Formulas and units: `research/protocol.md` section 4.
 
 ## 6. Treatment, control, baseline
@@ -38,7 +38,7 @@ Control/baseline: A0 alignment-only (the simplest rule). Treatment: A1. Referenc
 
 ## 7. Sampling and seeds
 
-Seeds 1001 to 1010, identical across arms and cells; each seed derives independent RNG streams (initial state, per-step noise, disturbance) through `numpy.random.SeedSequence` spawning, so arms share streams. 540 runs.
+Seeds 1001 to 1020 (20 seeds, amended AM-3), identical across arms and cells; each seed derives independent RNG streams (initial state, per-step noise, disturbance) through `numpy.random.SeedSequence` spawning, so arms share streams. 1080 runs.
 
 ## 8. Sample-size rationale and compute budget
 
@@ -54,16 +54,28 @@ Exclusion only for software failure, reported per run. More than 5% failed runs 
 
 ## 11. Anticipated failure modes
 
-Censoring of tau at low density or high noise; A0 disordered before the shock at eta = 0.5 and low density (phi_pre near 0), making phi_post uninformative in those cells, which is reported, not dropped.
+Censoring of tau at low density or high noise; A0 disordered before the shock in the 10 cells that rule R-BI found not orderable (every eta = 0.5 cell; eta = 0.3 except rho in {1, 2} with r = 1), making phi_post less informative there. Those cells are reported and flagged, not dropped. A1 may also be weakly ordered before the shock at w_c = 0.5 (EXPL-006: phi_pre 0.251 in the best cell at T = 500); phi_pre is reported per arm and cell. A2 recovers in one step by construction, so its tau is uninformative and reported as such.
 
 ## 12. Sensitivity tests
 
 EXP-003.
 
-## 13. Reproducibility commands (planned)
+## 13. Reproducibility commands
 
 ```
-uv run python -m swarm.cli run --config experiments/EXP-002/config.json
-uv run python -m swarm.cli analyse --exp EXP-002
-uv run python -m swarm.cli report --exp EXP-002
+uv run --frozen python -m swarm.cli run --config experiments/EXP-002/config.json --workers 8
+uv run --frozen python -m swarm.cli report --results results/confirmatory/EXP-002
 ```
+
+There is no separate `analyse` verb: the paired differences, the stratified seed bootstrap and the decision rule are in `swarm.analysis` and are wired into the report at M3.
+
+## 14. Amendments before freeze (owner-approved 2026-11-24)
+
+Applied as stated in `research/protocol.md` section 13:
+
+- **AM-1.** A1 cohesion weight w_c = 0.5 (draft 1), set by the owner, not tuned on any outcome.
+- **AM-2.** Burn-in t_d = 3000 steps (draft 500), T = 3500, chosen by the pre-stated rule R-BI from an A0-only, no-shock scan (seeds 321 to 325; `results/exploratory/EXP-001-burnin-rule-decision.md`). A0 is aligned (m >= 0.5) before the shock in 8 of 18 cells; the other 10 are flagged, not dropped.
+- **AM-3.** 20 seeds, 1001 to 1020 (draft 10); 1080 runs.
+- **AM-4.** Budget cap kept at 4 hours; measured projection 15.3 min serial, about 1.9 min with 8 workers.
+- **Configuration.** `experiments/EXP-002/config.json` (confirmatory; outputs to `results/confirmatory/EXP-002`). Its SHA-256 is in the freeze record.
+- **Unchanged:** hypotheses, estimand, SESOI, decision rule, bootstrap (10,000 resamples, seed 20261124), exclusion and stopping rules.

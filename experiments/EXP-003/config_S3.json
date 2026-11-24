@@ -1,0 +1,68 @@
+{
+ "schema_version": "1.0.0",
+ "experiment_id": "EXP-003",
+ "label": "confirmatory",
+ "confirmatory": true,
+ "description": "EXP-003 S3 (protocol v1.0, frozen 2026-11-24): reflecting walls; A0 and A1 x 4 reduced cells x 20 seeds = 160 runs; otherwise as EXP-002.",
+ "protocol_path": "research/experiments/EXP-003/protocol.md",
+ "base": {
+  "n_agents": 200,
+  "speed": 0.05,
+  "steps": 3500,
+  "t_disturb": 3000,
+  "window": 500,
+  "pre_window": 100,
+  "shock_fraction": 0.5,
+  "sep_ratio": 0.25,
+  "w_align": 1.0,
+  "w_cohesion": 0.5,
+  "recovery_threshold": 0.9,
+  "recovery_hold": 10,
+  "collision_ratio": 0.1,
+  "boundary": "reflecting",
+  "neighbourhood": "metric",
+  "index": "cell"
+ },
+ "grid": {
+  "arm": [
+   "A0",
+   "A1"
+  ],
+  "density": [
+   0.5,
+   2.0
+  ],
+  "noise": [
+   0.1,
+   0.5
+  ],
+  "radius": [
+   1.0
+  ]
+ },
+ "seeds": [
+  1001,
+  1002,
+  1003,
+  1004,
+  1005,
+  1006,
+  1007,
+  1008,
+  1009,
+  1010,
+  1011,
+  1012,
+  1013,
+  1014,
+  1015,
+  1016,
+  1017,
+  1018,
+  1019,
+  1020
+ ],
+ "output_dir": "results/confirmatory/EXP-003-S3",
+ "store_series": true,
+ "full_matrix_runs": 160
+}

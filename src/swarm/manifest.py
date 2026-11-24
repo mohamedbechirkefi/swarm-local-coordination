@@ -2,9 +2,11 @@
 """Run manifests (environment capture) and the protocol-freeze check.
 
 The freeze check fails closed: a protocol counts as frozen only if
-``research/protocol_freeze.json`` exists, was written by the owner, and
-the SHA-256 of every listed protocol file matches the bytes on disk.
-Sessions never create that file (gate G-FREEZE).
+``research/protocol_freeze.json`` exists, records the owner's approval, and
+the SHA-256 of every listed protocol file matches the bytes on disk. A
+confirmatory configuration is accepted only if its canonical hash is listed
+in the same record (``configs``). The record is written only on the owner's
+recorded instruction (gate G-FREEZE; DL-005, DL-009).
 """
 
 from __future__ import annotations
@@ -83,13 +85,36 @@ def sha256_file(path: Path) -> str:
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
-def freeze_status(protocol_paths: list[str], freeze_file: Path = FREEZE_FILE,
+FREEZE_RELPATH = Path("research") / "protocol_freeze.json"
+
+
+def _load_freeze(freeze_file: Path) -> dict:
+    return json.loads(freeze_file.read_text(encoding="utf-8"))
+
+
+def config_frozen(canonical: str, freeze_file: Path | None = None,
+                  root: Path = REPO_ROOT) -> tuple[bool, str]:
+    """Return (frozen, reason) for an experiment configuration's canonical hash."""
+    freeze_file = root / FREEZE_RELPATH if freeze_file is None else freeze_file
+    if not freeze_file.exists():
+        return False, "no freeze record"
+    try:
+        listed = {e["canonical_sha256"] for e in _load_freeze(freeze_file)["configs"]}
+    except (json.JSONDecodeError, KeyError, TypeError) as exc:
+        return False, f"malformed freeze record ({exc})"
+    if canonical not in listed:
+        return False, f"configuration (canonical sha256 {canonical}) is not listed in the freeze record"
+    return True, "frozen"
+
+
+def freeze_status(protocol_paths: list[str], freeze_file: Path | None = None,
                   root: Path = REPO_ROOT) -> tuple[bool, str]:
     """Return (frozen, reason). Frozen only if every path is listed with a matching hash."""
+    freeze_file = root / FREEZE_RELPATH if freeze_file is None else freeze_file
     if not freeze_file.exists():
         return False, f"no freeze record at {freeze_file.relative_to(root) if freeze_file.is_relative_to(root) else freeze_file}"
     try:
-        record = json.loads(freeze_file.read_text(encoding="utf-8"))
+        record = _load_freeze(freeze_file)
         hashes = {e["path"]: e["sha256"] for e in record["protocols"]}
         approved = record["approved_by"]
     except (json.JSONDecodeError, KeyError, TypeError) as exc:
@@ -99,6 +124,8 @@ def freeze_status(protocol_paths: list[str], freeze_file: Path = FREEZE_FILE,
     for p in protocol_paths:
         if p not in hashes:
             return False, f"{p} is not listed in the freeze record"
+        if not (root / p).exists():
+            return False, f"{p} does not exist"
         actual = sha256_file(root / p)
         if actual != hashes[p]:
             return False, f"{p} changed since the freeze (sha256 {actual} != {hashes[p]})"

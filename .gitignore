@@ -12,3 +12,5 @@ results/exploratory/cli-smoke/
 # exploratory burn-in series (about 8 MB); regenerate with the configs in experiments/EXP-001/
 results/exploratory/EXP-001-burnin-scan/runs/
 results/exploratory/EXP-001-burnin-long/runs/
+# A0 burn-in rule series (R-BI, about 8 MB); regenerate with experiments/EXP-001/burnin_rule.json
+results/exploratory/EXP-001-burnin-rule/runs/

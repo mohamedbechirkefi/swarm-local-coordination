@@ -18,7 +18,7 @@ from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
 
 from .config import ConfigError, SimConfig, canonical_hash
-from .manifest import REPO_ROOT, environment, freeze_status, peak_rss_bytes, utc_now
+from .manifest import REPO_ROOT, config_frozen, environment, freeze_status, peak_rss_bytes, utc_now
 from .schema import RESULT_SCHEMA_VERSION, read_result, validate_experiment, write_result
 from .simulate import run as simulate
 
@@ -53,6 +53,10 @@ def check_allowed(exp: dict, root: Path = REPO_ROOT) -> None:
         if not frozen:
             raise RunRefused(f"refusing a confirmatory run: protocol not frozen ({reason}). "
                              "Freezing is the owner's decision (G-FREEZE).")
+        frozen, reason = config_frozen(canonical_hash(exp), root=root)
+        if not frozen:
+            raise RunRefused(f"refusing a confirmatory run: configuration not frozen ({reason}). "
+                             "A changed confirmatory configuration is a new freeze (G-FREEZE).")
     elif out.parts[:2] != ("results", "exploratory") or ".." in out.parts:
         raise RunRefused("exploratory outputs must go under results/exploratory/")
 

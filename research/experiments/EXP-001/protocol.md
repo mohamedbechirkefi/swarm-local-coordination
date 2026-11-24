@@ -1,7 +1,7 @@
 <!-- SPDX-License-Identifier: LicenseRef-SWARM-NC-Research-1.0 -->
 # EXP-001: Implementation verification and smoke matrix
 
-- **Status:** planned (protocol draft, awaiting owner freeze). Exploratory by design: EXP-001 never supports a confirmatory claim.
+- **Status:** exploratory, run before the freeze on 2026-11-24 (journal EXPL-001 to EXPL-007; EXPL-007 is the A0-only burn-in scan that applies rule R-BI for amendment AM-2, `research/protocol.md` section 13). Exploratory by design: EXP-001 never supports a confirmatory claim.
 - **Version:** draft 0.1, 2026-11-24. Protocol hash: recorded at freeze.
 - **Depends on:** M2 core engine (A0, A1, A2, cell-list index, metrics).
 
