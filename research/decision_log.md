@@ -79,3 +79,11 @@ Append-only. Each entry: id, date, decision, decided by, rationale, alternatives
 - **Date:** 2026-11-24
 - **Decided by:** the owner (common decision C3).
 - **Decision:** The author is "Mohamed Bechir Kefi", with no affiliation, in `CITATION.cff` and the manuscript metadata. The AI is disclosed as a research and development assistant, not as an author. Data stay synthetic (C1, confirms DL-003); PDFs use pandoc and Typst (C2, confirms DL-002).
+
+## DL-011: Owner ratifies the follow-on choices of the freeze
+
+- **Date:** 2026-11-24
+- **Decided by:** the owner, second-round approvals of 2026-11-24 (`labs/_shared/owner-approvals-2026-11-24b.md`, outside this repository, section 3). The owner's answer: "Approve all".
+- **Decision:** Two choices made at the freeze as consequences of the approved amendments are now owner decisions: (1) EXP-003 S2 uses cohesion values {0.25, 1.0}; (2) the 10 of 18 cells where A0 never aligns before the shock stay in the matrix and the pooled estimand, flagged in every per-cell table.
+- **Rationale:** Both were already in the frozen text (EXP-003 protocol S2a/S2b and section 7, `experiments/EXP-003/config_S2.json`; `research/protocol.md` section 13, AM-2). Ratification removes the question of whether a session chose them.
+- **Consequences:** Recorded as RAT-1 and RAT-2 in the amendment list of `research/protocol_freeze.json`. No protocol or config byte changed, so all frozen hashes are unchanged (`research/protocol.md` 80c7225d...109d4). No other item of the second-round approvals applies to SWARM.

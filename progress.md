@@ -143,3 +143,16 @@ A0 is not aligned before the shock in 10 of 18 cells at any tested burn-in; A1 m
 ### Next action
 
 M3: run EXP-002, then EXP-003, with the frozen configs, when the coordinator schedules it.
+
+## 2026-11-24: Session RATIFY (owner's second-round decisions)
+
+**Milestone:** between M1 gate and M3, on `labs/_shared/owner-approvals-2026-11-24b.md` ("Approve all").
+
+### What was done
+
+- Ratification recorded: DL-011; RAT-1 (EXP-003 S2 = {0.25, 1.0}) and RAT-2 (the 10 never-aligning cells stay in, flagged) added to the amendment list of `research/protocol_freeze.json`.
+- Checked that both choices are in the frozen text and that the hashes still match the record (`shasum -a 256` on the three protocols: unchanged). No protocol, config or code change; no other item of the approvals file applies to SWARM.
+
+### Next action
+
+M3: run EXP-002, then EXP-003, with the frozen configs, when the coordinator schedules it.

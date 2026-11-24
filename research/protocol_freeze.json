@@ -65,7 +65,9 @@
   "AM-1": "A1 cohesion weight w_c = 0.5 (draft 1), set by the owner; EXP-003 S2 becomes {0.25, 1.0} (half and double the primary value, as in the draft design).",
   "AM-2": "Burn-in t_d = 3000, T = 3500, by the rule R-BI pre-stated in commit 2330f79 before its data existed; A0 aligned (m >= 0.5) in 8 of 18 cells, the other 10 kept and flagged (results/exploratory/EXP-001-burnin-rule-decision.md, EXPL-007).",
   "AM-3": "20 seeds, 1001 to 1020, in EXP-002 and EXP-003.",
-  "AM-4": "Budget caps kept (EXP-002 4 h, EXP-003 2 h); measured projection EXP-002 15.3 min serial, EXP-003 at most 13.5 min serial."
+  "AM-4": "Budget caps kept (EXP-002 4 h, EXP-003 2 h); measured projection EXP-002 15.3 min serial, EXP-003 at most 13.5 min serial.",
+  "RAT-1": "Ratified by the owner on 2026-11-24 (\"Approve all\", labs/_shared/owner-approvals-2026-11-24b.md, section 3, SWARM): EXP-003 S2 cohesion values {0.25, 1.0}. Already in the frozen text (research/experiments/EXP-003/protocol.md, S2a/S2b and section 7; experiments/EXP-003/config_S2.json); no hash changes.",
+  "RAT-2": "Ratified by the owner on 2026-11-24 (\"Approve all\", same source): the 10 of 18 cells where A0 never aligns before the shock stay in the matrix and the pooled estimand, flagged in every per-cell table. Already in the frozen text (research/protocol.md section 13, AM-2); no hash changes."
  },
  "protocols": [
   {
