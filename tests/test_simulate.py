@@ -183,3 +183,13 @@ def test_unknown_key_rejected():
 def test_config_hash_stable_and_sensitive():
     assert SimConfig(seed=1).config_hash() == SimConfig(seed=1).config_hash()
     assert SimConfig(seed=1).config_hash() != SimConfig(seed=2).config_hash()
+
+
+@pytest.mark.parametrize("boundary", ["periodic", "reflecting"])
+def test_a1_reduces_to_a0_without_separation_and_cohesion(boundary):
+    """Differential check: A1 with r_s = 0 and w_c = 0 is the A0 rule."""
+    kw = dict(SMALL, boundary=boundary, seed=17)
+    a0 = run(SimConfig(arm="A0", **kw), record_trajectory=True)
+    a1 = run(SimConfig(arm="A1", sep_ratio=0.0, w_cohesion=0.0, **kw), record_trajectory=True)
+    np.testing.assert_allclose(a1.trajectory["x"], a0.trajectory["x"], atol=1e-9)
+    np.testing.assert_allclose(a1.phi, a0.phi, atol=1e-9)

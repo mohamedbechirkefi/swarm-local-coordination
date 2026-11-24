@@ -20,6 +20,7 @@ from pathlib import Path
 import numpy as np
 
 from .analysis import cell_key, paired_differences
+from .config import SimConfig
 from .manifest import environment, utc_now
 from .runner import load_results
 
@@ -30,7 +31,12 @@ MAINFONT = "Libertinus Serif"
 
 def _cell_label(key: str) -> str:
     c = json.loads(key)
-    return f"rho={c['density']:g}, eta={c['noise']:g}, r={c['radius']:g}"
+    label = f"rho={c['density']:g}, eta={c['noise']:g}, r={c['radius']:g}"
+    defaults = SimConfig().to_dict()
+    for k in ("w_cohesion", "sep_ratio", "w_align", "boundary", "neighbourhood", "n_agents", "steps"):
+        if c.get(k) != defaults[k]:
+            label += f", {k}={c[k]:g}" if isinstance(c[k], float) else f", {k}={c[k]}"
+    return label
 
 
 def _f(v: float | None, nd: int = 3) -> str:

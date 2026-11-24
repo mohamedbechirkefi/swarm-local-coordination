@@ -41,7 +41,8 @@ def _git(*args: str) -> str | None:
 
 def git_revision() -> tuple[str, bool | None]:
     rev = _git("rev-parse", "HEAD") or "unknown"
-    status = _git("status", "--porcelain")
+    # Untracked files (for example result outputs being written) do not count as dirty.
+    status = _git("status", "--porcelain", "--untracked-files=no")
     return rev, (None if status is None else bool(status))
 
 
