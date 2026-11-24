@@ -14,3 +14,6 @@ results/exploratory/EXP-001-burnin-scan/runs/
 results/exploratory/EXP-001-burnin-long/runs/
 # A0 burn-in rule series (R-BI, about 8 MB); regenerate with experiments/EXP-001/burnin_rule.json
 results/exploratory/EXP-001-burnin-rule/runs/
+# confirmatory per-run files (phi series; more than 20 MB per experiment): regenerated
+# by the frozen configs; SHA-256 of every file in <dir>/raw_manifest.json (M3)
+results/confirmatory/*/runs/

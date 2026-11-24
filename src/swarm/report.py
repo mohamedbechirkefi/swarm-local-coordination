@@ -72,7 +72,8 @@ def summarise(records: list[dict]) -> dict:
     return {"rows": rows}
 
 
-def _figures(records: list[dict], outdir: Path, diffs: dict) -> list[tuple[str, str, str]]:
+def _figures(records: list[dict], outdir: Path, diffs: dict,
+             label: str = "Exploratory") -> list[tuple[str, str, str]]:
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
@@ -103,7 +104,7 @@ def _figures(records: list[dict], outdir: Path, diffs: dict) -> list[tuple[str, 
         plt.close(fig)
         figs.append(("FIG-01", name, "Polarization phi(t) (dimensionless, 0 to 1) for every seed "
                      "(one line per seed) and arm; dotted line marks the disturbance step t_d. "
-                     "Exploratory simulated data."))
+                     f"{label} simulated data."))
     if diffs:
         fig, ax = plt.subplots(figsize=(7, 2.8))
         labels = []
@@ -120,7 +121,7 @@ def _figures(records: list[dict], outdir: Path, diffs: dict) -> list[tuple[str, 
         fig.savefig(outdir / fname, dpi=150)
         plt.close(fig)
         figs.append(("FIG-02", fname, "Per-seed paired differences in phi_post (dimensionless) "
-                     "between arms within a cell, one dot per seed. Exploratory; not a test of H0."))
+                     f"between arms within a cell, one dot per seed. {label}; not a test of H0."))
     return figs
 
 
@@ -144,7 +145,7 @@ def build_report(results_dir: Path, title: str, pdf: bool = False, workers_assum
             d = paired_differences(records, "phi_post", treat, "A0")
             if d:
                 diffs[f"{treat}-A0"] = d
-    figs = _figures(records, out, diffs)
+    figs = _figures(records, out, diffs, "Exploratory" if exploratory else "Confirmatory")
 
     failed = [r for r in records if r["status"] == "failed"]
     walls = [r["manifest"]["runtime_s"] for r in records]
