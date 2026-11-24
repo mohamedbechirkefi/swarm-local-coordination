@@ -1,0 +1,12 @@
+{
+ "label": "exploratory",
+ "description": "EXP-001 neighbour-computation benchmark (protocol section 6): cell list vs brute force, A0 only, 50 steps, 3 repeats.",
+ "n_agents": [100, 200, 400, 800],
+ "density": [0.5, 1.0, 2.0],
+ "radius": [0.5, 1.0],
+ "repeats": 3,
+ "steps": 50,
+ "noise": 0.3,
+ "seed_base": 201,
+ "output_dir": "results/exploratory/EXP-001-bench"
+}

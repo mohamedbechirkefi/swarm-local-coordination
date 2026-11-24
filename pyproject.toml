@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: LicenseRef-SWARM-NC-Research-1.0
 [project]
 name = "swarm-local-coordination"
-version = "0.0.0"
+version = "0.1.0"
 description = "SWARM: local interaction rules and collective coordination under disturbances (simulation study)."
 readme = "README.md"
 requires-python = ">=3.12,<3.13"

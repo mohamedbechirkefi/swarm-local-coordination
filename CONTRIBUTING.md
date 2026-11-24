@@ -39,7 +39,14 @@ Never commit an e-mail address, a name or any other personal identifier in code,
 ## 6. Development commands
 
     uv sync --frozen        # install the locked environment (uv.lock)
-    uv run pytest -q        # run the test suite (no tests exist at M0)
+    uv run python -m pytest -q   # run the test suite (the bare `pytest` entry point may resolve to a system Python)
     uv lock                 # re-lock; respects exclude-newer in pyproject.toml (decision DL-004)
 
-Simulation, analysis and report commands are added in M2 (see `research/experiments/EXP-*/protocol.md`).
+Simulation, analysis and report commands (M2):
+
+    uv run python -m swarm.cli test                                        # test suite
+    uv run python -m swarm.cli smoke                                       # tiny built-in exploratory smoke run
+    uv run python -m swarm.cli smoke --config experiments/EXP-001/smoke.json
+    uv run python -m swarm.cli bench --config experiments/EXP-001/bench.json
+    uv run python -m swarm.cli run --config <experiment.json> [--workers K]   # refuses confirmatory configs until the owner freezes the protocol
+    uv run python -m swarm.cli report --results results/exploratory/EXP-001-smoke --pdf
