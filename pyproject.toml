@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: LicenseRef-SWARM-NC-Research-1.0
 [project]
-name = "swarm-research"
+name = "swarm-local-coordination"
 version = "0.0.0"
 description = "SWARM: local interaction rules and collective coordination under disturbances (simulation study)."
 readme = "README.md"

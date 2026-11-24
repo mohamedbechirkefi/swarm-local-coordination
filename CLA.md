@@ -14,9 +14,9 @@ and
 **Contributor:** The individual accepting this Agreement.
 
 The Agreement concerns contributions intentionally submitted
-for inclusion in SWARM (research repository), planned at:
+for inclusion in SWARM (research repository), at:
 
-https://github.com/mohamedbechirkefi/swarm-research
+https://github.com/mohamedbechirkefi/swarm-local-coordination
 
 ## 1. Ownership of contributions
 
