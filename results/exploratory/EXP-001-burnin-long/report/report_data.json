@@ -1,0 +1,8 @@
+{
+ "label": "exploratory",
+ "runs": 36,
+ "failed": 0,
+ "mean_runtime_s": 0.5382649468054095,
+ "projection": null,
+ "paired_differences": []
+}

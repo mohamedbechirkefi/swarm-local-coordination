@@ -9,3 +9,6 @@ dist/
 results/raw/
 *.parquet
 results/exploratory/cli-smoke/
+# exploratory burn-in series (about 8 MB); regenerate with the configs in experiments/EXP-001/
+results/exploratory/EXP-001-burnin-scan/runs/
+results/exploratory/EXP-001-burnin-long/runs/

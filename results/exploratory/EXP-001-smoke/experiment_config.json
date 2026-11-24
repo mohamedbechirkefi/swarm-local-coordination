@@ -1,0 +1,42 @@
+{
+ "schema_version": "1.0.0",
+ "experiment_id": "EXP-001",
+ "label": "exploratory",
+ "confirmatory": false,
+ "description": "EXP-001 smoke matrix (protocol section 5): 3 arms x 1 cell (rho=1, eta=0.3, r=1, N=200) x 5 seeds, T=1000, t_d=500, W=500. Seeds 101-105 are disjoint from the planned EXP-002 seeds 1001-1010. Exploratory: measures runtime and the spread of paired differences for the freeze decision.",
+ "protocol_path": "research/experiments/EXP-001/protocol.md",
+ "base": {
+  "n_agents": 200,
+  "speed": 0.05,
+  "steps": 1000,
+  "t_disturb": 500,
+  "window": 500,
+  "pre_window": 100
+ },
+ "grid": {
+  "arm": [
+   "A0",
+   "A1",
+   "A2"
+  ],
+  "density": [
+   1.0
+  ],
+  "noise": [
+   0.3
+  ],
+  "radius": [
+   1.0
+  ]
+ },
+ "seeds": [
+  101,
+  102,
+  103,
+  104,
+  105
+ ],
+ "output_dir": "results/exploratory/EXP-001-smoke",
+ "store_series": true,
+ "full_matrix_runs": 540
+}

@@ -35,3 +35,32 @@ Append-only. Each entry: id, date, decision, decided by, rationale, alternatives
 - **Decided by:** session M0.
 - **Decision:** `pyproject.toml` sets `[tool.uv] exclude-newer = "2026-11-10T00:00:00Z"`, so `uv.lock` resolves only to versions released at least two weeks before 2026-11-24.
 - **Consequences:** Upgrades require a dated decision entry and a new lock.
+
+## DL-005: Machine-checked freeze record; the runner fails closed
+
+- **Date:** 2026-11-24
+- **Decided by:** session M2 (implementation choice); the owner may replace the mechanism.
+- **Decision:** A protocol counts as frozen only if `research/protocol_freeze.json` exists with `"approved_by": "owner"` and the SHA-256 of `research/protocol.md` and of the experiment's own protocol match the bytes on disk. `swarm.cli run` refuses any configuration with `"confirmatory": true` otherwise, and requires confirmatory outputs under `results/confirmatory/` and exploratory outputs under `results/exploratory/`. Sessions never write the freeze record (G-FREEZE).
+- **Rationale:** Master prompt section 3 (freeze before confirmatory runs) and the M2 brief (the run command must refuse confirmatory configs while unfrozen). A file hash check also detects later edits to a frozen protocol.
+- **Consequences:** At the freeze, the owner (or a session acting on the owner's recorded instruction) writes the freeze record with the hashes and commit; any later protocol edit makes the runner refuse until a dated amendment is frozen.
+
+## DL-006: Exploratory seeds are disjoint from the planned confirmatory seeds
+
+- **Date:** 2026-11-24
+- **Decided by:** session M2.
+- **Decision:** Exploratory runs use seeds 101 to 105 (smoke), 201+ (benchmark), 301 to 303 and 311 to 312 (burn-in scans), 401 to 402 (A1 diagnostic). None overlaps the EXP-002 seeds 1001 to 1010. Pre-freeze scans over the full grid run only up to t_d with no shock, so no post-disturbance outcome is computed outside the one smoke cell that EXP-001 prescribes.
+- **Rationale:** Limits how much of the confirmatory outcome the pre-freeze work can reveal.
+
+## DL-007: Angle wrapping leaves in-range values unchanged
+
+- **Date:** 2026-11-24
+- **Decided by:** session M2, after a failing test.
+- **Decision:** `wrap_angle` returns values already in (-pi, pi] bit for bit; only out-of-range values are reduced.
+- **Rationale:** The first implementation (`mod(theta + pi, 2 pi) - pi`) changed 0.3 to 0.29999999999999982, adding rounding drift on every call. Found by `test_reflect_hand_computed`; fixed before any experiment ran.
+
+## DL-008: Amendment proposals recorded, not applied
+
+- **Date:** 2026-11-24
+- **Decided by:** session M2 (proposal); the owner decides.
+- **Decision:** Exploratory EXP-001 runs show that the draft A1 parameterisation (w_c = 1) never orders, that A0 is disordered before the shock in 11 of 18 cells, that 500 burn-in steps are short in some cells, and that runtime is far below budget. Proposed changes are in `research/amendment_proposals.md` (AP-1 to AP-5). The draft protocol files are unchanged.
+- **Consequences:** The owner should decide AP-1 and AP-2 before freezing; a short exploratory re-check of seed spread (AP-3) should follow those decisions.

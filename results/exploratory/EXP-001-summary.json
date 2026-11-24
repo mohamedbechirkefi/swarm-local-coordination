@@ -1,0 +1,675 @@
+{
+ "label": "exploratory",
+ "generated_utc": "2026-11-24T16:09:24.115642Z",
+ "git_revision": "99cc0c444fdfbab6749970b92cad5ebb5c8c2841",
+ "git_dirty": false,
+ "package_version": "0.1.0",
+ "python": "3.12.1",
+ "numpy": "2.5.4",
+ "os": "Darwin 24.3.0 (macOS-15.3.1-arm64-arm-64bit)",
+ "cpu": "Apple M1 Pro",
+ "sources": [
+  "results/exploratory/EXP-001-smoke",
+  "results/exploratory/EXP-001-burnin-scan",
+  "results/exploratory/EXP-001-burnin-long"
+ ],
+ "failed_runs": 0,
+ "runtime": {
+  "smoke_cell": [
+   1.0,
+   0.3,
+   1.0
+  ],
+  "smoke_mean_s_per_run": 1.268980988933375,
+  "smoke_max_s_per_run": 2.1916019170002983,
+  "smoke_mean_s_per_run_by_arm": {
+   "A0": 1.3880071833998955,
+   "A1": 1.7908819084001153,
+   "A2": 0.6280538750001142
+  },
+  "projected_max_s_per_run": 11.50365240507655,
+  "exp002_runs": 540,
+  "exp002_projected_serial_s": 748.104519222648,
+  "exp002_projected_parallel_s": 93.513064902831,
+  "workers_assumed": 8,
+  "method": "per-run cost of each (cell, arm) = smoke mean for the arm (T=1000) x ratio of burn-in-scan mean runtimes (T=500) between that cell and the smoke cell; linear parallel scaling assumed"
+ },
+ "seed_spread_smoke_phi_post": {
+  "A1-A0": {
+   "pairs": 5,
+   "mean": -0.4796976056814981,
+   "sd": 0.058898571019779876,
+   "projected_ci_half_width_180_pairs": 0.008604478960418023
+  },
+  "A2-A0": {
+   "pairs": 5,
+   "mean": 0.31460970456744536,
+   "sd": 0.057968377610780074,
+   "projected_ci_half_width_180_pairs": 0.008468587215027964
+  }
+ },
+ "planning_sd_assumed": 0.2,
+ "order_threshold": 0.5,
+ "burnin_scan": [
+  {
+   "density": 0.5,
+   "noise": 0.1,
+   "radius": 0.5,
+   "arm": "A0",
+   "phi_pre_mean": 0.24776989239155486,
+   "phi_pre_sd": 0.15210277470006625,
+   "ordered": false
+  },
+  {
+   "density": 0.5,
+   "noise": 0.1,
+   "radius": 0.5,
+   "arm": "A1",
+   "phi_pre_mean": 0.057263270730217954,
+   "phi_pre_sd": 0.009737612875314378,
+   "ordered": false
+  },
+  {
+   "density": 0.5,
+   "noise": 0.1,
+   "radius": 0.5,
+   "arm": "A2",
+   "phi_pre_mean": 0.9837473264102342,
+   "phi_pre_sd": 7.15601214812539e-05,
+   "ordered": true
+  },
+  {
+   "density": 0.5,
+   "noise": 0.1,
+   "radius": 1.0,
+   "arm": "A0",
+   "phi_pre_mean": 0.9142121381021159,
+   "phi_pre_sd": 0.025762131261451517,
+   "ordered": true
+  },
+  {
+   "density": 0.5,
+   "noise": 0.1,
+   "radius": 1.0,
+   "arm": "A1",
+   "phi_pre_mean": 0.06391369708155419,
+   "phi_pre_sd": 0.00892109950729657,
+   "ordered": false
+  },
+  {
+   "density": 0.5,
+   "noise": 0.1,
+   "radius": 1.0,
+   "arm": "A2",
+   "phi_pre_mean": 0.9837473264102342,
+   "phi_pre_sd": 7.15601214812539e-05,
+   "ordered": true
+  },
+  {
+   "density": 0.5,
+   "noise": 0.3,
+   "radius": 0.5,
+   "arm": "A0",
+   "phi_pre_mean": 0.0974807620994928,
+   "phi_pre_sd": 0.02310237051574073,
+   "ordered": false
+  },
+  {
+   "density": 0.5,
+   "noise": 0.3,
+   "radius": 0.5,
+   "arm": "A1",
+   "phi_pre_mean": 0.06347924687796516,
+   "phi_pre_sd": 0.004091890400231889,
+   "ordered": false
+  },
+  {
+   "density": 0.5,
+   "noise": 0.3,
+   "radius": 0.5,
+   "arm": "A2",
+   "phi_pre_mean": 0.859408583802593,
+   "phi_pre_sd": 0.0006066120961027877,
+   "ordered": true
+  },
+  {
+   "density": 0.5,
+   "noise": 0.3,
+   "radius": 1.0,
+   "arm": "A0",
+   "phi_pre_mean": 0.33308131248208855,
+   "phi_pre_sd": 0.12579585418410402,
+   "ordered": false
+  },
+  {
+   "density": 0.5,
+   "noise": 0.3,
+   "radius": 1.0,
+   "arm": "A1",
+   "phi_pre_mean": 0.060931692428980805,
+   "phi_pre_sd": 0.006097069616250323,
+   "ordered": false
+  },
+  {
+   "density": 0.5,
+   "noise": 0.3,
+   "radius": 1.0,
+   "arm": "A2",
+   "phi_pre_mean": 0.859408583802593,
+   "phi_pre_sd": 0.0006066120961027877,
+   "ordered": true
+  },
+  {
+   "density": 0.5,
+   "noise": 0.5,
+   "radius": 0.5,
+   "arm": "A0",
+   "phi_pre_mean": 0.0714221500581968,
+   "phi_pre_sd": 0.009458888827912133,
+   "ordered": false
+  },
+  {
+   "density": 0.5,
+   "noise": 0.5,
+   "radius": 0.5,
+   "arm": "A1",
+   "phi_pre_mean": 0.06110953869252119,
+   "phi_pre_sd": 0.006766605193829955,
+   "ordered": false
+  },
+  {
+   "density": 0.5,
+   "noise": 0.5,
+   "radius": 0.5,
+   "arm": "A2",
+   "phi_pre_mean": 0.639347010669323,
+   "phi_pre_sd": 0.0014943559647742943,
+   "ordered": true
+  },
+  {
+   "density": 0.5,
+   "noise": 0.5,
+   "radius": 1.0,
+   "arm": "A0",
+   "phi_pre_mean": 0.11176145030300637,
+   "phi_pre_sd": 0.0029872771338849803,
+   "ordered": false
+  },
+  {
+   "density": 0.5,
+   "noise": 0.5,
+   "radius": 1.0,
+   "arm": "A1",
+   "phi_pre_mean": 0.06317747662236146,
+   "phi_pre_sd": 0.005462349508884751,
+   "ordered": false
+  },
+  {
+   "density": 0.5,
+   "noise": 0.5,
+   "radius": 1.0,
+   "arm": "A2",
+   "phi_pre_mean": 0.639347010669323,
+   "phi_pre_sd": 0.0014943559647742943,
+   "ordered": true
+  },
+  {
+   "density": 1.0,
+   "noise": 0.1,
+   "radius": 0.5,
+   "arm": "A0",
+   "phi_pre_mean": 0.7238971804993887,
+   "phi_pre_sd": 0.03519262708219846,
+   "ordered": true
+  },
+  {
+   "density": 1.0,
+   "noise": 0.1,
+   "radius": 0.5,
+   "arm": "A1",
+   "phi_pre_mean": 0.05982337656102658,
+   "phi_pre_sd": 0.001447336079178131,
+   "ordered": false
+  },
+  {
+   "density": 1.0,
+   "noise": 0.1,
+   "radius": 0.5,
+   "arm": "A2",
+   "phi_pre_mean": 0.9837473264102342,
+   "phi_pre_sd": 7.15601214812539e-05,
+   "ordered": true
+  },
+  {
+   "density": 1.0,
+   "noise": 0.1,
+   "radius": 1.0,
+   "arm": "A0",
+   "phi_pre_mean": 0.8984226539708621,
+   "phi_pre_sd": 0.0830839439087976,
+   "ordered": true
+  },
+  {
+   "density": 1.0,
+   "noise": 0.1,
+   "radius": 1.0,
+   "arm": "A1",
+   "phi_pre_mean": 0.07052760971538133,
+   "phi_pre_sd": 0.015116912448078031,
+   "ordered": false
+  },
+  {
+   "density": 1.0,
+   "noise": 0.1,
+   "radius": 1.0,
+   "arm": "A2",
+   "phi_pre_mean": 0.9837473264102342,
+   "phi_pre_sd": 7.15601214812539e-05,
+   "ordered": true
+  },
+  {
+   "density": 1.0,
+   "noise": 0.3,
+   "radius": 0.5,
+   "arm": "A0",
+   "phi_pre_mean": 0.12470816758256471,
+   "phi_pre_sd": 0.023835282288718236,
+   "ordered": false
+  },
+  {
+   "density": 1.0,
+   "noise": 0.3,
+   "radius": 0.5,
+   "arm": "A1",
+   "phi_pre_mean": 0.061776318616513747,
+   "phi_pre_sd": 0.0018404979757893395,
+   "ordered": false
+  },
+  {
+   "density": 1.0,
+   "noise": 0.3,
+   "radius": 0.5,
+   "arm": "A2",
+   "phi_pre_mean": 0.859408583802593,
+   "phi_pre_sd": 0.0006066120961027877,
+   "ordered": true
+  },
+  {
+   "density": 1.0,
+   "noise": 0.3,
+   "radius": 1.0,
+   "arm": "A0",
+   "phi_pre_mean": 0.5019220649336592,
+   "phi_pre_sd": 0.079246885661022,
+   "ordered": true
+  },
+  {
+   "density": 1.0,
+   "noise": 0.3,
+   "radius": 1.0,
+   "arm": "A1",
+   "phi_pre_mean": 0.06469948484975761,
+   "phi_pre_sd": 0.008140040606204844,
+   "ordered": false
+  },
+  {
+   "density": 1.0,
+   "noise": 0.3,
+   "radius": 1.0,
+   "arm": "A2",
+   "phi_pre_mean": 0.859408583802593,
+   "phi_pre_sd": 0.0006066120961027877,
+   "ordered": true
+  },
+  {
+   "density": 1.0,
+   "noise": 0.5,
+   "radius": 0.5,
+   "arm": "A0",
+   "phi_pre_mean": 0.08142834575070516,
+   "phi_pre_sd": 0.018493923570252115,
+   "ordered": false
+  },
+  {
+   "density": 1.0,
+   "noise": 0.5,
+   "radius": 0.5,
+   "arm": "A1",
+   "phi_pre_mean": 0.06546647499682938,
+   "phi_pre_sd": 0.010590337748811624,
+   "ordered": false
+  },
+  {
+   "density": 1.0,
+   "noise": 0.5,
+   "radius": 0.5,
+   "arm": "A2",
+   "phi_pre_mean": 0.639347010669323,
+   "phi_pre_sd": 0.0014943559647742943,
+   "ordered": true
+  },
+  {
+   "density": 1.0,
+   "noise": 0.5,
+   "radius": 1.0,
+   "arm": "A0",
+   "phi_pre_mean": 0.165431641275154,
+   "phi_pre_sd": 0.07519133110713595,
+   "ordered": false
+  },
+  {
+   "density": 1.0,
+   "noise": 0.5,
+   "radius": 1.0,
+   "arm": "A1",
+   "phi_pre_mean": 0.06676691512773116,
+   "phi_pre_sd": 0.00437377877248119,
+   "ordered": false
+  },
+  {
+   "density": 1.0,
+   "noise": 0.5,
+   "radius": 1.0,
+   "arm": "A2",
+   "phi_pre_mean": 0.639347010669323,
+   "phi_pre_sd": 0.0014943559647742943,
+   "ordered": true
+  },
+  {
+   "density": 2.0,
+   "noise": 0.1,
+   "radius": 0.5,
+   "arm": "A0",
+   "phi_pre_mean": 0.8940301192293534,
+   "phi_pre_sd": 0.007790852038010362,
+   "ordered": true
+  },
+  {
+   "density": 2.0,
+   "noise": 0.1,
+   "radius": 0.5,
+   "arm": "A1",
+   "phi_pre_mean": 0.06843819398004176,
+   "phi_pre_sd": 0.0031107536513634224,
+   "ordered": false
+  },
+  {
+   "density": 2.0,
+   "noise": 0.1,
+   "radius": 0.5,
+   "arm": "A2",
+   "phi_pre_mean": 0.9837473264102342,
+   "phi_pre_sd": 7.15601214812539e-05,
+   "ordered": true
+  },
+  {
+   "density": 2.0,
+   "noise": 0.1,
+   "radius": 1.0,
+   "arm": "A0",
+   "phi_pre_mean": 0.9701133022448388,
+   "phi_pre_sd": 0.0027294363555465276,
+   "ordered": true
+  },
+  {
+   "density": 2.0,
+   "noise": 0.1,
+   "radius": 1.0,
+   "arm": "A1",
+   "phi_pre_mean": 0.06463676856203948,
+   "phi_pre_sd": 0.007537608650895891,
+   "ordered": false
+  },
+  {
+   "density": 2.0,
+   "noise": 0.1,
+   "radius": 1.0,
+   "arm": "A2",
+   "phi_pre_mean": 0.9837473264102342,
+   "phi_pre_sd": 7.15601214812539e-05,
+   "ordered": true
+  },
+  {
+   "density": 2.0,
+   "noise": 0.3,
+   "radius": 0.5,
+   "arm": "A0",
+   "phi_pre_mean": 0.29190776823190434,
+   "phi_pre_sd": 0.028135928962451092,
+   "ordered": false
+  },
+  {
+   "density": 2.0,
+   "noise": 0.3,
+   "radius": 0.5,
+   "arm": "A1",
+   "phi_pre_mean": 0.06490755936181707,
+   "phi_pre_sd": 0.0018562671141411822,
+   "ordered": false
+  },
+  {
+   "density": 2.0,
+   "noise": 0.3,
+   "radius": 0.5,
+   "arm": "A2",
+   "phi_pre_mean": 0.859408583802593,
+   "phi_pre_sd": 0.0006066120961027877,
+   "ordered": true
+  },
+  {
+   "density": 2.0,
+   "noise": 0.3,
+   "radius": 1.0,
+   "arm": "A0",
+   "phi_pre_mean": 0.7617488825324119,
+   "phi_pre_sd": 0.02834879228156561,
+   "ordered": true
+  },
+  {
+   "density": 2.0,
+   "noise": 0.3,
+   "radius": 1.0,
+   "arm": "A1",
+   "phi_pre_mean": 0.06597367138187267,
+   "phi_pre_sd": 0.003932452156093132,
+   "ordered": false
+  },
+  {
+   "density": 2.0,
+   "noise": 0.3,
+   "radius": 1.0,
+   "arm": "A2",
+   "phi_pre_mean": 0.859408583802593,
+   "phi_pre_sd": 0.0006066120961027877,
+   "ordered": true
+  },
+  {
+   "density": 2.0,
+   "noise": 0.5,
+   "radius": 0.5,
+   "arm": "A0",
+   "phi_pre_mean": 0.12012890538645717,
+   "phi_pre_sd": 0.00860731021436433,
+   "ordered": false
+  },
+  {
+   "density": 2.0,
+   "noise": 0.5,
+   "radius": 0.5,
+   "arm": "A1",
+   "phi_pre_mean": 0.06160183118278376,
+   "phi_pre_sd": 0.0007023876476525094,
+   "ordered": false
+  },
+  {
+   "density": 2.0,
+   "noise": 0.5,
+   "radius": 0.5,
+   "arm": "A2",
+   "phi_pre_mean": 0.639347010669323,
+   "phi_pre_sd": 0.0014943559647742943,
+   "ordered": true
+  },
+  {
+   "density": 2.0,
+   "noise": 0.5,
+   "radius": 1.0,
+   "arm": "A0",
+   "phi_pre_mean": 0.31926784826508386,
+   "phi_pre_sd": 0.11214068714377351,
+   "ordered": false
+  },
+  {
+   "density": 2.0,
+   "noise": 0.5,
+   "radius": 1.0,
+   "arm": "A1",
+   "phi_pre_mean": 0.06460226088509242,
+   "phi_pre_sd": 0.007025816771848499,
+   "ordered": false
+  },
+  {
+   "density": 2.0,
+   "noise": 0.5,
+   "radius": 1.0,
+   "arm": "A2",
+   "phi_pre_mean": 0.639347010669323,
+   "phi_pre_sd": 0.0014943559647742943,
+   "ordered": true
+  }
+ ],
+ "cells_ordered_by_arm": {
+  "A0": 7,
+  "A1": 0,
+  "A2": 18
+ },
+ "random_heading_phi_reference": 0.07071067811865475,
+ "burnin_long_A0": [
+  {
+   "density": 0.5,
+   "noise": 0.1,
+   "radius": 0.5,
+   "phi_400_500": 0.28970814235665177,
+   "phi_1900_2000": 0.5216802173152886
+  },
+  {
+   "density": 0.5,
+   "noise": 0.1,
+   "radius": 1.0,
+   "phi_400_500": 0.6935696824262829,
+   "phi_1900_2000": 0.791929825949519
+  },
+  {
+   "density": 0.5,
+   "noise": 0.3,
+   "radius": 0.5,
+   "phi_400_500": 0.09563047438114057,
+   "phi_1900_2000": 0.09956959820174964
+  },
+  {
+   "density": 0.5,
+   "noise": 0.3,
+   "radius": 1.0,
+   "phi_400_500": 0.3895584637322495,
+   "phi_1900_2000": 0.3929766706110765
+  },
+  {
+   "density": 0.5,
+   "noise": 0.5,
+   "radius": 0.5,
+   "phi_400_500": 0.07260991192427504,
+   "phi_1900_2000": 0.07857025697602263
+  },
+  {
+   "density": 0.5,
+   "noise": 0.5,
+   "radius": 1.0,
+   "phi_400_500": 0.11451565224102184,
+   "phi_1900_2000": 0.09864562388781664
+  },
+  {
+   "density": 1.0,
+   "noise": 0.1,
+   "radius": 0.5,
+   "phi_400_500": 0.6076518551819665,
+   "phi_1900_2000": 0.8458451773462012
+  },
+  {
+   "density": 1.0,
+   "noise": 0.1,
+   "radius": 1.0,
+   "phi_400_500": 0.9560933679732764,
+   "phi_1900_2000": 0.9527329534042317
+  },
+  {
+   "density": 1.0,
+   "noise": 0.3,
+   "radius": 0.5,
+   "phi_400_500": 0.16645849627403866,
+   "phi_1900_2000": 0.11453627694868672
+  },
+  {
+   "density": 1.0,
+   "noise": 0.3,
+   "radius": 1.0,
+   "phi_400_500": 0.49223058807667847,
+   "phi_1900_2000": 0.5912293724958231
+  },
+  {
+   "density": 1.0,
+   "noise": 0.5,
+   "radius": 0.5,
+   "phi_400_500": 0.07681549150816475,
+   "phi_1900_2000": 0.07023706935072477
+  },
+  {
+   "density": 1.0,
+   "noise": 0.5,
+   "radius": 1.0,
+   "phi_400_500": 0.16558010870585085,
+   "phi_1900_2000": 0.19572340849766948
+  },
+  {
+   "density": 2.0,
+   "noise": 0.1,
+   "radius": 0.5,
+   "phi_400_500": 0.8692909087503113,
+   "phi_1900_2000": 0.9161841991457662
+  },
+  {
+   "density": 2.0,
+   "noise": 0.1,
+   "radius": 1.0,
+   "phi_400_500": 0.974202420827195,
+   "phi_1900_2000": 0.9658514025906955
+  },
+  {
+   "density": 2.0,
+   "noise": 0.3,
+   "radius": 0.5,
+   "phi_400_500": 0.3868405718958724,
+   "phi_1900_2000": 0.2856732913901664
+  },
+  {
+   "density": 2.0,
+   "noise": 0.3,
+   "radius": 1.0,
+   "phi_400_500": 0.7393468292805743,
+   "phi_1900_2000": 0.763116930110131
+  },
+  {
+   "density": 2.0,
+   "noise": 0.5,
+   "radius": 0.5,
+   "phi_400_500": 0.09064634340509697,
+   "phi_1900_2000": 0.11091463357278748
+  },
+  {
+   "density": 2.0,
+   "noise": 0.5,
+   "radius": 1.0,
+   "phi_400_500": 0.34163547456691185,
+   "phi_1900_2000": 0.325863969801441
+  }
+ ]
+}

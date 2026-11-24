@@ -1,0 +1,35 @@
+{
+ "label": "exploratory",
+ "spec": {
+  "label": "exploratory",
+  "description": "EXP-001 neighbour-computation benchmark (protocol section 6): cell list vs brute force, A0 only, 50 steps, 3 repeats.",
+  "n_agents": [
+   100,
+   200,
+   400,
+   800
+  ],
+  "density": [
+   0.5,
+   1.0,
+   2.0
+  ],
+  "radius": [
+   0.5,
+   1.0
+  ],
+  "repeats": 3,
+  "steps": 50,
+  "noise": 0.3,
+  "seed_base": 201,
+  "output_dir": "results/exploratory/EXP-001-bench"
+ },
+ "git_revision": "99cc0c444fdfbab6749970b92cad5ebb5c8c2841",
+ "git_dirty": false,
+ "package_version": "0.1.0",
+ "python": "3.12.1",
+ "numpy": "2.5.4",
+ "os": "Darwin 24.3.0 (macOS-15.3.1-arm64-arm-64bit)",
+ "cpu": "Apple M1 Pro",
+ "finished_utc": "2026-11-24T16:08:01.945797Z"
+}

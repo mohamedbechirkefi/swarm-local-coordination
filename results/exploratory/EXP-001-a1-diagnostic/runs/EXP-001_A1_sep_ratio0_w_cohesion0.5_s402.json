@@ -1,0 +1,68 @@
+{
+ "schema_version": "1.0.0",
+ "record_type": "swarm.run_result",
+ "experiment_id": "EXP-001",
+ "run_id": "EXP-001_A1_sep_ratio0_w_cohesion0.5_s402",
+ "label": "exploratory",
+ "status": "ok",
+ "error": null,
+ "config": {
+  "arm": "A1",
+  "n_agents": 200,
+  "density": 2.0,
+  "noise": 0.1,
+  "radius": 1.0,
+  "speed": 0.05,
+  "steps": 500,
+  "t_disturb": 500,
+  "window": 0,
+  "shock_fraction": 0.5,
+  "sep_ratio": 0.0,
+  "w_align": 1.0,
+  "w_cohesion": 0.5,
+  "collision_ratio": 0.1,
+  "recovery_threshold": 0.9,
+  "recovery_hold": 10,
+  "pre_window": 100,
+  "boundary": "periodic",
+  "neighbourhood": "metric",
+  "k_topological": 7,
+  "index": "cell",
+  "seed": 402
+ },
+ "config_hash": "1839acd9e242750b2e4c50340d4b2975e0c6bfb712bb3480b51903f72f647262",
+ "metrics": {
+  "phi_pre": 0.6190124737615804,
+  "phi_post": null,
+  "tau": null,
+  "tau_censored": null,
+  "cohesion_post": null,
+  "collisions_per_agent_per_100": null,
+  "dist_evals_per_step": 9566.976
+ },
+ "timing": {
+  "wall_s": 0.8577076669989765,
+  "wall_s_per_step": 0.001715415333997953,
+  "search_s_per_step": 0.0011648230740465807
+ },
+ "series": {
+  "phi": null
+ },
+ "manifest": {
+  "run_id": "EXP-001_A1_sep_ratio0_w_cohesion0.5_s402",
+  "config_hash": "1839acd9e242750b2e4c50340d4b2975e0c6bfb712bb3480b51903f72f647262",
+  "seed": 402,
+  "git_revision": "99cc0c444fdfbab6749970b92cad5ebb5c8c2841",
+  "git_dirty": false,
+  "package_version": "0.1.0",
+  "python": "3.12.1",
+  "numpy": "2.5.4",
+  "os": "Darwin 24.3.0 (macOS-15.3.1-arm64-arm-64bit)",
+  "cpu": "Apple M1 Pro",
+  "started_utc": "2026-11-24T16:09:04.305723Z",
+  "finished_utc": "2026-11-24T16:09:05.190930Z",
+  "runtime_s": 0.8580600000004779,
+  "peak_rss_bytes": 71188480,
+  "command": "python -m swarm.cli run --config experiments/EXP-001/a1_diagnostic.json"
+ }
+}
