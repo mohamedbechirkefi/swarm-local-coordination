@@ -1,0 +1,106 @@
+{
+ "record_type": "swarm.protocol_freeze",
+ "schema_version": "1.0.0",
+ "project": "SWARM",
+ "protocol_version": "1.0",
+ "approved_by": "owner",
+ "approval_date": "2026-11-24",
+ "approval_source": "labs/_shared/owner-approvals-2026-11-24.md (outside this repository), section SWARM",
+ "approval_quote": {
+  "owner_answer": "The owner answered the M2 decision list in this session. Quoted answers: \"2. yes 3. yes 4. yes\", \"yes for all others\"",
+  "swarm_amendments": [
+   "Set A1's cohesion weight to 0.5, fixed now without tuning on the contrast.",
+   "Lengthen the burn-in until A0 is aligned before the shock, under a pre-stated rule.",
+   "20 seeds.",
+   "Budget headroom as measured."
+  ]
+ },
+ "frozen_utc": "2026-11-24T17:49:06.940641Z",
+ "frozen_by": "session acting on the owner's recorded approval (G-FREEZE, owner-approved 2026-11-24; DL-005, DL-009)",
+ "git_revision": "6d9405fe516a6fd54c4dcb4606266855cbc0e29e",
+ "git_revision_note": "Commit holding the frozen protocol and config bytes; the hashes below identify them independently of the commit.",
+ "common_decisions": {
+  "C1": "Data: synthetic data only.",
+  "C2": "PDFs: built with pandoc and Typst (-V mainfont=\"Libertinus Serif\"); there is no LaTeX on the machine.",
+  "C3": "Authorship: \"Mohamed Bechir Kefi\", no affiliation. The AI is disclosed as a research and development assistant, not as an author.",
+  "C4": "Disclosure: where exploratory values of the primary contrast were seen before the freeze, the freeze record says so, with the values and where they are stored."
+ },
+ "c4_disclosure": {
+  "seen_before_freeze": true,
+  "design_when_seen": "draft v0.1: w_c = 1, t_d = 500, T = 1000; not the frozen design",
+  "cell": "rho = 1, eta = 0.3, r = 1, N = 200",
+  "seeds": "101 to 105 (disjoint from the confirmatory seeds 1001 to 1020)",
+  "values": {
+   "phi_post_mean": {
+    "A0": 0.544,
+    "A1": 0.064,
+    "A2": 0.858
+   },
+   "paired_difference_A1_minus_A0": {
+    "mean": -0.48,
+    "sd": 0.059,
+    "pairs": 5
+   },
+   "paired_difference_A2_minus_A0": {
+    "mean": 0.315,
+    "sd": 0.058,
+    "pairs": 5
+   },
+   "phi_pre_mean": {
+    "A0": 0.493,
+    "A1": 0.063,
+    "A2": 0.86
+   }
+  },
+  "stored_at": [
+   "results/exploratory/EXP-001-smoke/",
+   "results/exploratory/EXP-001-summary.md",
+   "results/exploratory/EXP-001-summary.json",
+   "research/experiment_journal.jsonl (EXPL-001, EXPL-002)"
+  ],
+  "other_pre_freeze_runs": "EXPL-003 to EXPL-007 computed no post-disturbance outcome (benchmark and no-shock burn-in scans: phi_pre only). The git-ignored built-in CLI smoke (results/exploratory/cli-smoke/, N = 40, T = 120) is a software check on a toy model, not the design.",
+  "frozen_design_outcomes_seen": "none: no run with the frozen configuration, or with w_c = 0.5 and a shock, was made before the freeze."
+ },
+ "amendments": {
+  "AM-1": "A1 cohesion weight w_c = 0.5 (draft 1), set by the owner; EXP-003 S2 becomes {0.25, 1.0} (half and double the primary value, as in the draft design).",
+  "AM-2": "Burn-in t_d = 3000, T = 3500, by the rule R-BI pre-stated in commit 2330f79 before its data existed; A0 aligned (m >= 0.5) in 8 of 18 cells, the other 10 kept and flagged (results/exploratory/EXP-001-burnin-rule-decision.md, EXPL-007).",
+  "AM-3": "20 seeds, 1001 to 1020, in EXP-002 and EXP-003.",
+  "AM-4": "Budget caps kept (EXP-002 4 h, EXP-003 2 h); measured projection EXP-002 15.3 min serial, EXP-003 at most 13.5 min serial."
+ },
+ "protocols": [
+  {
+   "path": "research/protocol.md",
+   "sha256": "80c7225dc55d3065b7bd92d683cb71423c1cf511dd215385ee7a8dc59db109d4"
+  },
+  {
+   "path": "research/experiments/EXP-002/protocol.md",
+   "sha256": "3359f833014d145abec739d3ccb3de63587f94191dec523a38ec37f0f53b0c5e"
+  },
+  {
+   "path": "research/experiments/EXP-003/protocol.md",
+   "sha256": "e954d29e4a8b4e8909b7ff34d24c311b77f4a18b62f4706109865a262253a1d8"
+  }
+ ],
+ "configs": [
+  {
+   "path": "experiments/EXP-002/config.json",
+   "sha256": "b76bb1c013944d790ddb0f43da83b38203679c03f35ad014cffc8f54f3cf750c",
+   "canonical_sha256": "ffa4a8e818c473822279053d00a08160b868b51d07444804396393225f8243a2"
+  },
+  {
+   "path": "experiments/EXP-003/config_S1.json",
+   "sha256": "5aa5c8e5fd681813362b7f5b586ad87e2146e1f3f9506b51e2a4a7318ddd9281",
+   "canonical_sha256": "69927a24d3b7ff2e0c4f225549d13a4ff7f5a73bcbfe5754624f320b49b054f3"
+  },
+  {
+   "path": "experiments/EXP-003/config_S2.json",
+   "sha256": "24523e26029d6acdb9fa4a379a815a1e38c896c08d92db16ac8c6828b340a62b",
+   "canonical_sha256": "47e3e9e6edfd78f971e37d8a6b998734f0d4e4ed0f77a6bb738009f6c02d1398"
+  },
+  {
+   "path": "experiments/EXP-003/config_S3.json",
+   "sha256": "8af71e667b3d83fb1bdf0bf4c8ae42406138a921ad71d06e2b18d918ec59d68d",
+   "canonical_sha256": "b34d9128a0a43526c395dc8a63c8a3ae3ee3d8f2da2641f5a789f4b3786ad6c9"
+  }
+ ]
+}

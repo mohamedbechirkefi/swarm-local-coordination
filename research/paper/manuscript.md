@@ -1,6 +1,7 @@
 ---
 title: "How order emerges without a leader (working title)"
 subtitle: "Independent research manuscript, draft. Not peer reviewed. No results yet."
+author: "Mohamed Bechir Kefi"
 ---
 
 <!-- SPDX-License-Identifier: LicenseRef-SWARM-NC-Research-1.0 -->
@@ -50,6 +51,8 @@ subtitle: "Independent research manuscript, draft. Not peer reviewed. No results
 # Data and code availability
 
 # Funding, competing interests and AI assistance
+
+The author is Mohamed Bechir Kefi (independent, no affiliation). An AI system was used as a research and development assistant (code, tests, drafting and checking under the author's direction); it is not an author. Funding and competing interests: to be completed by the author.
 
 # References
 

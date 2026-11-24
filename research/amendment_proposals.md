@@ -1,7 +1,7 @@
 <!-- SPDX-License-Identifier: LicenseRef-SWARM-NC-Research-1.0 -->
 # Proposed amendments to the draft protocol (for the owner)
 
-**Status:** proposals from session M2, 2026-11-24. None is applied. `research/protocol.md` and the EXP-001 to EXP-003 protocols are unchanged; the owner decides each item before the freeze (G-FREEZE). Evidence comes only from exploratory pre-freeze runs (journal entries EXPL-002 to EXPL-006; summary in `results/exploratory/EXP-001-summary.md`). These numbers are planning measurements, not findings.
+**Status:** proposals from session M2, 2026-11-24. **Decided by the owner on 2026-11-24** and applied as AM-1 to AM-4 (`research/protocol.md` section 13, DL-009): AP-1 option 1 with w_c = 0.5 fixed by the owner; AP-2 option 1 under the pre-stated rule R-BI (t_d = 3000); AP-3 20 seeds; AP-4 budget as measured. AP-2 options 2 and 3 were not approved. The text below is the proposal as written before the decision. Evidence comes only from exploratory pre-freeze runs (journal entries EXPL-002 to EXPL-006; summary in `results/exploratory/EXP-001-summary.md`). These numbers are planning measurements, not findings.
 
 ## AP-1: A1 is disordered in every planned cell at w_c = 1
 

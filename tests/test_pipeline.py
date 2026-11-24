@@ -127,9 +127,9 @@ def test_freeze_check(tmp_path):
     assert freeze_status(["research/protocol.md"], ff, tmp_path)[0] is False
 
 
-def test_repository_protocol_is_not_frozen():
-    frozen, _ = freeze_status(["research/protocol.md"])
-    assert frozen is False
+def test_repository_protocol_is_frozen():
+    # Frozen v1.0, owner-approved 2026-11-24 (research/protocol_freeze.json; tests/test_freeze.py).
+    assert freeze_status(["research/protocol.md"]) == (True, "frozen")
 
 
 def test_schema_rejects_malformed(tmp_path):

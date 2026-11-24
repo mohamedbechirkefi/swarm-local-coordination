@@ -116,3 +116,30 @@ The primary contrast as drafted would measure a phase difference (AP-1). Runtime
 ### Next action
 
 Owner decisions on AP-1 to AP-3; then one exploratory smoke run with the amended parameters (seed spread), then the freeze and M3.
+
+## 2026-11-24: Session FREEZE (owner-approved amendments and protocol freeze)
+
+**Milestone:** M1 gate (G-FREEZE), on the owner's approvals of 2026-11-24 (`labs/_shared/owner-approvals-2026-11-24.md`, SWARM section and common decisions C1 to C4).
+
+### What was done
+
+- Amendments applied (`research/protocol.md` section 13; EXP-002 section 14; EXP-003 section 7): AM-1 w_c = 0.5; AM-2 burn-in rule R-BI committed first (2330f79), then applied: t_d = 3000, T = 3500; AM-3 20 seeds (1001 to 1020); AM-4 budget caps kept, measured projection recorded. Consequential edit: EXP-003 S2 = {0.25, 1.0}.
+- `uv run --frozen python -m swarm.cli run --config experiments/EXP-001/burnin_rule.json --workers 8` -> `90 runs written to results/exploratory/EXP-001-burnin-rule (0 failed)`; `apply_burnin_rule.py` -> `t_d = 3000, T = 3500. Orderable cells: 8 of 18` (EXPL-007). Load average 1.65 to 1.87 before the run.
+- Confirmatory configs: `experiments/EXP-002/config.json` (1080 runs), `experiments/EXP-003/config_S1.json`, `config_S2.json`, `config_S3.json` (160 runs each).
+- Freeze guard: `run` now also requires the config's canonical hash in `research/protocol_freeze.json`, and the record path resolves against the run root. Checked: all four frozen configs pass `check_allowed`; a copy of EXP-002 with w_c = 0.6 -> `error: refusing a confirmatory run: configuration not frozen`, exit 2.
+- Freeze record `research/protocol_freeze.json` (owner approval quoted, C1 to C4 with the C4 disclosure, SHA-256 of the three protocols and four configs, revision 6d9405f).
+- `.venv/bin/python -m pytest -q` -> `122 passed`.
+- Authorship (C3): manuscript metadata and AI-assistance statement, `manuscript.tex` regenerated with pandoc 3.6.3; CITATION.cff note.
+
+### Not done, and why
+
+- No confirmatory run: the coordinator schedules M3 on a quiet machine.
+- No exploratory re-measure of seed spread under the amended design (AP-3 suggested one; not approved, and it would reveal post-shock values of the frozen design).
+
+### Outstanding risks
+
+A0 is not aligned before the shock in 10 of 18 cells at any tested burn-in; A1 may be weakly ordered at w_c = 0.5. Both are reported, not corrected (limitations 10 to 12).
+
+### Next action
+
+M3: run EXP-002, then EXP-003, with the frozen configs, when the coordinator schedules it.

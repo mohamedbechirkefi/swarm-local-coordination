@@ -1,6 +1,7 @@
 # SPDX-License-Identifier: LicenseRef-SWARM-NC-Research-1.0
 # Licence: SWARM Source-Available Non-Commercial Research License v1.0 (custom, see LICENSE).
 # No SPDX "license" field is given because the licence is not on the SPDX list.
+# Authorship per the owner's decision C3 (2026-11-24): one author, no affiliation. AI assistance is disclosed in the manuscript; the AI is not an author.
 cff-version: 1.2.0
 message: "If you use this work, please cite it as below. Status: research in progress, not peer reviewed."
 title: "SWARM: how order emerges without a leader (working title)"

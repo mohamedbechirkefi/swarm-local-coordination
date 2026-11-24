@@ -64,3 +64,18 @@ Append-only. Each entry: id, date, decision, decided by, rationale, alternatives
 - **Decided by:** session M2 (proposal); the owner decides.
 - **Decision:** Exploratory EXP-001 runs show that the draft A1 parameterisation (w_c = 1) never orders, that A0 is disordered before the shock in 11 of 18 cells, that 500 burn-in steps are short in some cells, and that runtime is far below budget. Proposed changes are in `research/amendment_proposals.md` (AP-1 to AP-5). The draft protocol files are unchanged.
 - **Consequences:** The owner should decide AP-1 and AP-2 before freezing; a short exploratory re-check of seed spread (AP-3) should follow those decisions.
+
+## DL-009: Owner-approved amendments AM-1 to AM-4 applied; protocol v1.0 frozen
+
+- **Date:** 2026-11-24
+- **Decided by:** the owner (approvals of 2026-11-24, quoted in `research/protocol_freeze.json`); applied by a session acting on that recorded instruction, as DL-005 allows.
+- **Decision:** (AM-1) A1 cohesion weight w_c = 0.5, fixed by the owner, not tuned on any outcome. (AM-2) Burn-in lengthened by rule R-BI, written and committed (2330f79) before its data were generated: an A0-only, no-shock scan (seeds 321 to 325, T = 4000) gives t_d = 3000 (T = 3500), the smallest candidate at which A0 is aligned (m >= 0.5) in all 8 orderable cells. (AM-3) 20 seeds, 1001 to 1020. (AM-4) Budget caps kept; measured projection EXP-002 15.3 min serial, EXP-003 at most 13.5 min serial. Consequential edit: EXP-003 S2 becomes w_c in {0.25, 1.0}, keeping the draft design of half and double the primary value. The protocol (`research/protocol.md`, EXP-002 and EXP-003) is frozen at v1.0 with the hashes and revision in `research/protocol_freeze.json`.
+- **Rationale:** AP-1 to AP-4 in `research/amendment_proposals.md`; the owner chose option 1 of AP-1 with a fixed value, option 1 of AP-2 with a pre-stated rule, 20 seeds for AP-3, and AP-4 as measured.
+- **Alternatives considered:** restricting the confirmatory grid to cells where A0 orders (AP-2 option 2) and a recovery floor (AP-2 option 3); not approved, so not applied.
+- **Consequences:** A0 is not aligned before the shock in 10 of 18 cells at any tested burn-in (m(4000) between 0.070 and 0.347); they stay in the pooled estimand and are flagged in per-cell tables. A1 may still be weakly ordered at w_c = 0.5 (EXPL-006: phi_pre 0.251 in the best cell at T = 500). C4 disclosure: smoke-cell primary values under the draft design were seen before the freeze (A1 - A0 phi_post mean -0.480, SD 0.059, 5 seeds; values and paths in the freeze record). The runner now also requires each confirmatory configuration's canonical hash in the freeze record (refuses changed configs; tests in `tests/test_freeze.py`). Any further change to a frozen file is a dated post-freeze amendment and a new freeze.
+
+## DL-010: Authorship per the owner's common decision C3
+
+- **Date:** 2026-11-24
+- **Decided by:** the owner (common decision C3).
+- **Decision:** The author is "Mohamed Bechir Kefi", with no affiliation, in `CITATION.cff` and the manuscript metadata. The AI is disclosed as a research and development assistant, not as an author. Data stay synthetic (C1, confirms DL-003); PDFs use pandoc and Typst (C2, confirms DL-002).
