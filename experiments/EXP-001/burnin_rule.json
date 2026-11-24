@@ -1,0 +1,13 @@
+{
+ "schema_version": "1.0.0",
+ "experiment_id": "EXP-001",
+ "label": "exploratory",
+ "confirmatory": false,
+ "description": "Burn-in rule R-BI (owner-approved amendment AM-2, 2026-11-24): A0 only, 18 planned cells, 5 seeds (321-325, disjoint from all other seeds), T = t_d = 4000, no shock, phi series stored. Only pre-shock A0 polarization is computed; no post-disturbance outcome and no A1 run. The rule in research/protocol.md section 13 picks t_d from these series. Exploratory.",
+ "protocol_path": "research/experiments/EXP-001/protocol.md",
+ "base": {"n_agents": 200, "speed": 0.05, "steps": 4000, "t_disturb": 4000, "window": 0, "pre_window": 100},
+ "grid": {"arm": ["A0"], "density": [0.5, 1.0, 2.0], "noise": [0.1, 0.3, 0.5], "radius": [0.5, 1.0]},
+ "seeds": [321, 322, 323, 324, 325],
+ "output_dir": "results/exploratory/EXP-001-burnin-rule",
+ "store_series": true
+}

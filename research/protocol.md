@@ -90,3 +90,19 @@ No claim of biological fidelity, of universal distributed-system guarantees, or 
 ## 12. Amendments
 
 None. Any amendment after freezing is dated, justified, versioned and kept separate from the frozen analysis.
+
+## 13. Amendments before freeze (owner-approved 2026-11-24)
+
+The owner approved four SWARM amendments on 2026-11-24 (`/Users/bechir/research/labs/_shared/owner-approvals-2026-11-24.md`, quoted in `research/protocol_freeze_record.md`). They are applied here and in the EXP-002 and EXP-003 protocols. Sections 1 to 12 above are the draft as it stood before the amendments; where they disagree with this section, this section wins.
+
+### AM-2 burn-in rule R-BI (pre-stated 2026-11-24, before the data that apply it were generated)
+
+Approval: "Lengthen the burn-in until A0 is aligned before the shock, under a pre-stated rule."
+
+- **Data.** A new exploratory scan (`experiments/EXP-001/burnin_rule.json`): arm A0 only, the 18 EXP-002 cells, seeds 321 to 325 (disjoint from every other seed), T = t_d = 4000, no shock. Only pre-shock A0 polarization exists in these runs; no A1 run and no post-disturbance outcome is computed, so the rule cannot see the primary contrast.
+- **Statistic.** For cell c and step t, m_c(t) = mean over the 5 seeds of the mean of phi over steps [t - 100, t).
+- **Aligned.** A0 is aligned in cell c at t if m_c(t) >= 0.5 (the same threshold used in the EXP-001 planning summary).
+- **Orderable.** Cell c is orderable if m_c(4000) >= 0.5.
+- **Choice.** t_d is the smallest candidate in {500, 1000, 1500, 2000, 3000, 4000} at which A0 is aligned in every orderable cell. The post-disturbance window stays W = 500, so T = t_d + 500.
+- **Cells that are not orderable.** Lengthening the burn-in cannot align A0 where the alignment-only model is disordered at stationarity (expected at high noise; EXP-001 summary). Such cells stay in the matrix and in the pooled estimand (no outcome-based exclusion, section 8); they are flagged "A0 not aligned before the shock at any tested burn-in" in every per-cell table.
+- **Application.** `experiments/EXP-001/apply_burnin_rule.py` computes the choice; its output is `results/exploratory/EXP-001-burnin-rule-decision.{json,md}`.
