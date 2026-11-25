@@ -1,7 +1,7 @@
 <!-- SPDX-License-Identifier: LicenseRef-SWARM-NC-Research-1.0 -->
-# Limitations (living document, M0)
+# Limitations (living document, updated M4)
 
-Items 1 to 12 are known by design; items 13 to 15 were added in M3 from measured results and session events. Further result-dependent limitations are added in M4.
+Items 1 to 12 are known by design; items 13 to 15 were added in M3 from measured results and session events; items 16 to 20 were added in M4 (2026-11-25) from the confounder review, the evidence audit and the second review pass.
 
 1. **Simulation only.** Every outcome is a property of the simulated model. No claim of biological fidelity, robot performance or universal distributed-system guarantees (master prompt section 10, claims boundary).
 2. **Two dimensions, constant speed, discrete synchronous updates.** Results may not transfer to 3-D, variable-speed, asynchronous or continuous-time models.
@@ -17,4 +17,9 @@ Items 1 to 12 are known by design; items 13 to 15 were added in M3 from measured
 12. **Primary values were seen before the freeze** in one smoke cell under the draft design (C4 disclosure in `research/protocol_freeze.json`).
 13. **The primary contrast measures a phase difference, not recovery (M3, measured).** In EXP-002, A1 is disordered before the shock in every cell (mean phi_pre 0.097 to 0.229), and phi_pre A1 - A0 (-0.312 [-0.319, -0.304]) is nearly equal to Delta (-0.307 [-0.313, -0.302]). The shock's effect on phi_post is small next to the stationary order level of each arm, so the rejection of H0 says that A1 is less polarized than A0 at w_c = 0.5, not that it recovers worse. Limitation 11 is therefore realised, and EXP-003 does not remove it (Delta_S grows with w_c).
 14. **Provenance flag on EXP-003 runs (M3).** 134 of 160 S1 runs and all 320 S2 and S3 runs record `git_dirty: true`, caused by an uncommitted journal edit during the runs; no code, configuration or protocol differed from revision 075cf7c, and 6 flagged runs re-simulated from clean code were bit-identical (DL-013).
-15. **Standalone experiment reports (11.3) for EXP-001 to EXP-003 were not written during the M3 runs** (DL-013). The owner approved writing them from committed results only (DL-014, 2026-11-25); they are composed without recomputation and placed by the coordinator.
+15. **Standalone experiment reports (11.3) for EXP-001 to EXP-003 were not written during the M3 runs** (DL-013). The owner approved writing them from committed results only (DL-014, 2026-11-25); they are composed without recomputation and placed by the coordinator. Resolved: the reports are in the repository (commit 34d01db).
+16. **Post hoc exploratory checks (M4).** The change-score, subset, matched-cell and early-response analyses (X1 to X5, `results/exploratory/M4-sensitivity/`) were chosen after the confirmatory results were seen. They use the frozen bootstrap settings and change no verdict, but they are not preregistered.
+17. **The design cannot measure A1's recovery of order (M4).** A1 is disordered before the shock in every cell, so it has little order to lose or regain. The exploratory change score near zero (0.004 [-0.004, 0.012]) removes the "A1 recovers worse" reading but cannot show equal recovery; the smaller early drop of A1 (-0.017 [-0.026, -0.008]) is a floor effect, not resilience.
+18. **A1's steady state was not checked (M4, second review pass).** Rule R-BI tested only A0. A1's phi_post is close to its phi_pre, which rules out fast drift, but slow coarsening after step 3000 is not excluded. The order gap is a pre-shock gap, not shown to be stationary.
+19. **Stale data-manifest text (M4 audit F4).** `data/manifest.json` still describes the simulator as "not yet implemented". It is left unchanged because its SHA-256 is recorded in every confirmatory run's provenance; the owner decides whether to supersede it with a separate dated note.
+20. **One cited paper was accessed at metadata level only (M4 audit F1).** Jadbabaie, Lin and Morse (2003) is cited for its topic only. The frozen EXP-002 protocol (section 2) still characterises its results; that sentence is background and is not used as evidence.

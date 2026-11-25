@@ -36,3 +36,9 @@ The narrow contribution proposed is methodological and reproducible: a matched-s
 ## 5. Datasets
 
 No external dataset is used (decision DL-003). Empirical trajectory datasets (for example, starling flock reconstructions) were not searched for redistribution terms because they are out of scope; any future use requires a licence check and is a blocker until checked.
+
+## 6. M4 audit note (2026-11-25)
+
+- jadbabaie2003 was accessed at metadata level only (Crossref record). The "Relevance" column above describes the expected content, not something read. From M4 the manuscript and the EXP-002 report cite it for its topic only (evidence audit F1, `research/publication/evidence_audit.md`).
+- No source in this list was read in full; the manuscript reference list states the level read for each entry.
+- The targeted search for disturbance-recovery literature listed in section 4 was not carried out; the manuscript makes no claim about that literature.

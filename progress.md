@@ -191,3 +191,31 @@ Write the 11.3 reports for EXP-001 to EXP-003 (generated tables fill in via `exp
 ## 2026-11-25: M3 done (coordinator)
 
 The owner approved the experiment reports (owner, 2026-11-25, "approve all recommendations, RIGGED A", item 4). Subagents may not write report files, so the reports were composed by the M3 session from committed results only and written by the coordinator: 3 report(s). The coordinator checked that every decimal number in them appears in a committed file. With the complete matrices (or documented failures) recorded above, the M3 gate holds. M3 is **done**. Next: M4 (interpretation), not started.
+
+## 2026-11-25: Session M4 (interpretation, evidence audit, manuscript)
+
+**Milestone:** M4, on the owner's "Approve all recommendations, push then next" (2026-11-25) and `labs/_shared/M4-brief.md`. No project-specific follow-up in `owner-approvals-2026-11-25b.md` applies to SWARM.
+
+### What was done
+
+- Pre-checks: `git status` clean at `34d01db`; read the M4 row, master prompt 11.4 to 11.6, protocols, reports, freeze record, decision log, limitations and claims.
+- Exploratory confounder checks (EXPL-M4-01), no new simulation, 1 process: `.venv/bin/python experiments/exploratory_m4.py` (39 s). Raw integrity: 1,584 files re-hashed, 0 mismatched. Change score A1 - A0 0.004 [-0.004, 0.012]; orderable cells phi_post -0.618 [-0.629, -0.607] and flagged cells -0.059 [-0.064, -0.054]; matched pre-shock cells 0.001 [-0.002, 0.004]; EXP-003 change scores inside the SESOI band. Outputs `results/exploratory/M4-sensitivity/`.
+- Interpretation: `research/publication/m4_interpretation.md` (competing explanations (a) to (f), expected versus observed for every experiment). Frozen verdicts unchanged.
+- Claims register rebuilt with result ID, config hash, figure/table and section columns: CL-001 to CL-014, EXT-001 to EXT-008; CL-001 and CL-005 qualified (order gap, not recovery).
+- Evidence audit: `experiments/audit_numbers.py` -> `research/publication/number_audit.json`, 770 decimal tokens in 10 documents, 0 unmatched; `experiments/build_artifact_manifest.py` -> `artifact_manifest.json`, 11 artifacts, every claim mapped. Findings F1 to F8 in `research/publication/evidence_audit.md`; F1 (Jadbabaie et al. characterised beyond the metadata read) fixed in the manuscript and the EXP-002 report.
+- Manuscript synthesised (about 5,300 words including references; abstract 237 words) with supplementary; retitled after `research/publication/review_pass_2.md`. `manuscript.tex` regenerated with pandoc 3.6.3. No PDF built in M4 (M6).
+- Records: limitations 16 to 20, DL-015, journal EXPL-M4-01 and M4-AUDIT, registry statuses, roadmap M4 done, `claims_audit.md`, `results/README.md`, `literature_review.md` note.
+- Tests: `tests/test_m4_tools.py` (4 tests) added; `.venv/bin/python -m pytest -q` -> `137 passed`.
+
+### Not done, and why
+
+- `data/manifest.json` stale text not edited (its hash is in every run's provenance; owner decision, audit F4).
+- No confirmatory rerun (not allowed); the matched-order recovery experiment is proposed as a new EXP for the owner.
+
+### Gate
+
+Every numerical claim maps to a result file and key, a config or protocol hash and a figure, table or section; every external claim maps to a source accessed, with the level read stated. M4 **done**.
+
+### Next action
+
+M5 (interactive page and articles) using the M4 numbers and the retitled framing; the owner reviews the new title, the qualified claims and audit F4.

@@ -37,7 +37,7 @@ All results are simulated. This is a confirmatory experiment under protocol v1.0
 
 - Alignment-only models show a noise- and density-driven transition between disordered and ordered motion (Vicsek et al., 1995).
 - Zonal models with repulsion, orientation and attraction show distinct collective states and history dependence (Couzin et al., 2002).
-- Nearest-neighbour heading rules converge under connectivity conditions (Jadbabaie, Lin and Morse, 2003).
+- Jadbabaie, Lin and Morse (2003) studied nearest-neighbour coordination rules for mobile agents. Only the bibliographic record was accessed, so this report does not characterise their results (M4 evidence audit, 2026-11-25; an earlier wording said that such rules converge under connectivity conditions, which no read source supported).
 - Flocking designs add separation and cohesion terms (Olfati-Saber, 2006).
 - Cohesion might therefore keep the neighbour graph connected after a shock and help recovery, while repulsion might inject heading changes and hurt it. H1 was nondirectional for that reason.
 - **Gap.** A matched-seed, disturbance-focused comparison with a centralized reference and seed-level uncertainty. Novelty is not claimed, and the literature review is not systematic.

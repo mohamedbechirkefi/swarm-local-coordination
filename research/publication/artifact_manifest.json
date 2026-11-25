@@ -1,6 +1,306 @@
 {
-  "schema_version": "0.1",
-  "updated": "2026-11-24",
-  "artifacts": [],
-  "note": "Maps every quantitative figure, table and claim to experiment ID, run IDs, metric, result path, generator script, config/protocol hash and code revision. Empty: no results exist."
+ "schema_version": "1.0",
+ "updated": "2026-11-25",
+ "note": "Maps every quantitative table, figure and claim to experiment, runs, metric, result path, generator, config and protocol hash and code revision. Per-number trace: research/publication/number_audit.json.",
+ "artifacts": [
+  {
+   "id": "TAB-MS-1",
+   "what": "Manuscript Table 1, pooled EXP-002 contrasts",
+   "experiment_id": "EXP-002",
+   "label": "confirmatory",
+   "run_ids": "EXP-002_<arm>_density<rho>_noise<eta>_radius<r>_s<seed>, 1080 runs, listed in results/confirmatory/EXP-002/provenance.csv",
+   "config_hash": "ffa4a8e818c473822279053d00a08160b868b51d07444804396393225f8243a2",
+   "protocol_hash": {
+    "research/protocol.md": "80c7225dc55d3065b7bd92d683cb71423c1cf511dd215385ee7a8dc59db109d4",
+    "research/experiments/EXP-002/protocol.md": "3359f833014d145abec739d3ccb3de63587f94191dec523a38ec37f0f53b0c5e"
+   },
+   "code_revision": "075cf7c5f571c03ede9b8d551c3ba43766172a39",
+   "generator": "experiments/analyse_confirmatory.py exp002",
+   "metric": "phi(t) = |mean_i exp(i theta_i(t))|; phi_post mean over [3000, 3500); phi_pre mean over [2900, 3000); cohesion = largest-component fraction (post window); collisions per agent per 100 steps; stratified percentile bootstrap over seeds within cells, 10,000 resamples, seed 20261124, 95% CI",
+   "result_path": "results/confirmatory/EXP-002/analysis/analysis.json",
+   "keys": [
+    "primary",
+    "secondary_pooled",
+    "reference_contrasts"
+   ],
+   "claims": [
+    "CL-001",
+    "CL-002",
+    "CL-003",
+    "CL-004"
+   ],
+   "result_sha256": {
+    "results/confirmatory/EXP-002/analysis/analysis.json": "1f4c37da25c57da47ffc95b4d3913a4e37b2ace40fbaf086a05c98ad614a1362"
+   }
+  },
+  {
+   "id": "FIG-EXP002-01",
+   "what": "Manuscript Figure 1, per-cell forest plot",
+   "experiment_id": "EXP-002",
+   "label": "confirmatory",
+   "run_ids": "EXP-002_<arm>_density<rho>_noise<eta>_radius<r>_s<seed>, 1080 runs, listed in results/confirmatory/EXP-002/provenance.csv",
+   "config_hash": "ffa4a8e818c473822279053d00a08160b868b51d07444804396393225f8243a2",
+   "protocol_hash": {
+    "research/protocol.md": "80c7225dc55d3065b7bd92d683cb71423c1cf511dd215385ee7a8dc59db109d4",
+    "research/experiments/EXP-002/protocol.md": "3359f833014d145abec739d3ccb3de63587f94191dec523a38ec37f0f53b0c5e"
+   },
+   "code_revision": "075cf7c5f571c03ede9b8d551c3ba43766172a39",
+   "generator": "experiments/analyse_confirmatory.py exp002",
+   "metric": "phi_post A1 - A0; stratified percentile bootstrap over seeds within cells, 10,000 resamples, seed 20261124, 95% CI",
+   "result_path": "results/confirmatory/EXP-002/analysis/fig_exp002_01_forest.png",
+   "keys": [
+    "per_cell"
+   ],
+   "claims": [
+    "CL-001"
+   ],
+   "result_sha256": {
+    "results/confirmatory/EXP-002/analysis/fig_exp002_01_forest.png": "60e04ec0a7e9ebb3b6efe9c990dfcdccaa45b7c763c6736a885764c037c11af9"
+   }
+  },
+  {
+   "id": "FIG-EXP002-02",
+   "what": "Manuscript Figure 2, phi(t) around the shock",
+   "experiment_id": "EXP-002",
+   "label": "confirmatory",
+   "run_ids": "EXP-002_<arm>_density<rho>_noise<eta>_radius<r>_s<seed>, 1080 runs, listed in results/confirmatory/EXP-002/provenance.csv",
+   "config_hash": "ffa4a8e818c473822279053d00a08160b868b51d07444804396393225f8243a2",
+   "protocol_hash": {
+    "research/protocol.md": "80c7225dc55d3065b7bd92d683cb71423c1cf511dd215385ee7a8dc59db109d4",
+    "research/experiments/EXP-002/protocol.md": "3359f833014d145abec739d3ccb3de63587f94191dec523a38ec37f0f53b0c5e"
+   },
+   "code_revision": "075cf7c5f571c03ede9b8d551c3ba43766172a39",
+   "generator": "experiments/analyse_confirmatory.py exp002",
+   "metric": "mean phi(t) across 20 seeds per arm, +/- 1.96 SE",
+   "keys": [],
+   "result_path": "results/confirmatory/EXP-002/analysis/fig_exp002_02_timeseries.png",
+   "claims": [
+    "CL-002"
+   ],
+   "result_sha256": {
+    "results/confirmatory/EXP-002/analysis/fig_exp002_02_timeseries.png": "ebcb018d02d94caed4eac077df268378a64a00a012c1b59297ae936c7aed4a4f"
+   }
+  },
+  {
+   "id": "TAB-S2-S3",
+   "what": "Supplementary Tables S2 and S3 (per-cell EXP-002)",
+   "experiment_id": "EXP-002",
+   "label": "confirmatory",
+   "run_ids": "EXP-002_<arm>_density<rho>_noise<eta>_radius<r>_s<seed>, 1080 runs, listed in results/confirmatory/EXP-002/provenance.csv",
+   "config_hash": "ffa4a8e818c473822279053d00a08160b868b51d07444804396393225f8243a2",
+   "protocol_hash": {
+    "research/protocol.md": "80c7225dc55d3065b7bd92d683cb71423c1cf511dd215385ee7a8dc59db109d4",
+    "research/experiments/EXP-002/protocol.md": "3359f833014d145abec739d3ccb3de63587f94191dec523a38ec37f0f53b0c5e"
+   },
+   "code_revision": "075cf7c5f571c03ede9b8d551c3ba43766172a39",
+   "generator": "experiments/analyse_confirmatory.py exp002",
+   "metric": "phi(t) = |mean_i exp(i theta_i(t))|; phi_post mean over [3000, 3500); phi_pre mean over [2900, 3000); tau first step with phi >= 0.9 phi_pre for 10 steps, censored at 500; distance evaluations per step",
+   "result_path": "results/confirmatory/EXP-002/analysis/per_cell.csv",
+   "keys": [
+    "all columns"
+   ],
+   "claims": [
+    "CL-002",
+    "CL-006",
+    "CL-011"
+   ],
+   "result_sha256": {
+    "results/confirmatory/EXP-002/analysis/per_cell.csv": "ad6461debc8e7613cd7c88e4eeb0a1b96625071d4a1d27c2b79bd51ac9510b84"
+   }
+  },
+  {
+   "id": "TAB-MS-2",
+   "what": "Manuscript Table 2, EXP-003 Delta_S and verdicts",
+   "experiment_id": "EXP-003",
+   "label": "confirmatory",
+   "run_ids": "EXP-003 run IDs in results/confirmatory/EXP-003-S{1,2,3}/provenance.csv (480 runs); S2 controls are EXP-002 A0 runs",
+   "config_hash": {
+    "experiments/EXP-003/config_S1.json": "69927a24d3b7ff2e0c4f225549d13a4ff7f5a73bcbfe5754624f320b49b054f3",
+    "experiments/EXP-003/config_S2.json": "47e3e9e6edfd78f971e37d8a6b998734f0d4e4ed0f77a6bb738009f6c02d1398",
+    "experiments/EXP-003/config_S3.json": "b34d9128a0a43526c395dc8a63c8a3ae3ee3d8f2da2641f5a789f4b3786ad6c9"
+   },
+   "protocol_hash": {
+    "research/protocol.md": "80c7225dc55d3065b7bd92d683cb71423c1cf511dd215385ee7a8dc59db109d4",
+    "research/experiments/EXP-003/protocol.md": "e954d29e4a8b4e8909b7ff34d24c311b77f4a18b62f4706109865a262253a1d8"
+   },
+   "code_revision": "075cf7c5f571c03ede9b8d551c3ba43766172a39 (454 runs flagged git_dirty by a journal edit; DL-013)",
+   "generator": "experiments/analyse_confirmatory.py exp003",
+   "metric": "phi_post A1 - A0 on 4 reduced cells; stratified percentile bootstrap over seeds within cells, 10,000 resamples, seed 20261124, 95% CI; invalidation rule EXP-003 protocol section 4",
+   "result_path": "results/confirmatory/EXP-003-analysis/analysis.json",
+   "keys": [
+    "conditions.*.delta_s",
+    "conditions.*.verdict_primary",
+    "conditions.*.verdict_secondary",
+    "conditions.*.phi_pre_A1_minus_A0",
+    "reference_primary",
+    "reference_restricted"
+   ],
+   "claims": [
+    "CL-005"
+   ],
+   "result_sha256": {
+    "results/confirmatory/EXP-003-analysis/analysis.json": "7ad2d22e1aafc4fc25f7641b9bcdf1a8ce711a4cbd7b5fcd204a571403f53801"
+   }
+  },
+  {
+   "id": "FIG-EXP003-01",
+   "what": "Manuscript Figure 3, sensitivity intervals",
+   "experiment_id": "EXP-003",
+   "label": "confirmatory",
+   "run_ids": "EXP-003 run IDs in results/confirmatory/EXP-003-S{1,2,3}/provenance.csv (480 runs); S2 controls are EXP-002 A0 runs",
+   "config_hash": {
+    "experiments/EXP-003/config_S1.json": "69927a24d3b7ff2e0c4f225549d13a4ff7f5a73bcbfe5754624f320b49b054f3",
+    "experiments/EXP-003/config_S2.json": "47e3e9e6edfd78f971e37d8a6b998734f0d4e4ed0f77a6bb738009f6c02d1398",
+    "experiments/EXP-003/config_S3.json": "b34d9128a0a43526c395dc8a63c8a3ae3ee3d8f2da2641f5a789f4b3786ad6c9"
+   },
+   "protocol_hash": {
+    "research/protocol.md": "80c7225dc55d3065b7bd92d683cb71423c1cf511dd215385ee7a8dc59db109d4",
+    "research/experiments/EXP-003/protocol.md": "e954d29e4a8b4e8909b7ff34d24c311b77f4a18b62f4706109865a262253a1d8"
+   },
+   "code_revision": "075cf7c5f571c03ede9b8d551c3ba43766172a39 (454 runs flagged git_dirty by a journal edit; DL-013)",
+   "generator": "experiments/analyse_confirmatory.py exp003",
+   "metric": "Delta_S; stratified percentile bootstrap over seeds within cells, 10,000 resamples, seed 20261124, 95% CI",
+   "result_path": "results/confirmatory/EXP-003-analysis/fig_exp003_01_sensitivity.png",
+   "keys": [],
+   "claims": [
+    "CL-005"
+   ],
+   "result_sha256": {
+    "results/confirmatory/EXP-003-analysis/fig_exp003_01_sensitivity.png": "40ca4e2012ebbe2a045243bb9d87082b12a0680f11a94999571a88eb0706ecba"
+   }
+  },
+  {
+   "id": "TAB-S4",
+   "what": "Supplementary Table S4 (EXP-003 per cell and S4 thresholds)",
+   "experiment_id": "EXP-003",
+   "label": "confirmatory",
+   "run_ids": "EXP-003 run IDs in results/confirmatory/EXP-003-S{1,2,3}/provenance.csv (480 runs); S2 controls are EXP-002 A0 runs",
+   "config_hash": {
+    "experiments/EXP-003/config_S1.json": "69927a24d3b7ff2e0c4f225549d13a4ff7f5a73bcbfe5754624f320b49b054f3",
+    "experiments/EXP-003/config_S2.json": "47e3e9e6edfd78f971e37d8a6b998734f0d4e4ed0f77a6bb738009f6c02d1398",
+    "experiments/EXP-003/config_S3.json": "b34d9128a0a43526c395dc8a63c8a3ae3ee3d8f2da2641f5a789f4b3786ad6c9"
+   },
+   "protocol_hash": {
+    "research/protocol.md": "80c7225dc55d3065b7bd92d683cb71423c1cf511dd215385ee7a8dc59db109d4",
+    "research/experiments/EXP-003/protocol.md": "e954d29e4a8b4e8909b7ff34d24c311b77f4a18b62f4706109865a262253a1d8"
+   },
+   "code_revision": "075cf7c5f571c03ede9b8d551c3ba43766172a39 (454 runs flagged git_dirty by a journal edit; DL-013)",
+   "generator": "experiments/analyse_confirmatory.py exp003",
+   "metric": "per-cell mean A1 - A0; tau at 0.8, 0.9, 0.95 x phi_pre",
+   "result_path": "results/confirmatory/EXP-003-analysis/analysis.json",
+   "keys": [
+    "conditions.*.per_cell",
+    "S4.rows"
+   ],
+   "claims": [
+    "CL-006"
+   ],
+   "result_sha256": {
+    "results/confirmatory/EXP-003-analysis/analysis.json": "7ad2d22e1aafc4fc25f7641b9bcdf1a8ce711a4cbd7b5fcd204a571403f53801"
+   }
+  },
+  {
+   "id": "TAB-MS-3",
+   "what": "Manuscript Table 3, exploratory checks X1 to X5",
+   "experiment_id": "EXP-002, EXP-003 (re-analysis)",
+   "label": "exploratory (post hoc, M4)",
+   "run_ids": "all EXP-002 and EXP-003 runs (no new runs)",
+   "config_hash": "none (re-analysis)",
+   "protocol_hash": "none (not preregistered)",
+   "code_revision": "M4 commit (script added in M4)",
+   "generator": "experiments/exploratory_m4.py",
+   "metric": "X1 change score phi_post - phi_pre; X2 subsets; X3 matched cells; X4 drop over [t_d, t_d + 50); stratified percentile bootstrap over seeds within cells, 10,000 resamples, seed 20261124, 95% CI",
+   "result_path": "results/exploratory/M4-sensitivity/analysis.json",
+   "keys": [
+    "results.X1_*",
+    "results.X2_*",
+    "results.X3_*",
+    "results.X4_*",
+    "results.X5_exp003_change_score"
+   ],
+   "claims": [
+    "CL-007",
+    "CL-008",
+    "CL-012"
+   ],
+   "result_sha256": {
+    "results/exploratory/M4-sensitivity/analysis.json": "55bfb0e3d109355d54a7e8899c1e5a6f37246ed09a58a7aa7c2ca0f832f51d5c"
+   }
+  },
+  {
+   "id": "NUM-INTEGRITY",
+   "what": "Raw-file re-hash (Section 4.5)",
+   "experiment_id": "EXP-002, EXP-003 (re-analysis)",
+   "label": "exploratory (post hoc, M4)",
+   "run_ids": "all EXP-002 and EXP-003 runs (no new runs)",
+   "config_hash": "none (re-analysis)",
+   "protocol_hash": "none (not preregistered)",
+   "code_revision": "M4 commit (script added in M4)",
+   "generator": "experiments/exploratory_m4.py",
+   "metric": "SHA-256 against raw_manifest.json",
+   "result_path": "results/exploratory/M4-sensitivity/analysis.json",
+   "keys": [
+    "raw_integrity"
+   ],
+   "claims": [
+    "CL-014"
+   ],
+   "result_sha256": {
+    "results/exploratory/M4-sensitivity/analysis.json": "55bfb0e3d109355d54a7e8899c1e5a6f37246ed09a58a7aa7c2ca0f832f51d5c"
+   }
+  },
+  {
+   "id": "NUM-EXEC",
+   "what": "Wall-clock and load (Section 4.5)",
+   "experiment_id": "EXP-002",
+   "label": "confirmatory",
+   "run_ids": "EXP-002_<arm>_density<rho>_noise<eta>_radius<r>_s<seed>, 1080 runs, listed in results/confirmatory/EXP-002/provenance.csv",
+   "config_hash": "ffa4a8e818c473822279053d00a08160b868b51d07444804396393225f8243a2",
+   "protocol_hash": {
+    "research/protocol.md": "80c7225dc55d3065b7bd92d683cb71423c1cf511dd215385ee7a8dc59db109d4",
+    "research/experiments/EXP-002/protocol.md": "3359f833014d145abec739d3ccb3de63587f94191dec523a38ec37f0f53b0c5e"
+   },
+   "code_revision": "075cf7c5f571c03ede9b8d551c3ba43766172a39",
+   "generator": "experiments/analyse_confirmatory.py exp002",
+   "metric": "elapsed seconds; load average",
+   "result_path": "results/confirmatory/EXP-002/execution.json; results/confirmatory/EXP-003-S*/execution.json; launch.json",
+   "keys": [
+    "elapsed_s",
+    "load_average"
+   ],
+   "claims": [
+    "CL-010"
+   ],
+   "result_sha256": {
+    "results/confirmatory/EXP-002/execution.json": "127b884ca4cf55fbe52dfdde3377cd3d9b8eb0052b83d6b0461e943c503f87b9"
+   }
+  },
+  {
+   "id": "NUM-EXP001",
+   "what": "EXP-001 verification and planning values (Sections 4.1, 4.4, 5.1)",
+   "experiment_id": "EXP-001",
+   "label": "exploratory",
+   "run_ids": "results/exploratory/EXP-001-*/ (journal EXPL-001 to EXPL-008)",
+   "config_hash": "experiments/EXP-001/*.json (not frozen)",
+   "protocol_hash": "none (exploratory)",
+   "code_revision": "99cc0c4, 2330f79, 075cf7c",
+   "generator": "experiments/EXP-001/summarise_exploratory.py; experiments/EXP-001/apply_burnin_rule.py",
+   "metric": "phi_pre, seed spread SD, benchmark mismatches",
+   "keys": [
+    "seed_spread_smoke_phi_post",
+    "burnin_scan"
+   ],
+   "result_path": "results/exploratory/EXP-001-summary.json; results/exploratory/EXP-001-burnin-rule-decision.json; research/protocol_freeze.json (c4_disclosure)",
+   "claims": [
+    "CL-009",
+    "CL-013"
+   ],
+   "result_sha256": {
+    "results/exploratory/EXP-001-summary.json": "b373cd8a43f1f7b9725a9428ceccb4441fe0cabf97cd89226f98dd9caf644014",
+    "results/exploratory/EXP-001-burnin-rule-decision.json": "9b32c127457fcd53129c9fb84281f6f95e2d695d46227aab10d067cf5d3df0c2"
+   }
+  }
+ ],
+ "claims_without_artifact": [],
+ "external_claims": "EXT-001 to EXT-008 map to sources in research/literature_review.md (abstract or record level)"
 }
