@@ -89,4 +89,17 @@ Licences of all dependencies: `research/publication/dependency_licences.md` (24 
 
 ## 8. Re-check in a fresh clone of the M6 commit
 
-See the M6 entry in `progress.md` and the addendum below.
+    git clone -q <repository> <scratch>/clone2            -> HEAD f454de6
+    uv sync --frozen --all-groups --all-extras            -> installed without error
+    .venv/bin/python -m pytest -q                         -> 147 passed in 9.84s
+    .venv/bin/python scripts/check_links.py               -> LINK-CHECK PASS
+    .venv/bin/python experiments/audit_numbers.py         -> total 770, unmatched 0
+    SWARM_PANDOC=... SWARM_TYPST_PYTHON=... .venv/bin/python scripts/build_pdfs.py
+                                                          -> 5 PDFs rebuilt; manuscript.tex unchanged; the PDFs differ only
+                                                             because they embed a creation date
+    smoke (as in section 2) + comparison                  -> 15 runs, 0 failed; 165 fields, 0 mismatches; metrics.csv equal
+    scripts/export_demo_data.py; git status               -> clean
+    npm ci --prefer-offline; npm test; npm run build      -> added 53 packages; Tests 22 passed (22); built
+    node tools/a11y_check.mjs dist                        -> 12 PASS lines, A11Y-CHECK PASS
+
+The PDF build in a clone outside the workspace needs `SWARM_PANDOC` and `SWARM_TYPST_PYTHON`, because the default tool location is `../.tools` relative to the repository. Both clones were deleted after the checks.

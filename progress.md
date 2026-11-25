@@ -335,3 +335,7 @@ M6 (release candidate) when the owner says so; owner decisions above.
 ### Next action
 
 Owner: read the items in `research/publication/author_review.md` ("Prepared for the owner"), tick the boxes, fill the placeholders, and decide on publication (G-PUBLIC) and on EXP-004 (G-FREEZE).
+
+### Addendum (same session): fresh clone of the M6 commit
+
+`git clone -q <repository> <scratch>/clone2` at `f454de6`: `uv sync --frozen` ok; `pytest -q` -> `147 passed in 9.84s`; `check_links.py` -> `LINK-CHECK PASS`; `audit_numbers.py` -> `total 770, unmatched 0`; `build_pdfs.py` (tool paths passed by environment variables) -> 5 PDFs, `manuscript.tex` unchanged; smoke -> 15 runs, 0 failed, 165 fields, 0 mismatches; export leaves the clone clean; demo `Tests 22 passed (22)`, built, `A11Y-CHECK PASS`. Both clones deleted. Recorded in `research/publication/reproducibility_report.md` section 8.
