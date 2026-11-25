@@ -187,3 +187,7 @@ Journal EXPL-008, CONF-EXP002, CONF-EXP003; registry statuses; claims CL-001 to 
 ### Next action
 
 Write the 11.3 reports for EXP-001 to EXP-003 (generated tables fill in via `experiments/analyse_confirmatory.py`), then M4. Owner attention: the primary result is a phase difference (limitation 13).
+
+## 2026-11-25: M3 done (coordinator)
+
+The owner approved the experiment reports (owner, 2026-11-25, "approve all recommendations, RIGGED A", item 4). Subagents may not write report files, so the reports were composed by the M3 session from committed results only and written by the coordinator: 3 report(s). The coordinator checked that every decimal number in them appears in a committed file. With the complete matrices (or documented failures) recorded above, the M3 gate holds. M3 is **done**. Next: M4 (interpretation), not started.
