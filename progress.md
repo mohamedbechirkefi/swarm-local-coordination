@@ -219,3 +219,32 @@ Every numerical claim maps to a result file and key, a config or protocol hash a
 ### Next action
 
 M5 (interactive page and articles) using the M4 numbers and the retitled framing; the owner reviews the new title, the qualified claims and audit F4.
+
+## 2026-11-25: Session POST-M4 (owner's post-M4 decisions, items 1, 2, 3 and 6)
+
+**Milestone:** between M4 (done) and M5, on owner, 2026-11-25, "Approve all" (post-M4) (`labs/_shared/owner-approvals-2026-11-25c.md`) and `labs/_shared/POST-M4-brief.md`. Recorded as DL-016.
+
+### What was done
+
+- Pre-checks: `git status` clean at `d280840`; read the brief, the approvals file, CLAUDE.md, progress, decision log, freeze record, manuscript, review pass 2 and the M4 evidence audit.
+- Item 1 (title): the manuscript already carries the M4 title proposed after review pass 2 (DL-015); recorded as owner-approved. No manuscript change, so `manuscript.tex` was not regenerated.
+- Item 2 (statements): funding, competing-interest and AI-use wording recorded as owner-approved (DL-016). No wording changed.
+- Item 3 (EXP-004, recovery with matched pre-shock order): registered as "registered, not frozen"; `research/experiments/EXP-004/protocol.md` (v0.1, 11.2 structure) and draft `experiments/EXP-004/config.json`, written before any data. Eight parameters left open for the owner at freeze (protocol section 21). Check: `swarm.runner.load_experiment` on the draft config -> `SchemaError` (refused, as intended). No simulation, no code change, nothing added to `research/protocol_freeze.json`.
+- Item 6 (data manifest): dated correction in `data/manifest.json` (generator status "implemented (M2)", version 0.1.0) with a `corrections` record keeping the previous SHA-256. `shasum -a 256 data/manifest.json` -> `ede591fc...f105` (new); `git show d280840:data/manifest.json | shasum -a 256` -> `94fe5a7b...3471` (old, as in the M3 provenance). Limitation 19 and audit F4 annotated as resolved.
+- Records: DL-016, registry row EXP-004 (CRLF line endings kept), roadmap EXP-004 row.
+- Checks: `.venv/bin/python -m pytest -q` -> `137 passed`; `.venv/bin/python experiments/audit_numbers.py` -> `total 770, unmatched 0` (output file unchanged).
+
+### Owner placeholders for M5
+
+1. Manuscript, "Data and code availability": repository URL, "[to be added by the owner on release]" (also in `manuscript.tex`).
+2. Manuscript, "Funding, competing interests and AI assistance": "Funding: none declared; competing interests: none declared (both to be confirmed by the author)". The wording is approved; the confirmation of both facts is the owner's.
+3. Not a placeholder, but owner-facing: `README.md` and `CITATION.cff` still name the project "SWARM: how order emerges without a leader (working title)", the working title retired for the manuscript in DL-015. Whether the repository title follows the manuscript title is the owner's decision.
+
+### Not done, and why
+
+- No EXP-004 calibration or confirmatory run: the protocol is not frozen (G-FREEZE), and the open items need owner decisions first.
+- Recorded run provenance (`launch.json`, `provenance.csv`) not edited: it correctly refers to the data manifest as it was.
+
+### Next action
+
+Owner: decide EXP-004 open items 1 to 8, then the calibration stage (R-MATCH, R-SS) and the freeze. M5 (interactive page and articles) can proceed independently.

@@ -1,17 +1,27 @@
 {
   "schema_version": "0.1",
-  "updated": "2026-11-24",
+  "updated": "2026-11-25",
   "policy": "Simulation-only project (decision DL-003). All experimental data are synthetic, regenerated from configs and seeds; raw outputs are not committed (results/raw/ is git-ignored).",
   "external_datasets": [],
   "synthetic_generators": [
     {
       "name": "swarm simulator",
-      "status": "not yet implemented (M2)",
-      "version": null,
+      "status": "implemented (M2); package swarm 0.1.0 in src/swarm/",
+      "version": "0.1.0",
       "parameters": "see research/experiments/EXP-*/protocol.md",
       "seeds": "recorded per run in run_manifest.json"
     }
   ],
   "fixtures": [],
-  "notes": "Any external dataset requires source URL or DOI, retrieval date, version, licence, redistribution status, SHA-256, schema, transformations, missingness and exclusions before use."
+  "notes": "Any external dataset requires source URL or DOI, retrieval date, version, licence, redistribution status, SHA-256, schema, transformations, missingness and exclusions before use.",
+  "corrections": [
+    {
+      "date": "2026-11-25",
+      "authority": "owner, 2026-11-25, \"Approve all\" (post-M4), item 6; decision DL-016",
+      "correction": "The generator status read \"not yet implemented (M2)\" with version null, text written in M0 and not updated when the simulator was implemented in M2. It is corrected to the implemented package version. Only descriptive text changed: no dataset, generator, parameter or seed changed, and no recorded result depends on this text.",
+      "previous_sha256": "94fe5a7ba3b9bfde343e967d073ca77e2bb4d100d7f62933eb608d746a623471",
+      "previous_sha256_scope": "SHA-256 of this file before the correction (text dated 2026-11-24). It is the data-manifest hash recorded in the launch.json and provenance.csv of every confirmatory run of EXP-002 and EXP-003 and of the M3 smoke re-run; those records stay valid for the file as it was, which is kept in git history (revision d280840 and earlier).",
+      "new_sha256": "not stored in this file (a file cannot contain its own hash); recorded in research/decision_log.md DL-016"
+    }
+  ]
 }

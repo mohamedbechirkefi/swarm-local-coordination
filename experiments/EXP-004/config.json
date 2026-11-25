@@ -1,0 +1,61 @@
+{
+ "schema_version": "1.0.0",
+ "experiment_id": "EXP-004",
+ "label": "confirmatory",
+ "confirmatory": true,
+ "registration_status": "registered, not frozen (2026-11-25). Draft written before any data. Fields whose value is a string beginning with OPEN are owner decisions at freeze (protocol section 21); until they are fixed this file fails validation, and until the owner freezes it the runner refuses it (G-FREEZE).",
+ "description": "EXP-004 draft: recovery from a heading disturbance with matched pre-shock order; A0, A1 (calibrated by rule R-MATCH), A2; primary outcome change score phi_post - phi_pre; parameters from EXP-002 v1.0 unless marked OPEN.",
+ "protocol_path": "research/experiments/EXP-004/protocol.md",
+ "base": {
+  "n_agents": 200,
+  "speed": 0.05,
+  "steps": 3500,
+  "t_disturb": 3000,
+  "window": 500,
+  "pre_window": 100,
+  "shock_fraction": "OPEN item 4: 0.5 as EXP-002, or a stronger disturbance",
+  "sep_ratio": 0.25,
+  "w_align": 1.0,
+  "w_cohesion": "OPEN items 1-2: value selected by rule R-MATCH from an owner-approved candidate set",
+  "recovery_threshold": 0.9,
+  "recovery_hold": 10,
+  "collision_ratio": 0.1,
+  "boundary": "periodic",
+  "neighbourhood": "metric",
+  "index": "cell"
+ },
+ "grid": {
+  "arm": [
+   "A0",
+   "A1",
+   "A2"
+  ],
+  "density": [
+   0.5,
+   1.0,
+   2.0
+  ],
+  "noise": [
+   0.1,
+   0.3,
+   0.5
+  ],
+  "radius": [
+   0.5,
+   1.0
+  ]
+ },
+ "cell_set": "OPEN item 3: all 18 cells (grid above) or the 8 cells rule R-BI found orderable for A0",
+ "seeds": "OPEN item 6: 20 seeds, disjoint from every seed already used (101-105, 321-325, 1001-1020 and any other in the journal)",
+ "steps_note": "steps and t_disturb follow R-BI (t_d 3000) and may be lengthened before the freeze only by rule R-SS (protocol section 7, item 5)",
+ "turning_rate_limit": "OPEN item 1: none (as EXP-002) unless the owner chooses it as the matching lever; not implemented in swarm.rules",
+ "bootstrap": {
+  "resamples": 10000,
+  "ci": 0.95,
+  "stratified_by": "cell",
+  "seed": "OPEN item 8: reuse 20261124 or a new fixed value"
+ },
+ "sesoi": 0.05,
+ "output_dir": "results/confirmatory/EXP-004",
+ "store_series": true
+}
