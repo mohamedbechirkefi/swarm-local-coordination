@@ -1,0 +1,1119 @@
+{
+ "schema": "lab-demo-results",
+ "schema_version": "1.0.0",
+ "project": "SWARM",
+ "question": "How do local interaction rules affect collective coordination under disturbances?",
+ "status_label": "Independent research manuscript / preprint draft, not peer-reviewed. All results are simulated.",
+ "code_revision": "075cf7c5f571c03ede9b8d551c3ba43766172a39",
+ "sources": [
+  {
+   "path": "results/confirmatory/EXP-002/analysis/analysis.json",
+   "sha256": "1f4c37da25c57da47ffc95b4d3913a4e37b2ace40fbaf086a05c98ad614a1362"
+  },
+  {
+   "path": "results/confirmatory/EXP-003-analysis/analysis.json",
+   "sha256": "7ad2d22e1aafc4fc25f7641b9bcdf1a8ce711a4cbd7b5fcd204a571403f53801"
+  },
+  {
+   "path": "results/confirmatory/EXP-003-S1/execution.json",
+   "sha256": "6007866646394bddb3266d4ccea14c4ca994e6112dcde06561cbb65dad2269f7"
+  },
+  {
+   "path": "results/confirmatory/EXP-003-S2/execution.json",
+   "sha256": "9e49a643cb529d06bd4ed05012a9c1f2e4dba42b9dc4c0c796453d79e5e7ab83"
+  },
+  {
+   "path": "results/confirmatory/EXP-003-S3/execution.json",
+   "sha256": "2cdfa17eec3273c9c7eeff4abcb0c5ef1cbb9dc37b0a61edf9e317ae6f419b9d"
+  },
+  {
+   "path": "results/exploratory/M4-sensitivity/analysis.json",
+   "sha256": "55bfb0e3d109355d54a7e8899c1e5a6f37246ed09a58a7aa7c2ca0f832f51d5c"
+  },
+  {
+   "path": "results/exploratory/EXP-001-summary.json",
+   "sha256": "b373cd8a43f1f7b9725a9428ceccb4441fe0cabf97cd89226f98dd9caf644014"
+  },
+  {
+   "path": "results/confirmatory/EXP-002/experiment_config.json",
+   "sha256": "b76bb1c013944d790ddb0f43da83b38203679c03f35ad014cffc8f54f3cf750c"
+  },
+  {
+   "path": "research/claims_register.csv",
+   "sha256": "978825ff51b35068f4984f2c1f82b4447df9633e1f904760b7c0455c0c759cc6"
+  },
+  {
+   "path": "research/publication/artifact_manifest.json",
+   "sha256": "ce74a0578235ff49a5c8d7e7e917ae1957584b110726691470576f28a33e30e4"
+  },
+  {
+   "path": "research/experiment_registry.csv",
+   "sha256": "87ce50deca477d9133e8292dbe912645f0a4c16ae98b2aac5b79d69d3060a5e3"
+  },
+  {
+   "path": "research/limitations.md",
+   "sha256": "3e6d6e3b593a3232eb7bc3d70bae64a9639c9bb3122fdf32bd54f0044e9e34c7"
+  }
+ ],
+ "experiments": [
+  {
+   "id": "EXP-001",
+   "kind": "exploratory",
+   "title": "Implementation verification and smoke matrix (exploratory)",
+   "status": "exploratory by design, complete",
+   "verdict": "Not a hypothesis test. Verification checks V1 to V4 pass (cell list equals brute force on every benchmarked step; runs are bit-identical on repeat).",
+   "estimates": [
+    {
+     "label": "A1 - A0, phi_post, smoke cell, draft design (5 seeds; disclosure)",
+     "estimate": -0.4796976056814981,
+     "ci_low": null,
+     "ci_high": null,
+     "ci_level": null,
+     "unit": "polarization units",
+     "display": "-0.480",
+     "interval_display": "SD 0.059"
+    }
+   ],
+   "claim_ids": [
+    "CL-009",
+    "CL-013"
+   ],
+   "report_path": "research/experiments/EXP-001/report.md",
+   "notes": [
+    "The smoke value comes from the draft design (w_c 1, t_d 500), not the frozen one; it was seen before the freeze and is disclosed. No interval was computed for it; the SD over 5 seeds is shown."
+   ]
+  },
+  {
+   "id": "EXP-002",
+   "kind": "confirmatory",
+   "title": "Local rules and recovery from a heading disturbance (primary)",
+   "status": "confirmatory, complete: 1080 of 1080 runs, 0 failed",
+   "verdict": "rejects H0 (95% CI excludes 0; SESOI 0.05). The same gap exists before the shock, so this is a difference in sustained order, not in recovery.",
+   "estimates": [
+    {
+     "label": "Delta = A1 - A0, phi_post (primary)",
+     "estimate": -0.30738583581621254,
+     "ci_low": -0.31296762975200687,
+     "ci_high": -0.3015982971198888,
+     "ci_level": 0.95,
+     "unit": "polarization units",
+     "display": "-0.307",
+     "interval_display": "[-0.313, -0.302]"
+    },
+    {
+     "label": "A1 - A0, phi_pre (descriptive)",
+     "estimate": -0.3116101593856291,
+     "ci_low": -0.31931341284766457,
+     "ci_high": -0.3037556028828012,
+     "ci_level": 0.95,
+     "unit": "polarization units",
+     "display": "-0.312",
+     "interval_display": "[-0.319, -0.304]"
+    },
+    {
+     "label": "A2 - A0, phi_post (reference)",
+     "estimate": 0.3740983894508932,
+     "ci_low": 0.3689824652523289,
+     "ci_high": 0.3794017168173913,
+     "ci_level": 0.95,
+     "unit": "polarization units",
+     "display": "0.374",
+     "interval_display": "[0.369, 0.379]"
+    },
+    {
+     "label": "A2 - A1, phi_post (reference)",
+     "estimate": 0.6814842252671058,
+     "ci_low": 0.679418642309039,
+     "ci_high": 0.6835590880117384,
+     "ci_level": 0.95,
+     "unit": "polarization units",
+     "display": "0.681",
+     "interval_display": "[0.679, 0.684]"
+    },
+    {
+     "label": "A1 - A0, cohesion C (descriptive)",
+     "estimate": 0.0796700277777778,
+     "ci_low": 0.0652440326388889,
+     "ci_high": 0.09428163611111112,
+     "ci_level": 0.95,
+     "unit": "fraction of agents",
+     "display": "0.080",
+     "interval_display": "[0.065, 0.094]"
+    },
+    {
+     "label": "A1 - A0, collisions (descriptive)",
+     "estimate": -2.9505527777777782,
+     "ci_low": -3.0271393749999995,
+     "ci_high": -2.874391944444444,
+     "ci_level": 0.95,
+     "unit": "per agent per 100 steps",
+     "display": "-2.951",
+     "interval_display": "[-3.027, -2.874]"
+    },
+    {
+     "label": "A2 - A0, cohesion C (descriptive)",
+     "estimate": -0.20995605555555558,
+     "ci_low": -0.21822521458333338,
+     "ci_high": -0.2018329993055556,
+     "ci_level": 0.95,
+     "unit": "fraction of agents",
+     "display": "-0.210",
+     "interval_display": "[-0.218, -0.202]"
+    },
+    {
+     "label": "A2 - A0, collisions (descriptive)",
+     "estimate": -2.1736805555555554,
+     "ci_low": -2.2578038194444447,
+     "ci_high": -2.089384791666667,
+     "ci_level": 0.95,
+     "unit": "per agent per 100 steps",
+     "display": "-2.174",
+     "interval_display": "[-2.258, -2.089]"
+    }
+   ],
+   "claim_ids": [
+    "CL-001",
+    "CL-002",
+    "CL-003",
+    "CL-004",
+    "CL-010",
+    "CL-011"
+   ],
+   "report_path": "research/experiments/EXP-002/report.md",
+   "notes": [
+    "18 cells x 20 matched seeds = 360 (cell, seed) pairs; stratified seed bootstrap, 10,000 resamples, 95% CI. The interval is conditional on the tested cells.",
+    "A1 was weakly ordered before the shock in every cell (cell-mean phi_pre 0.097 to 0.229).",
+    "A0 is not aligned before the shock in 10 of 18 cells (rule R-BI); those cells stay in the pooled estimate and are flagged."
+   ]
+  },
+  {
+   "id": "EXP-003",
+   "kind": "confirmatory",
+   "title": "Sensitivity of the EXP-002 contrast to modelling choices",
+   "status": "confirmatory, complete: 480 of 480 runs, 0 failed",
+   "verdict": "No condition invalidates or weakens the EXP-002 result (frozen EXP-003 criteria).",
+   "estimates": [
+    {
+     "label": "EXP-002, 18 cells (reference)",
+     "estimate": -0.30738583581621254,
+     "ci_low": -0.31296762975200687,
+     "ci_high": -0.3015982971198888,
+     "ci_level": 0.95,
+     "unit": "polarization units",
+     "display": "-0.307",
+     "interval_display": "[-0.313, -0.302]"
+    },
+    {
+     "label": "EXP-002, 4 reduced cells (reference)",
+     "estimate": -0.4336906084811382,
+     "ci_low": -0.44328266327448695,
+     "ci_high": -0.4238215893537243,
+     "ci_level": 0.95,
+     "unit": "polarization units",
+     "display": "-0.434",
+     "interval_display": "[-0.443, -0.424]"
+    },
+    {
+     "label": "Delta_S, S1 topological k = 7",
+     "estimate": -0.4147483068849449,
+     "ci_low": -0.4291372121622363,
+     "ci_high": -0.3982054500243711,
+     "ci_level": 0.95,
+     "unit": "polarization units",
+     "display": "-0.415",
+     "interval_display": "[-0.429, -0.398]"
+    },
+    {
+     "label": "Delta_S, S2a w_c = 0.25",
+     "estimate": -0.2681410506418606,
+     "ci_low": -0.2815937313392245,
+     "ci_high": -0.256610872584019,
+     "ci_level": 0.95,
+     "unit": "polarization units",
+     "display": "-0.268",
+     "interval_display": "[-0.282, -0.257]"
+    },
+    {
+     "label": "Delta_S, S2b w_c = 1.0",
+     "estimate": -0.5067464099194988,
+     "ci_low": -0.5153435868600696,
+     "ci_high": -0.4977364191476928,
+     "ci_level": 0.95,
+     "unit": "polarization units",
+     "display": "-0.507",
+     "interval_display": "[-0.515, -0.498]"
+    },
+    {
+     "label": "Delta_S, S3 reflecting walls",
+     "estimate": -0.44916869113045027,
+     "ci_low": -0.4634118134406256,
+     "ci_high": -0.43370965222333024,
+     "ci_level": 0.95,
+     "unit": "polarization units",
+     "display": "-0.449",
+     "interval_display": "[-0.463, -0.434]"
+    }
+   ],
+   "claim_ids": [
+    "CL-005",
+    "CL-006",
+    "CL-010"
+   ],
+   "report_path": "research/experiments/EXP-003/report.md",
+   "notes": [
+    "Four reduced cells (rho 0.5 and 2, eta 0.1 and 0.5, r = 1), 20 seeds each (80 pairs per condition). The magnitude increases with the cohesion weight.",
+    "S4 (recovery thresholds 0.8 and 0.95) needed no new runs; it is descriptive."
+   ]
+  },
+  {
+   "id": "EXP-004",
+   "kind": "registered",
+   "title": "Recovery with matched pre-shock order",
+   "status": "registered, not frozen; not run",
+   "verdict": "None: no run of any kind has been made. The protocol is a v0.1 draft with 8 parameters open for the owner, and the freeze needs the owner's decision.",
+   "estimates": [],
+   "claim_ids": [],
+   "report_path": "none (not run); protocol draft research/experiments/EXP-004/protocol.md",
+   "notes": [
+    "Planned primary outcome: the change score phi_post - phi_pre, with a manipulation check that pre-shock order is matched."
+   ]
+  }
+ ],
+ "assumptions": [
+  {
+   "name": "Agents",
+   "value": "N = 200, constant speed v0 = 0.05 u per step, 2-D, synchronous updates",
+   "source": "results/confirmatory/EXP-002/experiment_config.json"
+  },
+  {
+   "name": "Boundary and neighbours",
+   "value": "periodic box; metric neighbourhood of radius r",
+   "source": "results/confirmatory/EXP-002/experiment_config.json"
+  },
+  {
+   "name": "Grid",
+   "value": "density rho in {0.5, 1, 2}, noise eta in {0.1, 0.3, 0.5}, radius r in {0.5, 1}",
+   "source": "results/confirmatory/EXP-002/experiment_config.json"
+  },
+  {
+   "name": "Disturbance",
+   "value": "at t_d = 3000, a fraction 0.5 of agents receive uniform random headings (same agents and headings in every arm)",
+   "source": "results/confirmatory/EXP-002/experiment_config.json"
+  },
+  {
+   "name": "Windows",
+   "value": "phi_pre over the 100 steps before t_d; phi_post over the 500 steps from t_d",
+   "source": "results/confirmatory/EXP-002/experiment_config.json"
+  },
+  {
+   "name": "Rule A1",
+   "value": "repulsion within r_s = 0.25 r has priority; otherwise w_a = 1 alignment plus w_c = 0.5 cohesion",
+   "source": "results/confirmatory/EXP-002/experiment_config.json"
+  },
+  {
+   "name": "Rule A2",
+   "value": "global mean heading of all agents plus the same noise; an idealised reference, not a local rule",
+   "source": "results/confirmatory/EXP-002/experiment_config.json"
+  },
+  {
+   "name": "Seeds",
+   "value": "1001 to 1020 (20 per cell), the same in every arm",
+   "source": "results/confirmatory/EXP-002/experiment_config.json"
+  },
+  {
+   "name": "Smallest effect of interest",
+   "value": "0.05 polarization units",
+   "source": "results/confirmatory/EXP-002/analysis/analysis.json"
+  },
+  {
+   "name": "Uncertainty",
+   "value": "stratified seed-level percentile bootstrap, 10,000 resamples, seed 20261124, 95% CI",
+   "source": "results/confirmatory/EXP-002/analysis/analysis.json"
+  }
+ ],
+ "limitations": [
+  "The primary contrast measures a phase difference, not recovery (M3, measured). In EXP-002, A1 is disordered before the shock in every cell (mean phi_pre 0.097 to 0.229), and phi_pre A1 - A0 (-0.312 [-0.319, -0.304]) is nearly equal to Delta (-0.307 [-0.313, -0.302]). The shock's effect on phi_post is small next to the stationary order level of each arm, so the rejection of H0 says that A1 is less polarized than A0 at w_c = 0.5, not that it recovers worse. Limitation 11 is therefore realised, and EXP-003 does not remove it (Delta_S grows with w_c).",
+  "The design cannot measure A1's recovery of order (M4). A1 is disordered before the shock in every cell, so it has little order to lose or regain. The exploratory change score near zero (0.004 [-0.004, 0.012]) removes the \"A1 recovers worse\" reading but cannot show equal recovery; the smaller early drop of A1 (-0.017 [-0.026, -0.008]) is a floor effect, not resilience.",
+  "A1's steady state was not checked (M4, second review pass). Rule R-BI tested only A0. A1's phi_post is close to its phi_pre, which rules out fast drift, but slow coarsening after step 3000 is not excluded. The order gap is a pre-shock gap, not shown to be stationary.",
+  "A0 is disordered before the shock in 10 of 18 cells of the frozen design, even after the lengthened burn-in (rule R-BI, t_d = 3000; m(4000) between 0.070 and 0.347). In those cells phi_post says little about recovery; they are kept in the pooled estimand and flagged.",
+  "Post hoc exploratory checks (M4). The change-score, subset, matched-cell and early-response analyses (X1 to X5, results/exploratory/M4-sensitivity/) were chosen after the confirmatory results were seen. They use the frozen bootstrap settings and change no verdict, but they are not preregistered.",
+  "Simulation only. Every outcome is a property of the simulated model. No claim of biological fidelity, robot performance or universal distributed-system guarantees (master prompt section 10, claims boundary).",
+  "Two dimensions, constant speed, discrete synchronous updates. Results may not transfer to 3-D, variable-speed, asynchronous or continuous-time models.",
+  "One disturbance type in the primary design (heading shock of half the agents). Other disturbances (noise bursts, predators, agent loss, communication dropout) are not tested in the confirmatory design.",
+  "Parameter ranges. Conclusions hold within the tested grid of density, noise and radius; extrapolation is not supported.",
+  "A2 is not a realistic controller. The centralized reference is an idealised global-broadcast ceiling without delay or bandwidth limits.",
+  "Arm A1 is one parameterisation of separation and cohesion (zonal priority, fixed weights); EXP-003 tests a few alternatives, not the space of rules.",
+  "Provenance flag on EXP-003 runs (M3). 134 of 160 S1 runs and all 320 S2 and S3 runs record git_dirty: true, caused by an uncommitted journal edit during the runs; no code, configuration or protocol differed from revision 075cf7c, and 6 flagged runs re-simulated from clean code were bit-identical (DL-013)."
+ ],
+ "per_cell": [
+  {
+   "cell": "rho=0.5, eta=0.1, r=0.5",
+   "density": 0.5,
+   "noise": 0.1,
+   "radius": 0.5,
+   "a0_not_aligned": false,
+   "a1_a0": {
+    "estimate": -0.4059225427178757,
+    "ci_low": -0.4615968320896821,
+    "ci_high": -0.33883859010818623,
+    "ci_level": 0.95,
+    "display": "-0.406",
+    "interval_display": "[-0.462, -0.339]"
+   },
+   "arms": {
+    "A0": {
+     "phi_pre": 0.5959037650671946,
+     "phi_post": 0.5762897628541637,
+     "phi_pre_display": "0.596",
+     "phi_post_display": "0.576"
+    },
+    "A1": {
+     "phi_pre": 0.16567864304667104,
+     "phi_post": 0.1703672201362879,
+     "phi_pre_display": "0.166",
+     "phi_post_display": "0.170"
+    },
+    "A2": {
+     "phi_pre": 0.9836695165503258,
+     "phi_post": 0.9827206673411706,
+     "phi_pre_display": "0.984",
+     "phi_post_display": "0.983"
+    }
+   }
+  },
+  {
+   "cell": "rho=0.5, eta=0.1, r=1",
+   "density": 0.5,
+   "noise": 0.1,
+   "radius": 1.0,
+   "a0_not_aligned": false,
+   "a1_a0": {
+    "estimate": -0.6877941500771194,
+    "ci_low": -0.719745816656378,
+    "ci_high": -0.6541369369047579,
+    "ci_level": 0.95,
+    "display": "-0.688",
+    "interval_display": "[-0.720, -0.654]"
+   },
+   "arms": {
+    "A0": {
+     "phi_pre": 0.887524393791764,
+     "phi_post": 0.8575207067886641,
+     "phi_pre_display": "0.888",
+     "phi_post_display": "0.858"
+    },
+    "A1": {
+     "phi_pre": 0.16787304695315383,
+     "phi_post": 0.16972655671154482,
+     "phi_pre_display": "0.168",
+     "phi_post_display": "0.170"
+    },
+    "A2": {
+     "phi_pre": 0.9836695165503258,
+     "phi_post": 0.9827206673411706,
+     "phi_pre_display": "0.984",
+     "phi_post_display": "0.983"
+    }
+   }
+  },
+  {
+   "cell": "rho=0.5, eta=0.3, r=0.5",
+   "density": 0.5,
+   "noise": 0.3,
+   "radius": 0.5,
+   "a0_not_aligned": true,
+   "a1_a0": {
+    "estimate": 0.036501046661112514,
+    "ci_low": 0.02909674028764029,
+    "ci_high": 0.04427420322633839,
+    "ci_level": 0.95,
+    "display": "0.037",
+    "interval_display": "[0.029, 0.044]"
+   },
+   "arms": {
+    "A0": {
+     "phi_pre": 0.10798028162210008,
+     "phi_post": 0.10768408345889709,
+     "phi_pre_display": "0.108",
+     "phi_post_display": "0.108"
+    },
+    "A1": {
+     "phi_pre": 0.14539047154469814,
+     "phi_post": 0.1441851301200096,
+     "phi_pre_display": "0.145",
+     "phi_post_display": "0.144"
+    },
+    "A2": {
+     "phi_pre": 0.8587381103783033,
+     "phi_post": 0.8582116531735687,
+     "phi_pre_display": "0.859",
+     "phi_post_display": "0.858"
+    }
+   }
+  },
+  {
+   "cell": "rho=0.5, eta=0.3, r=1",
+   "density": 0.5,
+   "noise": 0.3,
+   "radius": 1.0,
+   "a0_not_aligned": true,
+   "a1_a0": {
+    "estimate": -0.18646672547666066,
+    "ci_low": -0.21841819011945388,
+    "ci_high": -0.15621366036286338,
+    "ci_level": 0.95,
+    "display": "-0.186",
+    "interval_display": "[-0.218, -0.156]"
+   },
+   "arms": {
+    "A0": {
+     "phi_pre": 0.337812316774669,
+     "phi_post": 0.33056926568237144,
+     "phi_pre_display": "0.338",
+     "phi_post_display": "0.331"
+    },
+    "A1": {
+     "phi_pre": 0.1345578144961275,
+     "phi_post": 0.14410254020571084,
+     "phi_pre_display": "0.135",
+     "phi_post_display": "0.144"
+    },
+    "A2": {
+     "phi_pre": 0.8587381103783033,
+     "phi_post": 0.8582116531735687,
+     "phi_pre_display": "0.859",
+     "phi_post_display": "0.858"
+    }
+   }
+  },
+  {
+   "cell": "rho=0.5, eta=0.5, r=0.5",
+   "density": 0.5,
+   "noise": 0.5,
+   "radius": 0.5,
+   "a0_not_aligned": true,
+   "a1_a0": {
+    "estimate": 0.02835284642215503,
+    "ci_low": 0.025600107685460383,
+    "ci_high": 0.031032733817104405,
+    "ci_level": 0.95,
+    "display": "0.028",
+    "interval_display": "[0.026, 0.031]"
+   },
+   "arms": {
+    "A0": {
+     "phi_pre": 0.07133011510880705,
+     "phi_post": 0.07095134134358896,
+     "phi_pre_display": "0.071",
+     "phi_post_display": "0.071"
+    },
+    "A1": {
+     "phi_pre": 0.0972427901088593,
+     "phi_post": 0.09930418776574398,
+     "phi_pre_display": "0.097",
+     "phi_post_display": "0.099"
+    },
+    "A2": {
+     "phi_pre": 0.6376382929570715,
+     "phi_post": 0.6378988841442336,
+     "phi_pre_display": "0.638",
+     "phi_post_display": "0.638"
+    }
+   }
+  },
+  {
+   "cell": "rho=0.5, eta=0.5, r=1",
+   "density": 0.5,
+   "noise": 0.5,
+   "radius": 1.0,
+   "a0_not_aligned": true,
+   "a1_a0": {
+    "estimate": -0.0013334822616879766,
+    "ci_low": -0.0069570196149353275,
+    "ci_high": 0.004074349664053012,
+    "ci_level": 0.95,
+    "display": "-0.001",
+    "interval_display": "[-0.007, 0.004]"
+   },
+   "arms": {
+    "A0": {
+     "phi_pre": 0.11638573104724423,
+     "phi_post": 0.11367215143383239,
+     "phi_pre_display": "0.116",
+     "phi_post_display": "0.114"
+    },
+    "A1": {
+     "phi_pre": 0.1078045692004556,
+     "phi_post": 0.11233866917214441,
+     "phi_pre_display": "0.108",
+     "phi_post_display": "0.112"
+    },
+    "A2": {
+     "phi_pre": 0.6376382929570715,
+     "phi_post": 0.6378988841442336,
+     "phi_pre_display": "0.638",
+     "phi_post_display": "0.638"
+    }
+   }
+  },
+  {
+   "cell": "rho=1, eta=0.1, r=0.5",
+   "density": 1.0,
+   "noise": 0.1,
+   "radius": 0.5,
+   "a0_not_aligned": false,
+   "a1_a0": {
+    "estimate": -0.5775301105496002,
+    "ci_low": -0.6126862414095919,
+    "ci_high": -0.5423687240704086,
+    "ci_level": 0.95,
+    "display": "-0.578",
+    "interval_display": "[-0.613, -0.542]"
+   },
+   "arms": {
+    "A0": {
+     "phi_pre": 0.813093070452757,
+     "phi_post": 0.7848455847740224,
+     "phi_pre_display": "0.813",
+     "phi_post_display": "0.785"
+    },
+    "A1": {
+     "phi_pre": 0.2074140854055398,
+     "phi_post": 0.20731547422442226,
+     "phi_pre_display": "0.207",
+     "phi_post_display": "0.207"
+    },
+    "A2": {
+     "phi_pre": 0.9836695165503258,
+     "phi_post": 0.9827206673411706,
+     "phi_pre_display": "0.984",
+     "phi_post_display": "0.983"
+    }
+   }
+  },
+  {
+   "cell": "rho=1, eta=0.1, r=1",
+   "density": 1.0,
+   "noise": 0.1,
+   "radius": 1.0,
+   "a0_not_aligned": false,
+   "a1_a0": {
+    "estimate": -0.7776068415886243,
+    "ci_low": -0.7905171712290119,
+    "ci_high": -0.7633974295560297,
+    "ci_level": 0.95,
+    "display": "-0.778",
+    "interval_display": "[-0.791, -0.763]"
+   },
+   "arms": {
+    "A0": {
+     "phi_pre": 0.9336430069576277,
+     "phi_post": 0.9424243397013488,
+     "phi_pre_display": "0.934",
+     "phi_post_display": "0.942"
+    },
+    "A1": {
+     "phi_pre": 0.15124422497439688,
+     "phi_post": 0.16481749811272453,
+     "phi_pre_display": "0.151",
+     "phi_post_display": "0.165"
+    },
+    "A2": {
+     "phi_pre": 0.9836695165503258,
+     "phi_post": 0.9827206673411706,
+     "phi_pre_display": "0.984",
+     "phi_post_display": "0.983"
+    }
+   }
+  },
+  {
+   "cell": "rho=1, eta=0.3, r=0.5",
+   "density": 1.0,
+   "noise": 0.3,
+   "radius": 0.5,
+   "a0_not_aligned": true,
+   "a1_a0": {
+    "estimate": -0.019156778698120235,
+    "ci_low": -0.03257547609379494,
+    "ci_high": -0.005327476361051661,
+    "ci_level": 0.95,
+    "display": "-0.019",
+    "interval_display": "[-0.033, -0.005]"
+   },
+   "arms": {
+    "A0": {
+     "phi_pre": 0.15612062315673747,
+     "phi_post": 0.16670871522693012,
+     "phi_pre_display": "0.156",
+     "phi_post_display": "0.167"
+    },
+    "A1": {
+     "phi_pre": 0.14722632487352127,
+     "phi_post": 0.14755193652880988,
+     "phi_pre_display": "0.147",
+     "phi_post_display": "0.148"
+    },
+    "A2": {
+     "phi_pre": 0.8587381103783033,
+     "phi_post": 0.8582116531735687,
+     "phi_pre_display": "0.859",
+     "phi_post_display": "0.858"
+    }
+   }
+  },
+  {
+   "cell": "rho=1, eta=0.3, r=1",
+   "density": 1.0,
+   "noise": 0.3,
+   "radius": 1.0,
+   "a0_not_aligned": false,
+   "a1_a0": {
+    "estimate": -0.41927159361153954,
+    "ci_low": -0.4416787011292109,
+    "ci_high": -0.39622662133334513,
+    "ci_level": 0.95,
+    "display": "-0.419",
+    "interval_display": "[-0.442, -0.396]"
+   },
+   "arms": {
+    "A0": {
+     "phi_pre": 0.5695461732796028,
+     "phi_post": 0.5608589644769825,
+     "phi_pre_display": "0.570",
+     "phi_post_display": "0.561"
+    },
+    "A1": {
+     "phi_pre": 0.14581429986053712,
+     "phi_post": 0.14158737086544282,
+     "phi_pre_display": "0.146",
+     "phi_post_display": "0.142"
+    },
+    "A2": {
+     "phi_pre": 0.8587381103783033,
+     "phi_post": 0.8582116531735687,
+     "phi_pre_display": "0.859",
+     "phi_post_display": "0.858"
+    }
+   }
+  },
+  {
+   "cell": "rho=1, eta=0.5, r=0.5",
+   "density": 1.0,
+   "noise": 0.5,
+   "radius": 0.5,
+   "a0_not_aligned": true,
+   "a1_a0": {
+    "estimate": 0.02236716117710923,
+    "ci_low": 0.01934397645505285,
+    "ci_high": 0.025468112346779804,
+    "ci_level": 0.95,
+    "display": "0.022",
+    "interval_display": "[0.019, 0.025]"
+   },
+   "arms": {
+    "A0": {
+     "phi_pre": 0.08225072444180279,
+     "phi_post": 0.08379303152026427,
+     "phi_pre_display": "0.082",
+     "phi_post_display": "0.084"
+    },
+    "A1": {
+     "phi_pre": 0.10021384261926178,
+     "phi_post": 0.10616019269737349,
+     "phi_pre_display": "0.100",
+     "phi_post_display": "0.106"
+    },
+    "A2": {
+     "phi_pre": 0.6376382929570715,
+     "phi_post": 0.6378988841442336,
+     "phi_pre_display": "0.638",
+     "phi_post_display": "0.638"
+    }
+   }
+  },
+  {
+   "cell": "rho=1, eta=0.5, r=1",
+   "density": 1.0,
+   "noise": 0.5,
+   "radius": 1.0,
+   "a0_not_aligned": true,
+   "a1_a0": {
+    "estimate": -0.06405575490163731,
+    "ci_low": -0.07493794908022366,
+    "ci_high": -0.053280538526493136,
+    "ci_level": 0.95,
+    "display": "-0.064",
+    "interval_display": "[-0.075, -0.053]"
+   },
+   "arms": {
+    "A0": {
+     "phi_pre": 0.1566066188893694,
+     "phi_post": 0.17619258526373677,
+     "phi_pre_display": "0.157",
+     "phi_post_display": "0.176"
+    },
+    "A1": {
+     "phi_pre": 0.11543713633211972,
+     "phi_post": 0.11213683036209945,
+     "phi_pre_display": "0.115",
+     "phi_post_display": "0.112"
+    },
+    "A2": {
+     "phi_pre": 0.6376382929570715,
+     "phi_post": 0.6378988841442336,
+     "phi_pre_display": "0.638",
+     "phi_post_display": "0.638"
+    }
+   }
+  },
+  {
+   "cell": "rho=2, eta=0.1, r=0.5",
+   "density": 2.0,
+   "noise": 0.1,
+   "radius": 0.5,
+   "a0_not_aligned": false,
+   "a1_a0": {
+    "estimate": -0.6569137656720775,
+    "ci_low": -0.6857225983918426,
+    "ci_high": -0.6237528865076881,
+    "ci_level": 0.95,
+    "display": "-0.657",
+    "interval_display": "[-0.686, -0.624]"
+   },
+   "arms": {
+    "A0": {
+     "phi_pre": 0.89577363075168,
+     "phi_post": 0.8795665022861388,
+     "phi_pre_display": "0.896",
+     "phi_post_display": "0.880"
+    },
+    "A1": {
+     "phi_pre": 0.2290047426750597,
+     "phi_post": 0.2226527366140611,
+     "phi_pre_display": "0.229",
+     "phi_post_display": "0.223"
+    },
+    "A2": {
+     "phi_pre": 0.9836695165503258,
+     "phi_post": 0.9827206673411706,
+     "phi_pre_display": "0.984",
+     "phi_post_display": "0.983"
+    }
+   }
+  },
+  {
+   "cell": "rho=2, eta=0.1, r=1",
+   "density": 2.0,
+   "noise": 0.1,
+   "radius": 1.0,
+   "a0_not_aligned": false,
+   "a1_a0": {
+    "estimate": -0.810385029732293,
+    "ci_low": -0.823930775180468,
+    "ci_high": -0.7954475998766561,
+    "ci_level": 0.95,
+    "display": "-0.810",
+    "interval_display": "[-0.824, -0.795]"
+   },
+   "arms": {
+    "A0": {
+     "phi_pre": 0.971522558373791,
+     "phi_post": 0.9661146491383997,
+     "phi_pre_display": "0.972",
+     "phi_post_display": "0.966"
+    },
+    "A1": {
+     "phi_pre": 0.15320905643529323,
+     "phi_post": 0.1557296194061067,
+     "phi_pre_display": "0.153",
+     "phi_post_display": "0.156"
+    },
+    "A2": {
+     "phi_pre": 0.9836695165503258,
+     "phi_post": 0.9827206673411706,
+     "phi_pre_display": "0.984",
+     "phi_post_display": "0.983"
+    }
+   }
+  },
+  {
+   "cell": "rho=2, eta=0.3, r=0.5",
+   "density": 2.0,
+   "noise": 0.3,
+   "radius": 0.5,
+   "a0_not_aligned": true,
+   "a1_a0": {
+    "estimate": -0.1692987441459372,
+    "ci_low": -0.19758124359707818,
+    "ci_high": -0.14202697721481491,
+    "ci_level": 0.95,
+    "display": "-0.169",
+    "interval_display": "[-0.198, -0.142]"
+   },
+   "arms": {
+    "A0": {
+     "phi_pre": 0.29021714174239843,
+     "phi_post": 0.3249294853797532,
+     "phi_pre_display": "0.290",
+     "phi_post_display": "0.325"
+    },
+    "A1": {
+     "phi_pre": 0.17362877730532889,
+     "phi_post": 0.15563074123381596,
+     "phi_pre_display": "0.174",
+     "phi_post_display": "0.156"
+    },
+    "A2": {
+     "phi_pre": 0.8587381103783033,
+     "phi_post": 0.8582116531735687,
+     "phi_pre_display": "0.859",
+     "phi_post_display": "0.858"
+    }
+   }
+  },
+  {
+   "cell": "rho=2, eta=0.3, r=1",
+   "density": 2.0,
+   "noise": 0.3,
+   "radius": 1.0,
+   "a0_not_aligned": false,
+   "a1_a0": {
+    "estimate": -0.611437673511487,
+    "ci_low": -0.6250736008916755,
+    "ci_high": -0.5961804746670264,
+    "ci_level": 0.95,
+    "display": "-0.611",
+    "interval_display": "[-0.625, -0.596]"
+   },
+   "arms": {
+    "A0": {
+     "phi_pre": 0.7354568148105602,
+     "phi_post": 0.7456543355326899,
+     "phi_pre_display": "0.735",
+     "phi_post_display": "0.746"
+    },
+    "A1": {
+     "phi_pre": 0.13949777537350913,
+     "phi_post": 0.1342166620212029,
+     "phi_pre_display": "0.139",
+     "phi_post_display": "0.134"
+    },
+    "A2": {
+     "phi_pre": 0.8587381103783033,
+     "phi_post": 0.8582116531735687,
+     "phi_pre_display": "0.859",
+     "phi_post_display": "0.858"
+    }
+   }
+  },
+  {
+   "cell": "rho=2, eta=0.5, r=0.5",
+   "density": 2.0,
+   "noise": 0.5,
+   "radius": 0.5,
+   "a0_not_aligned": true,
+   "a1_a0": {
+    "estimate": 0.0022568658459092574,
+    "ci_low": -0.0025205531713700176,
+    "ci_high": 0.0067814423071897185,
+    "ci_level": 0.95,
+    "display": "0.002",
+    "interval_display": "[-0.003, 0.007]"
+   },
+   "arms": {
+    "A0": {
+     "phi_pre": 0.10821165953785188,
+     "phi_post": 0.10783810660489088,
+     "phi_pre_display": "0.108",
+     "phi_post_display": "0.108"
+    },
+    "A1": {
+     "phi_pre": 0.10901945398072461,
+     "phi_post": 0.11009497245080016,
+     "phi_pre_display": "0.109",
+     "phi_post_display": "0.110"
+    },
+    "A2": {
+     "phi_pre": 0.6376382929570715,
+     "phi_post": 0.6378988841442336,
+     "phi_pre_display": "0.638",
+     "phi_post_display": "0.638"
+    }
+   }
+  },
+  {
+   "cell": "rho=2, eta=0.5, r=1",
+   "density": 2.0,
+   "noise": 0.5,
+   "radius": 1.0,
+   "a0_not_aligned": true,
+   "a1_a0": {
+    "estimate": -0.23524977185345253,
+    "ci_low": -0.2516161394214272,
+    "ci_high": -0.21855279452851184,
+    "ci_level": 0.95,
+    "display": "-0.235",
+    "interval_display": "[-0.252, -0.219]"
+   },
+   "arms": {
+    "A0": {
+     "phi_pre": 0.3810873291408522,
+     "phi_post": 0.3436026063710852,
+     "phi_pre_display": "0.381",
+     "phi_post_display": "0.344"
+    },
+    "A1": {
+     "phi_pre": 0.11122603082022857,
+     "phi_post": 0.1083528345176327,
+     "phi_pre_display": "0.111",
+     "phi_post_display": "0.108"
+    },
+    "A2": {
+     "phi_pre": 0.6376382929570715,
+     "phi_post": 0.6378988841442336,
+     "phi_pre_display": "0.638",
+     "phi_post_display": "0.638"
+    }
+   }
+  }
+ ],
+ "post_hoc": {
+  "id": "EXPL-M4-01",
+  "label": "exploratory, post hoc (chosen after the confirmatory results were seen; changes no verdict)",
+  "claim_ids": [
+   "CL-007",
+   "CL-008",
+   "CL-012",
+   "CL-014"
+  ],
+  "source": "results/exploratory/M4-sensitivity/analysis.json",
+  "estimates": [
+   {
+    "label": "X1 change score phi_post - phi_pre, all 18 cells",
+    "estimate": 0.004224323569416502,
+    "ci_low": -0.003733483380366635,
+    "ci_high": 0.012283974933249921,
+    "ci_level": 0.95,
+    "unit": "polarization units",
+    "display": "0.004",
+    "interval_display": "[-0.004, 0.012]"
+   },
+   {
+    "label": "X1 change score, 8 cells where A0 aligns",
+    "estimate": 0.011983228912524986,
+    "ci_low": -0.001699990556055542,
+    "ci_high": 0.025648766929876433,
+    "ci_level": 0.95,
+    "unit": "polarization units",
+    "display": "0.012",
+    "interval_display": "[-0.002, 0.026]"
+   },
+   {
+    "label": "X2 phi_post, 8 cells where A0 aligns",
+    "estimate": -0.6183577134325771,
+    "ci_low": -0.6292125763065666,
+    "ci_high": -0.6066414464743826,
+    "ci_level": 0.95,
+    "unit": "polarization units",
+    "display": "-0.618",
+    "interval_display": "[-0.629, -0.607]"
+   },
+   {
+    "label": "X2 phi_pre, 8 cells where A0 aligns",
+    "estimate": -0.6303409423451021,
+    "ci_low": -0.6445652267321321,
+    "ci_high": -0.6155305404358941,
+    "ci_level": 0.95,
+    "unit": "polarization units",
+    "display": "-0.630",
+    "interval_display": "[-0.645, -0.616]"
+   },
+   {
+    "label": "X2 phi_post, 10 flagged cells",
+    "estimate": -0.058608333723120985,
+    "ci_low": -0.0636951629398901,
+    "ci_high": -0.05371374336991384,
+    "ci_level": 0.95,
+    "unit": "polarization units",
+    "display": "-0.059",
+    "interval_display": "[-0.064, -0.054]"
+   },
+   {
+    "label": "X3 phi_post, 7 cells with matched pre-shock order",
+    "estimate": 0.0007045577492629302,
+    "ci_low": -0.0022868549617041842,
+    "ci_high": 0.003677625174994321,
+    "ci_level": 0.95,
+    "unit": "polarization units",
+    "display": "0.001",
+    "interval_display": "[-0.002, 0.004]"
+   },
+   {
+    "label": "X4 early drop over [t_d, t_d + 50)",
+    "estimate": -0.017071501170805668,
+    "ci_low": -0.02574673084075425,
+    "ci_high": -0.00846337568782879,
+    "ci_level": 0.95,
+    "unit": "polarization units",
+    "display": "-0.017",
+    "interval_display": "[-0.026, -0.008]"
+   },
+   {
+    "label": "X5 change score, S1",
+    "estimate": 0.023210003225843445,
+    "ci_low": 0.0053711647399691,
+    "ci_high": 0.041570327067665815,
+    "ci_level": 0.95,
+    "unit": "polarization units",
+    "display": "0.023",
+    "interval_display": "[0.005, 0.042]"
+   },
+   {
+    "label": "X5 change score, S2a",
+    "estimate": 0.014342597379120841,
+    "ci_low": -0.0015218332555592476,
+    "ci_high": 0.030197404081204117,
+    "ci_level": 0.95,
+    "unit": "polarization units",
+    "display": "0.014",
+    "interval_display": "[-0.002, 0.030]"
+   },
+   {
+    "label": "X5 change score, S2b",
+    "estimate": 0.019740142399266546,
+    "ci_low": 0.007524468815592685,
+    "ci_high": 0.031697372423449346,
+    "ci_level": 0.95,
+    "unit": "polarization units",
+    "display": "0.020",
+    "interval_display": "[0.008, 0.032]"
+   },
+   {
+    "label": "X5 change score, S3",
+    "estimate": -0.015031546043883142,
+    "ci_low": -0.03846489469398493,
+    "ci_high": 0.005494712504288036,
+    "ci_level": 0.95,
+    "unit": "polarization units",
+    "display": "-0.015",
+    "interval_display": "[-0.038, 0.005]"
+   }
+  ]
+ },
+ "design": {
+  "t_disturb": 3000,
+  "pre_window": 100,
+  "window": 500,
+  "sesoi": 0.05,
+  "primary": {
+   "label": "Delta = A1 - A0, phi_post (primary)",
+   "estimate": -0.30738583581621254,
+   "ci_low": -0.31296762975200687,
+   "ci_high": -0.3015982971198888,
+   "ci_level": 0.95,
+   "unit": "polarization units",
+   "display": "-0.307",
+   "interval_display": "[-0.313, -0.302]"
+  }
+ }
+}

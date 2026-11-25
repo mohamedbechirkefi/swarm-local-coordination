@@ -50,3 +50,11 @@ Simulation, analysis and report commands (M2):
     uv run python -m swarm.cli bench --config experiments/EXP-001/bench.json
     uv run python -m swarm.cli run --config <experiment.json> [--workers K]   # refuses confirmatory configs until the owner freezes the protocol
     uv run python -m swarm.cli report --results results/exploratory/EXP-001-smoke --pdf
+
+Demo page commands (M5; Node from the feasibility toolchain, no network needed after `npm ci`):
+
+    uv run python scripts/export_demo_data.py            # demo/public/data/results.json from committed results
+    uv run python scripts/export_demo_data.py --check    # exit 1 if the committed file is stale
+    uv run python scripts/make_sandbox_fixture.py        # Python-engine fixture for the sandbox port test
+    cd demo && npm ci && npm test && npm run build && npm run preview
+    cd demo && node tools/a11y_check.mjs dist --screenshots <dir>   # offline and accessibility check

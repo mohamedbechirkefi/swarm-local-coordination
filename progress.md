@@ -248,3 +248,56 @@ M5 (interactive page and articles) using the M4 numbers and the retitled framing
 ### Next action
 
 Owner: decide EXP-004 open items 1 to 8, then the calibration stage (R-MATCH, R-SS) and the freeze. M5 (interactive page and articles) can proceed independently.
+
+## 2026-11-25: Session M5 (interactive experience)
+
+**Milestone:** M5, on owner, 2026-11-25, "Next" (`labs/_shared/owner-approvals-2026-11-25d.md`; stack: the shared TypeScript, React and Vite template) and `labs/_shared/M5-brief.md`. Recorded as DL-017.
+
+### What was done
+
+- Pre-checks: `git status` clean at `22f9035`; read the brief, the approvals record, CLAUDE.md, the M5 row, master prompt sections 3, 8, 10, 11.6, the manuscript, claims register, artifact manifest, reports, limitations and the template.
+- `demo/` copied from `labs/_shared/demo-template/` without `node_modules`; `npm ci --prefer-offline` -> `added 53 packages`. Every `REPLACE` marker and SPDX identifier replaced; `grep -rn REPLACE demo/ --exclude-dir=node_modules --exclude-dir=dist` finds nothing.
+- `scripts/export_demo_data.py` -> `demo/public/data/results.json` (EXP-001 to EXP-004, `per_cell`, `post_hoc`, `design`; sources with SHA-256; no timestamps). `--check` -> `results.json up to date`.
+- `tests/test_demo_export.py` (6 tests): export reproduces the committed file; every display string in the manuscript; per-cell rows in the EXP-002 report table; EXP-004 has no estimates; public-text decimals traced.
+- Sandbox: `demo/src/engine.ts` (port of the update rules), `demo/src/sandbox.worker.ts`, `demo/src/Sandbox.tsx`; fixture `scripts/make_sandbox_fixture.py` -> `demo/src/fixtures/engine_fixture.json` (0.2 s, 1 process); `demo/src/engine.test.ts` tolerance 1e-9, largest error 4.9e-13 (journal M5-SANDBOX-PORT).
+- Page: `demo/src/App.tsx`, `charts.tsx`, `style.css`, `results.ts` (fail-closed validation of the extensions), `results.test.ts` (7 new tests).
+- Checker extended (3 SWARM checks, all template checks kept). Screenshots inspected (desktop light, desktop dark, mobile): fixed a floating-point tick label, a clipped axis label, clipped EXP-003 labels, a 144 px overflow at 360 px from a long select, and tiny chart text on mobile. The full-page mobile capture repeats the page header below the footer; this appears to be an artefact of the full-page capture on mobile emulation (the DOM has one header and the overflow check passes).
+- Fail-closed check: the checker on a copy of `dist` with `per_cell` removed -> `FAIL results render (no fail-closed panel): 0 experiment panels`, `A11Y-CHECK FAIL (3)`.
+- Texts: README, `CITATION.cff`, `articles/medium.md`, `articles/linkedin.md`, `articles/README.md`, `demo/README.md`, `docs/demo.png` (124,690 bytes), CONTRIBUTING demo commands; author-review box unticked (DL-017).
+
+### Commands and outputs
+
+    .venv/bin/python -m pytest -q                -> 143 passed in 4.89s
+    cd demo && npm test                          -> Test Files 2 passed (2); Tests 22 passed (22)
+    cd demo && npm run build                     -> tsc and vite build, built in 79ms
+    node tools/a11y_check.mjs dist --screenshots /private/tmp/claude-501/-Users-bechir-research/d17d72fe-4ad4-4cdb-b113-2cbf6d17ea36/scratchpad/swarm/shots
+
+    PASS results render (no fail-closed panel): 5 experiment panels
+    PASS text contrast, light scheme (WCAG AA)
+    PASS text contrast, dark scheme (WCAG AA)
+    PASS keyboard reaches every focusable element: 28 reached of 28
+    PASS visible focus indicator
+    PASS sandbox: Run animates and Pause stops the swarm: animating=true step 288, after pause 288 -> 288
+    PASS published and sandbox labels kept apart: {"pub":4,"sbInResults":0,"sb":1,"pubInSandbox":0}
+    PASS no horizontal page scroll at 360 px: overflow 0px
+    PASS reduced motion: no running animations: 0 running
+    PASS reduced motion: sandbox computes without animating: animating=false, step 300 then 300
+    PASS no request leaves the local origin
+    PASS offline after first load: results stay, sandbox runs: Computed 300 steps without animation (reduced motion). Sandbox output, seed 1.
+    A11Y-CHECK PASS
+
+### Gate
+
+Offline after the first load, responsive at 360 px, usable with the keyboard, no fabricated data (every number exported from committed results and checked against the manuscript), no runtime service. M5 **done**.
+
+### Owner placeholders that remain
+
+1. Repository and demo URL (README, CITATION message, demo footer, articles, manuscript "Data and code availability").
+2. Funding and competing interests: "none declared (both to be confirmed by the author)".
+3. Author line and affiliation as recorded in decision C3; the repository title in `CITATION.cff` now names the approved manuscript title, and a different repository title is the owner's choice.
+4. The `author_review.md` boxes (owner only); full-text review of the manuscript (M6).
+5. EXP-004: open items 1 to 8 and the freeze (G-FREEZE).
+
+### Next action
+
+M6 (release candidate) when the owner says so; owner decisions above.

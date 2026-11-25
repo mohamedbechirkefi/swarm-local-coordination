@@ -1,50 +1,68 @@
 <!-- SPDX-License-Identifier: LicenseRef-SWARM-NC-Research-1.0 -->
-# SWARM: how order emerges without a leader (working title)
+# SWARM
+
+**Manuscript (owner-approved title):** *A zonal separation-cohesion rule sustains less order than alignment alone, and the design did not measure recovery: a preregistered simulation comparison under a heading shock.* Independent research manuscript / preprint draft, not peer-reviewed. All results are simulated.
 
 **Question.** How do local interaction rules affect collective coordination under disturbances?
 
-**Status: M2 (core implementation), 2026-11-24.** The simulator, tests, result schema, runner, report generator and CLI exist. Only exploratory pre-freeze runs have been made; there is no finding. The research protocol is a draft awaiting the owner's freeze, with amendment proposals in `research/amendment_proposals.md`. This is a simulation study: nothing here is a claim about real animals, robots or distributed systems in general.
+**Why it matters.** Local rules are often said to produce coordinated motion without a leader. Whether adding separation and cohesion to alignment helps or hurts a group's response to a disturbance is a narrower question that a matched, preregistered comparison can answer within a model. Nothing here is a claim about real animals, robots or distributed systems in general.
 
-## What is planned
+![Screenshot of the SWARM demo page: the overview with the status label, the headline contrast -0.307 with its 95% CI, EXP-004 shown as registered and not run, the label key, and the per-cell forest plot of the A1 - A0 difference with confidence intervals.](docs/demo.png)
 
-A 2-D self-propelled particle simulation comparing three rules under a matched heading disturbance:
+## Status (2026-11-25)
 
-- A0 alignment-only (baseline),
-- A1 separation, cohesion and alignment,
-- A2 centralized reference (global alignment).
+M0 to M4 are done and M5 (interactive page and article drafts) is done; M6 (release candidate) has not started. The owner has approved the manuscript title and the funding, competing-interest and AI-use statements (2026-11-25). Full-text owner review of the manuscript is pending and belongs to M6. Nothing has been published or pushed.
 
-Primary metric (draft): mean polarization over the 500 steps after the disturbance. See `research/protocol.md`.
+## What is implemented
 
-| Experiment | Purpose | Status |
-| --- | --- | --- |
-| EXP-001 | Implementation verification and smoke matrix (exploratory) | exploratory run (pre-freeze) |
-| EXP-002 | Primary comparison, 540 runs | planned |
-| EXP-003 | Sensitivity analyses | planned |
+A 2-D self-propelled particle simulator (`src/swarm/`) with three rules under a matched heading disturbance: A0 alignment only (baseline), A1 separation, alignment and cohesion (zonal, cohesion weight 0.5), and A2 a centralized global-alignment reference. Cell-list neighbour search verified against brute force, seeded common random numbers across arms, a versioned result schema, run manifests, a report generator, a frozen analysis script and a static demo page (`demo/`).
 
-## Repository map
+## Experiments
 
-- `master_prompt.md`: project specification (authority).
-- `CLAUDE.md`, `roadmap.md`, `progress.md`: working rules, plan and journal.
-- `research/`: protocol, feasibility, literature review, limitations, decision log, registries, experiment protocols, manuscript skeleton, publication checklists.
-- `src/swarm/`: simulation package; `tests/`: test suite; `experiments/`: runnable configs; `results/exploratory/`: exploratory outputs.
-- `demo/`, `articles/`: empty until M5.
-- `data/manifest.json`: data provenance (synthetic only).
+| Experiment | Purpose | Status | Result |
+| --- | --- | --- | --- |
+| EXP-001 | Implementation verification and smoke matrix | exploratory, complete | verification checks pass |
+| EXP-002 | Primary comparison, 1,080 runs | confirmatory, complete, 0 failed | Delta = -0.307 [-0.313, -0.302], rejects H0; the same gap exists before the shock (-0.312 [-0.319, -0.304]) |
+| EXP-003 | Sensitivity, 480 runs | confirmatory, complete, 0 failed | no condition invalidates or weakens EXP-002 |
+| EXP-004 | Recovery with matched pre-shock order | registered, not frozen; not run | none (no data) |
 
-## Quick start (development)
+## Key findings (simulated, tested grid only)
 
-```
-/Users/bechir/research/labs/.tools/py/bin/uv sync --frozen
-```
+- At cohesion weight 0.5, A1 holds much less order than A0: the primary contrast in mean post-disturbance polarization is Delta = -0.307 (95% stratified bootstrap CI [-0.313, -0.302]) over 18 cells and 20 matched seeds each. The frozen rule rejects H0.
+- The gap is present before the shock (-0.312 [-0.319, -0.304]), so the study measured a difference in sustained order, not in recovery. The design could not measure A1's recovery of order.
+- Four frozen sensitivity conditions keep the sign and exclude zero (topological neighbours -0.415 [-0.429, -0.398]; cohesion 0.25 -0.268 [-0.282, -0.257]; cohesion 1.0 -0.507 [-0.515, -0.498]; reflecting walls -0.449 [-0.463, -0.434]).
+- Exploratory, post hoc: the paired change score is 0.004 [-0.004, 0.012], inside the smallest effect of interest. This removes the "A1 recovers worse" reading but does not show equal recovery.
 
-    /Users/bechir/research/labs/.tools/py/bin/uv run python -m swarm.cli test
+Limitations: `research/limitations.md`. Claims and their evidence: `research/claims_register.csv` and `research/publication/artifact_manifest.json`.
+
+## Research navigation
+
+- Manuscript: `research/paper/manuscript.md` (supplementary: `research/paper/supplementary.md`).
+- Experiment reports: `research/experiments/EXP-001/report.md`, `EXP-002/report.md`, `EXP-003/report.md`; EXP-004 has a draft protocol only.
+- Protocols and freeze record: `research/protocol.md`, `research/protocol_freeze.json`.
+- Decisions: `research/decision_log.md`. Working journal: `progress.md`.
+
+## Quick start
+
+    /Users/bechir/research/labs/.tools/py/bin/uv sync --frozen
+    /Users/bechir/research/labs/.tools/py/bin/uv run python -m pytest -q
     /Users/bechir/research/labs/.tools/py/bin/uv run python -m swarm.cli smoke --config experiments/EXP-001/smoke.json
-    /Users/bechir/research/labs/.tools/py/bin/uv run python -m swarm.cli report --results results/exploratory/EXP-001-smoke --pdf
 
-All commands are listed in `CONTRIBUTING.md`.
+Demo page (static, offline after the first load, no runtime service):
+
+    cd demo && npm ci && npm run build && npm run preview
+
+The page reads `demo/public/data/results.json`, written by `scripts/export_demo_data.py` from committed results only. The sandbox runs a browser port of the engine's update rules in a Web Worker; it is labelled sandbox output and never mixed with published results. Repository and demo URL: [to be added by the owner on release].
+
+Full reproduction: `research/experiments/EXP-00N/reproduction.md`. All commands: `CONTRIBUTING.md`.
+
+## Architecture
+
+`src/swarm/` (config, geometry, neighbours, rules, metrics, simulate, runner, schema, report, CLI) -> `experiments/` (frozen configs, analysis and audit scripts) -> `results/` (committed metrics, analyses, SHA-256 manifests) -> `research/` (protocols, reports, manuscript, registers) and `scripts/export_demo_data.py` -> `demo/` (TypeScript, React and Vite static page).
 
 ## Data and licences
 
-All data are synthetic (decision DL-003). Third-party dependencies keep their own licences (`uv.lock`).
+All data are synthetic (decision DL-003). Third-party dependencies keep their own licences (`uv.lock`, `demo/package-lock.json`).
 
 ## Licence
 
@@ -52,4 +70,4 @@ SWARM Source-Available Non-Commercial Research License v1.0 (`LicenseRef-SWARM-N
 
 ## Citation
 
-See `CITATION.cff`.
+See `CITATION.cff`. Author: Mohamed Bechir Kefi (independent, no affiliation). Funding and competing interests: none declared, both to be confirmed by the author.
