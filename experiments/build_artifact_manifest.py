@@ -110,7 +110,7 @@ def main() -> int:
                    "config and protocol hash and code revision. Per-number trace: research/publication/number_audit.json.",
            "artifacts": items,
            "claims_without_artifact": [c for c in claims if c not in mapped and not c.startswith("EXT")],
-           "external_claims": "EXT-001 to EXT-008 map to sources in research/literature_review.md (abstract or record level)"}
+           "external_claims": "EXT-001 to EXT-008 map to sources in research/literature_review.md; the level consulted for each (M6: full text for seven, abstract for Couzin et al. 2002) is in research/claims_register.csv and research/publication/evidence_audit.md section 7"}
     (ROOT / "research" / "publication" / "artifact_manifest.json").write_text(json.dumps(out, indent=1) + "\n", encoding="utf-8")
     print(f"{len(items)} artifacts; claims without artifact: {out['claims_without_artifact']}")
     return 0

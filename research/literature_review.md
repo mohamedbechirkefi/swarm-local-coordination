@@ -42,3 +42,9 @@ No external dataset is used (decision DL-003). Empirical trajectory datasets (fo
 - jadbabaie2003 was accessed at metadata level only (Crossref record). The "Relevance" column above describes the expected content, not something read. From M4 the manuscript and the EXP-002 report cite it for its topic only (evidence audit F1, `research/publication/evidence_audit.md`).
 - No source in this list was read in full; the manuscript reference list states the level read for each entry.
 - The targeted search for disturbance-recovery literature listed in section 4 was not carried out; the manuscript makes no claim about that literature.
+
+## 7. M6 note (2026-11-25)
+
+- Free legal full texts were consulted for seven of the eight entries to check the specific statement the manuscript makes about each; the versions, places checked and labels are in `research/publication/evidence_audit.md` section 7. couzin2002 remains read at abstract level.
+- jadbabaie2003 is still cited for its topic only. The "Relevance" column in section 1 is unchanged.
+- The targeted search on disturbance-recovery literature (section 4) was still not carried out.

@@ -58,3 +58,9 @@ Demo page commands (M5; Node from the feasibility toolchain, no network needed a
     uv run python scripts/make_sandbox_fixture.py        # Python-engine fixture for the sandbox port test
     cd demo && npm ci && npm test && npm run build && npm run preview
     cd demo && node tools/a11y_check.mjs dist --screenshots <dir>   # offline and accessibility check
+
+Release-candidate commands (M6):
+
+    uv run python scripts/build_pdfs.py [--png-dir <dir>]   # manuscript, supplementary and report PDFs; manuscript.tex
+    uv run python scripts/check_links.py                     # relative Markdown links and manuscript references
+    uv run python experiments/audit_numbers.py               # decimal-number trace to committed outputs

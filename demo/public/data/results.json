@@ -40,11 +40,11 @@
   },
   {
    "path": "research/claims_register.csv",
-   "sha256": "978825ff51b35068f4984f2c1f82b4447df9633e1f904760b7c0455c0c759cc6"
+   "sha256": "0923b2bbe8a5344e7823f13f914d909f169a2d563691f4560d2314e3ad72384c"
   },
   {
    "path": "research/publication/artifact_manifest.json",
-   "sha256": "ce74a0578235ff49a5c8d7e7e917ae1957584b110726691470576f28a33e30e4"
+   "sha256": "1ee6f123d011fa462f555b76c8c27b3a43fb49f931d54a79b1c8999f2a7597c0"
   },
   {
    "path": "research/experiment_registry.csv",

@@ -2,7 +2,7 @@
 title: "A zonal separation-cohesion rule sustains less order than alignment alone, and the design did not measure recovery: a preregistered simulation comparison under a heading shock"
 subtitle: "Independent research manuscript / preprint draft, not peer-reviewed. All results are simulated."
 author: "Mohamed Bechir Kefi"
-date: "Draft of 2026-11-25 (M4)"
+date: "Draft of 2026-11-25 (M6 release candidate)"
 ---
 
 <!-- SPDX-License-Identifier: LicenseRef-SWARM-NC-Research-1.0 -->
@@ -36,13 +36,13 @@ No novelty is claimed: the literature review was targeted, not systematic.
 
 # 2. Related work
 
-All sources below were checked for bibliographic metadata and read at the abstract or record level only; full texts were not read (`research/literature_review.md`). Statements about them are limited accordingly.
+All sources below were checked for bibliographic metadata (`research/literature_review.md`). In M6 (2026-11-25), a free legal full text was consulted for seven of the eight sources to check the specific statement made about each, and the page or section is recorded in `research/publication/evidence_audit.md`; the reference list states, for each source, which version was consulted and how much of it. Couzin et al. (2002) remains read at the abstract level only. Statements about the sources are limited to what was checked.
 
 **Alignment-only models.** Vicsek et al. (1995) introduced self-driven particles that adopt the mean heading of neighbours within a radius plus noise, and reported a noise- and density-driven transition to ordered motion. Our A0 is this rule. Vicsek and Zafeiris (2012) review this family of models and their order parameters.
 
 **Zonal and steering-rule models.** Reynolds (1987) proposed separation, alignment and cohesion steering rules for animated flocks. Couzin et al. (2002) studied a model with zones of repulsion, orientation and attraction and reported that changes in zone sizes shift the collective state and that the system shows history dependence. Our A1 uses the zonal priority of that model (repulsion first), with fixed weights.
 
-**Control-theoretic flocking.** Jadbabaie, Lin and Morse (2003) studied the coordination of groups of mobile autonomous agents using nearest-neighbour rules; only the bibliographic record of this paper was accessed, so we cite it for its topic and do not characterise its results. Olfati-Saber (2006) presented flocking algorithms with alignment, separation and cohesion and stated that flocks need no leaders. Cucker and Smale (2007) studied velocity consensus with distance-decaying coupling. The abstract of Cucker and Smale (2007) relates convergence to how coupling decays with distance between agents; this, together with the cohesion terms of Olfati-Saber (2006), motivated the mechanism in H1 that cohesion may preserve connectivity and so help recovery. None of these sources tests our specific disturbance.
+**Control-theoretic flocking.** Jadbabaie, Lin and Morse (2003) studied the coordination of groups of mobile autonomous agents using nearest-neighbour rules; its full text was consulted only to confirm the topic, so we cite it for its topic and do not characterise its results. Olfati-Saber (2006) presented flocking algorithms with alignment, separation and cohesion and stated that flocks need no leaders. Cucker and Smale (2007) studied velocity consensus with distance-decaying coupling. Cucker and Smale (2007; Theorem 1 of the authors' preprint) relate convergence to how coupling decays with distance between agents; this, together with the cohesion terms of Olfati-Saber (2006), motivated the mechanism in H1 that cohesion may preserve connectivity and so help recovery. None of these sources tests our specific disturbance.
 
 **Neighbourhood type.** Ballerini et al. (2008) reported field evidence that starlings interact with a fixed number of neighbours (about six to seven) rather than all neighbours within a fixed distance. This motivated our topological sensitivity condition. We make no claim of biological fidelity.
 
@@ -187,7 +187,7 @@ Once each run's own pre-shock level is subtracted, the A1 - A0 difference lies i
 
 **Competing explanations.** The protocol named four. Neighbourhood type and boundary artefacts (S1, S3) do not explain the contrast in the cells tested. Pre-shock differences in order do explain it. Coupling strength versus rule content is not resolved: the contrast grows with $w_c$, which shows that the cohesion term's strength matters, but varying $w_c$ changes both at once. One reading consistent with the data is that the cohesion term, together with short-range repulsion that has priority over alignment, pulls agents into tight clusters in which repulsion keeps changing headings; A1's higher cohesion, fewer collisions and larger number of pair-distance evaluations per step (a sign of denser local clustering) fit this reading, but we did not measure the mechanism directly (for example, the fraction of agents inside the repulsion zone per step), so it remains a hypothesis.
 
-**Relation to prior work.** The sensitivity of A1's collective state to the cohesion weight is qualitatively consistent with the report of Couzin et al. (2002) that zone parameters shift the collective state; we compare only qualitatively and only with the abstract-level content we read. The H1 mechanism, that connectivity supports alignment, is not supported in this model: A1 was more connected than A0 but less aligned. In A1 the alignment term competes with repulsion and attraction in the same update; whether the control-theoretic results cited above cover such rules was not checked, because only their abstracts or records were read.
+**Relation to prior work.** The sensitivity of A1's collective state to the cohesion weight is qualitatively consistent with the report of Couzin et al. (2002) that zone parameters shift the collective state; we compare only qualitatively and only with the abstract-level content we read for that source. The H1 mechanism, that connectivity supports alignment, is not supported in this model: A1 was more connected than A0 but less aligned. In A1 the alignment term competes with repulsion and attraction in the same update; whether the control-theoretic results cited above cover such rules was not checked: their full texts were consulted only for the statements cited in Section 2.
 
 **Practical significance.** For anyone designing local rules for simulated swarms, the result is a caution rather than a recommendation: adding prioritised separation and cohesion with the weights used here can cost most of the alignment that alignment alone achieves, and a disturbance-recovery comparison is uninformative unless pre-disturbance order is matched. The study says nothing about real robots or animals.
 
@@ -202,7 +202,7 @@ Once each run's own pre-shock level is subtracted, the A1 - A0 difference lies i
 - **Hardware.** One machine; wall-clock times were measured under heavy unrelated load. Distance-evaluation counts are deterministic.
 - **Steady state of A1.** Rule R-BI checked only A0's pre-shock alignment. Whether A1's order level at step 3000 is its long-run level was not checked; the order gap is therefore a pre-shock gap, not shown to be a stationary one.
 - **External validity.** Simulation only. No claim of biological fidelity, of robot performance or of guarantees for distributed systems in general.
-- **Literature.** Sources were read at the abstract or record level; the review was not systematic.
+- **Literature.** Each source was checked only for the statement cited, at the level stated in the reference list (Couzin et al. 2002 at the abstract level); the review was not systematic.
 
 The full list is in `research/limitations.md`.
 
@@ -224,14 +224,14 @@ The author is Mohamed Bechir Kefi (independent, no affiliation). Funding: none d
 
 # References
 
-- Ballerini, M., Cabibbo, N., Candelier, R., et al. (2008). Interaction ruling animal collective behavior depends on topological rather than metric distance: Evidence from a field study. *Proceedings of the National Academy of Sciences*, 105(4), 1232-1237. https://doi.org/10.1073/pnas.0711437105 (abstract read)
+- Ballerini, M., Cabibbo, N., Candelier, R., et al. (2008). Interaction ruling animal collective behavior depends on topological rather than metric distance: Evidence from a field study. *Proceedings of the National Academy of Sciences*, 105(4), 1232-1237. https://doi.org/10.1073/pnas.0711437105 (arXiv version arXiv:0709.1916 consulted; cited statement checked in the abstract and on p. 5 of that version)
 - Couzin, I. D., Krause, J., James, R., Ruxton, G. D., and Franks, N. R. (2002). Collective memory and spatial sorting in animal groups. *Journal of Theoretical Biology*, 218(1), 1-11. https://doi.org/10.1006/jtbi.2002.3065 (record and abstract read)
-- Cucker, F., and Smale, S. (2007). Emergent behavior in flocks. *IEEE Transactions on Automatic Control*, 52(5), 852-862. https://doi.org/10.1109/TAC.2007.895842 (record and abstract read)
-- Jadbabaie, A., Lin, J., and Morse, A. S. (2003). Coordination of groups of mobile autonomous agents using nearest neighbor rules. *IEEE Transactions on Automatic Control*, 48(6), 988-1001. https://doi.org/10.1109/TAC.2003.812781 (metadata record only)
-- Olfati-Saber, R. (2006). Flocking for multi-agent dynamic systems: Algorithms and theory. *IEEE Transactions on Automatic Control*, 51(3), 401-420. https://doi.org/10.1109/TAC.2005.864190 (technical-report record and abstract read)
-- Reynolds, C. W. (1987). Flocks, herds and schools: A distributed behavioral model. *ACM SIGGRAPH Computer Graphics*, 21(4), 25-34. https://doi.org/10.1145/37402.37406 (author's page and metadata read)
-- Vicsek, T., Czirok, A., Ben-Jacob, E., Cohen, I., and Shochet, O. (1995). Novel type of phase transition in a system of self-driven particles. *Physical Review Letters*, 75(6), 1226-1229. https://doi.org/10.1103/PhysRevLett.75.1226 (abstract read)
-- Vicsek, T., and Zafeiris, A. (2012). Collective motion. *Physics Reports*, 517(3-4), 71-140. https://doi.org/10.1016/j.physrep.2012.03.004 (abstract read)
+- Cucker, F., and Smale, S. (2007). Emergent behavior in flocks. *IEEE Transactions on Automatic Control*, 52(5), 852-862. https://doi.org/10.1109/TAC.2007.895842 (authors' preliminary preprint consulted; cited statement checked against its Theorem 1; published version not read)
+- Jadbabaie, A., Lin, J., and Morse, A. S. (2003). Coordination of groups of mobile autonomous agents using nearest neighbor rules. *IEEE Transactions on Automatic Control*, 48(6), 988-1001. https://doi.org/10.1109/TAC.2003.812781 (published version consulted in an institutional repository, for its topic only)
+- Olfati-Saber, R. (2006). Flocking for multi-agent dynamic systems: Algorithms and theory. *IEEE Transactions on Automatic Control*, 51(3), 401-420. https://doi.org/10.1109/TAC.2005.864190 (technical-report version CIT-CDS 2004-005 consulted; cited statements checked in its abstract and introduction; published version not read)
+- Reynolds, C. W. (1987). Flocks, herds and schools: A distributed behavioral model. *ACM SIGGRAPH Computer Graphics*, 21(4), 25-34. https://doi.org/10.1145/37402.37406 (author's reprint consulted; cited rules checked in its section "Simulated Flocks")
+- Vicsek, T., Czirok, A., Ben-Jacob, E., Cohen, I., and Shochet, O. (1995). Novel type of phase transition in a system of self-driven particles. *Physical Review Letters*, 75(6), 1226-1229. https://doi.org/10.1103/PhysRevLett.75.1226 (arXiv version arXiv:cond-mat/0611743 consulted; update rule checked at its Eq. 2 and the transition on pp. 5 and 6 of that version)
+- Vicsek, T., and Zafeiris, A. (2012). Collective motion. *Physics Reports*, 517(3-4), 71-140. https://doi.org/10.1016/j.physrep.2012.03.004 (arXiv version arXiv:1010.5017 consulted; Sections 2.1 and 4.1 read for the cited statement)
 
 # Supplementary material
 

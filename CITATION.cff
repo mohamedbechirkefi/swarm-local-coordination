@@ -1,15 +1,17 @@
 # SPDX-License-Identifier: LicenseRef-SWARM-NC-Research-1.0
 # Licence: SWARM Source-Available Non-Commercial Research License v1.0 (custom, see LICENSE).
 # No SPDX "license" field is given because the licence is not on the SPDX list.
+# M6 (2026-11-25): version 0.1.0-rc1 marks a release candidate; no date-released until a release exists
+# (owner-approvals-2026-11-25e, coordinator default; re-adding it is part of the owner's publication step).
 # Authorship per the owner's decision C3 (2026-11-24): one author, no affiliation. AI assistance is disclosed in the manuscript; the AI is not an author.
 cff-version: 1.2.0
 message: "If you use this work, please cite it as below. Status: independent research manuscript / preprint draft, not peer-reviewed; all results are simulated. Repository URL: [to be added by the owner on release]."
-title: "SWARM: simulation code and results for \"A zonal separation-cohesion rule sustains less order than alignment alone, and the design did not measure recovery\""
+title: "SWARM: simulation code and results for \"A zonal separation-cohesion rule sustains less order than alignment alone, and the design did not measure recovery: a preregistered simulation comparison under a heading shock\""
 type: software
 authors:
   - family-names: Kefi
     given-names: Mohamed Bechir
-version: 0.0.0
+version: 0.1.0-rc1
 keywords:
   - collective motion
   - flocking

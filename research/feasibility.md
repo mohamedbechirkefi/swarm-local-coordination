@@ -9,18 +9,18 @@
 | Cores by type | `sysctl -n hw.physicalcpu hw.perflevel0.physicalcpu hw.perflevel1.physicalcpu` | `10`, `8` (performance), `2` (efficiency) |
 | RAM | `sysctl -n hw.memsize` | `17179869184` bytes (16 GiB) |
 | OS | `sw_vers` | macOS 15.3.1, build 24D70 |
-| Free disk | `df -h /Users/bechir` | 129 GiB available of 460 GiB (the brief said about 127 GB; the difference is ordinary churn) |
+| Free disk | `df -h <home directory>` | 129 GiB available of 460 GiB (the brief said about 127 GB; the difference is ordinary churn) |
 
 ## 2. Tools (confirmed by command)
 
 | Tool | Location | Version output |
 | --- | --- | --- |
 | Python | `/usr/local/bin/python3` | `Python 3.12.1` |
-| uv | `/Users/bechir/research/labs/.tools/py/bin/uv` | `uv 0.9.5 (d5f39331a 2025-10-21)` |
-| typst (Python package) | `/Users/bechir/research/labs/.tools/py/bin/python` | `0.15.0` (`pip show typst`) |
+| uv | `<workspace>/labs/.tools/py/bin/uv` | `uv 0.9.5 (d5f39331a 2025-10-21)` |
+| typst (Python package) | `<workspace>/labs/.tools/py/bin/python` | `0.15.0` (`pip show typst`) |
 | pypdf, pillow | same venv | `6.20.0`, `11.3.0` |
-| pandoc | `/Users/bechir/research/labs/.tools/pandoc` | `pandoc 3.6.3` |
-| Node | `/Users/bechir/research/helix/.tools/node/bin/node` (read-only use) | `v22.23.3` |
+| pandoc | `<workspace>/labs/.tools/pandoc` | `pandoc 3.6.3` |
+| Node | `<workspace>/helix/.tools/node/bin/node` (read-only use) | `v22.23.3` |
 | git | system | `git version 2.42.1` |
 | TeX | `which tex pdflatex xelatex typst` | not found (no TeX distribution, no typst CLI) |
 

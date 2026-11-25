@@ -302,5 +302,5 @@
   }
  ],
  "claims_without_artifact": [],
- "external_claims": "EXT-001 to EXT-008 map to sources in research/literature_review.md (abstract or record level)"
+ "external_claims": "EXT-001 to EXT-008 map to sources in research/literature_review.md; the level consulted for each (M6: full text for seven, abstract for Couzin et al. 2002) is in research/claims_register.csv and research/publication/evidence_audit.md section 7"
 }

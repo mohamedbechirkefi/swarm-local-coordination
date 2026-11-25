@@ -301,3 +301,37 @@ Offline after the first load, responsive at 360 px, usable with the keyboard, no
 ### Next action
 
 M6 (release candidate) when the owner says so; owner decisions above.
+
+## 2026-11-25: Session M6 (release candidate, local)
+
+**Milestone:** M6, on owner, 2026-11-25, "Next" (second) (`labs/_shared/owner-approvals-2026-11-25e.md`) and `labs/_shared/M6-brief.md`. Recorded as DL-018. EXP-004 stays registered, not frozen, not run.
+
+### What was done
+
+- Pre-checks: `git status` clean at `8db419b`; read the brief, the approvals record, CLAUDE.md, the M6 row, master prompt M6 lines, progress (M5 placeholders), the publication folder and the PDF builder.
+- Clean clone (`<scratch>` is the session scratch folder outside the repository): `git clone -q <repository> <scratch>/clone`; `uv sync --frozen --all-groups --all-extras`; `pytest -q` -> `143 passed in 45.11s`; smoke `swarm.cli smoke --config experiments/EXP-001/smoke_m3.json --workers 2` -> `15 runs ... (0 failed)`, `analyse_confirmatory.py check` -> `runs_with_mismatch 0`; comparison with the committed files: 165 non-timing fields, 0 mismatches, `metrics.csv` equal without `wall_s`; demo `npm ci --prefer-offline` -> `added 53 packages`, `npm test` -> `Tests 22 passed (22)`, `npm run build` -> built, `node tools/a11y_check.mjs dist` -> 12 PASS lines and `A11Y-CHECK PASS`; `scripts/export_demo_data.py` then `git status --short | wc -l` -> `0`. No failure found.
+- PDFs: `scripts/build_pdfs.py` (new) -> manuscript 15 pages, supplementary 4, EXP-001 report 4, EXP-002 report 11, EXP-003 report 8; `manuscript.tex` regenerated with its SPDX header. Every manuscript page and the first and figure pages of each report rendered to PNG at 60 ppi and read. Fixed in `build_pdf`: numbered-list artefact from line wrapping ("3499."), doubled figure labels, orphaned table caption, equal-width table columns, figure and caption overflowing the footer, dropped captions before generated-block markers, Typst root excluding `results/`. Metadata (pypdf): title and author set, 0 e-mail addresses, 0 local paths.
+- References: free legal full texts consulted for 7 of 8 sources (Vicsek et al. 1995, Reynolds 1987, Jadbabaie, Lin and Morse 2003, Olfati-Saber technical report, Cucker and Smale preprint, Ballerini et al. 2008, Vicsek and Zafeiris 2012 sections 2.1 and 4.1); Couzin et al. 2002 stays abstract only. No statement contradicted; level-of-reading wording updated (manuscript, EXP-002 report note, medium article, bib header, EXT rows, evidence audit section 7, literature review section 7).
+- Links and manifests: `scripts/check_links.py` (new) -> 22 relative links, 0 problems; 8 bib entries, 0 problems; `LINK-CHECK PASS`; `tests/test_links_refs.py` (4 tests). `audit_numbers.py` -> `total 770, unmatched 0` (arXiv identifiers now skipped). Artifact manifest: 22 paths present, 16 hash pairs equal. Raw manifests: 1,605 entries, 0 mismatched. `data/manifest.json` SHA-256 `ede591fc...f105` as recorded in DL-016.
+- Scan of 274 tracked and new text files: 0 e-mail addresses, 0 tokens or keys, 0 private key headers, 0 `.env` files; home-directory paths in 6 files: removed from README, `src/swarm/report.py` and `research/feasibility.md`; kept in CLAUDE.md for the owner; this journal and `research/experiment_journal.jsonl` each keep one local path in an earlier entry (M5 screenshot folder and an earlier command), left as written because both files are append-only; the owner decides before publication whether the journals are published.
+- Licences: `research/publication/dependency_licences.md` (24 Python, 53 npm; no flag outside the permissive list; pandoc noted as a GPL build tool). SPDX: 74 text files added since M0, all with the header.
+- `CITATION.cff`: no `date-released` was present; version `0.1.0-rc1`; title quotes the full manuscript title; structural CFF 1.2.0 check passed.
+- Owner review: 0 boxes ticked; section "Prepared for the owner (M6, 2026-11-25)" added with reading list, open decisions and placeholders by line. Release checklist: 7 items ticked with evidence, 2 owner items open, dated status line.
+- Records: reproducibility report, DL-018, journal M6-CLEAN-CLONE, roadmap M6 status, README status, CONTRIBUTING commands.
+
+### Commands and outputs (working repository)
+
+    .venv/bin/python -m pytest -q                -> 147 passed in 5.80s
+    .venv/bin/python scripts/export_demo_data.py --check -> results.json up to date (claims register and artifact manifest hashes refreshed)
+    cd demo && npm test                          -> Test Files 2 passed (2); Tests 22 passed (22)
+    cd demo && npm run build                     -> built in 105ms
+    cd demo && node tools/a11y_check.mjs dist    -> A11Y-CHECK PASS
+
+### Not done, and why
+
+- No push, tag, release or remote change (G-PUBLIC); no `author_review.md` box ticked; no EXP-004 freeze or run (G-FREEZE).
+- `experiments/analyse_confirmatory.py` (frozen analysis) was not edited, although its generated figure blocks end directly after an image; the PDF builder compensates.
+
+### Next action
+
+Owner: read the items in `research/publication/author_review.md` ("Prepared for the owner"), tick the boxes, fill the placeholders, and decide on publication (G-PUBLIC) and on EXP-004 (G-FREEZE).

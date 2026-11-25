@@ -12,6 +12,7 @@ import csv
 import json
 import math
 import os
+import re
 import shutil
 import subprocess
 from collections import defaultdict
@@ -24,8 +25,11 @@ from .config import SimConfig
 from .manifest import environment, utc_now
 from .runner import load_results
 
-PANDOC = os.environ.get("SWARM_PANDOC", "/Users/bechir/research/labs/.tools/pandoc")
-TYPST_PYTHON = os.environ.get("SWARM_TYPST_PYTHON", "/Users/bechir/research/labs/.tools/py/bin/python")
+# Default tool locations: the workspace-local toolchain next to the repository
+# (``../.tools``, research/feasibility.md); override with the environment variables.
+_TOOLS = Path(__file__).resolve().parents[3] / ".tools"
+PANDOC = os.environ.get("SWARM_PANDOC", str(_TOOLS / "pandoc"))
+TYPST_PYTHON = os.environ.get("SWARM_TYPST_PYTHON", str(_TOOLS / "py" / "bin" / "python"))
 MAINFONT = "Libertinus Serif"
 
 
@@ -250,15 +254,67 @@ def build_report(results_dir: Path, title: str, pdf: bool = False, workers_assum
     return md
 
 
-def build_pdf(md: Path) -> Path:
-    """Markdown -> Typst (pandoc, mainfont workaround) -> PDF (typst package)."""
+# Layout rules found necessary in the M6 visual inspection: the Markdown
+# captions carry their own "Figure N" labels, long tables must be able to break
+# across pages (otherwise the caption paragraph is orphaned), table cells are
+# left-aligned and not justified, and a tall figure
+# is scaled down so that figure and caption fit the text area.
+TYPST_RULES = [
+    "#set figure(numbering: none)",
+    "#show figure.where(kind: table): set block(breakable: true)",
+    "#show figure.where(kind: table): set align(left)",
+    "#show table: set par(justify: false)",
+    "#show table: set text(size: 0.9em)",
+    "#show table.cell: set align(left)",
+    "#show image: it => layout(size => { let h = measure(it, width: size.width).height; "
+    "if h > 15cm { scale(15cm / h * 100%, reflow: true, it) } else { it } })",
+]
+
+
+def _typst_str(s: str) -> str:
+    return '"' + s.replace("\\", "\\\\").replace('"', '\\"') + '"'
+
+
+def build_pdf(md: Path, root: Path | None = None, title: str | None = None,
+              author: str | None = None, page_numbers: bool = False) -> Path:
+    """Markdown -> Typst (pandoc, mainfont workaround) -> PDF (typst package).
+
+    ``root`` is the Typst project root (default: the Markdown file's folder); it
+    must contain every image the document references, for example the
+    repository root for figures under ``results/``. ``title`` and ``author``
+    set the PDF metadata through ``#set document`` when the Markdown file has
+    no YAML title (M6). The intermediate ``.typ`` file is left next to the
+    Markdown file; callers may remove it.
+    """
     md = Path(md).resolve()
+    root = Path(root).resolve() if root is not None else md.parent
     typ = md.with_suffix(".typ")
     pdf = md.with_suffix(".pdf")
-    subprocess.run([PANDOC, md.name, "-f", "markdown", "-t", "typst", "-s",
-                    "-V", f"mainfont={MAINFONT}", "-o", typ.name], cwd=md.parent, check=True)
+    # --wrap=none: a wrapped line that starts with "3499." would be read by
+    # Typst as a numbered-list item (found in M6 visual inspection).
+    # --columns=10000: pipe tables get automatic column widths instead of equal
+    # shares, which wrapped every confidence interval in M6.
+    cmd = [PANDOC, "-f", "markdown", "-t", "typst", "-s", "--wrap=none", "--columns=10000",
+           "-V", f"mainfont={MAINFONT}", "-o", typ.name]
+    for rule in TYPST_RULES:
+        cmd += ["-V", f"header-includes={rule}"]
+    if page_numbers:
+        cmd += ["-V", "page-numbering=1"]
+    meta = []
+    if title:
+        meta.append(f"title: {_typst_str(title)}")
+    if author:
+        meta.append(f"author: {_typst_str(author)}")
+    if meta:
+        cmd += ["-V", "include-before=#set document(" + ", ".join(meta) + ")"]
+    # An image directly followed by an HTML comment (the end marker of a
+    # generated block) is not alone in its paragraph, so pandoc renders it
+    # inline and drops its caption (M6). A blank line is inserted for the PDF
+    # only; the Markdown source is not changed.
+    text = re.sub(r"^(!\[.*\)[ \t]*)\n(?=<!--)", r"\1\n\n", md.read_text(encoding="utf-8"), flags=re.M)
+    subprocess.run(cmd, cwd=md.parent, check=True, input=text, text=True)
     code = ("import sys, typst; typst.compile(sys.argv[1], output=sys.argv[2], root=sys.argv[3])")
-    subprocess.run([TYPST_PYTHON, "-I", "-c", code, str(typ), str(pdf), str(md.parent)],
+    subprocess.run([TYPST_PYTHON, "-I", "-c", code, str(typ), str(pdf), str(root)],
                    cwd=md.parent, check=True)
     if not pdf.exists() or pdf.stat().st_size == 0:
         raise RuntimeError(f"PDF not produced: {pdf}")

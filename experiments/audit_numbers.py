@@ -59,7 +59,7 @@ SOURCES = ["results/confirmatory/EXP-002/analysis/analysis.json",
 PROTOCOL_TEXT = "research/protocol.md"
 
 TOKEN = re.compile(r"(?<![\w.])[-+]?\d+\.\d+(?![\w.]*\d)")
-SKIP = re.compile(r"[0-9a-f]{12,}|\d{4}-\d{2}-\d{2}|\d+\.\d+\.\d+|10\.\d{4,}/\S+"
+SKIP = re.compile(r"arXiv:\S+|[0-9a-f]{12,}|\d{4}-\d{2}-\d{2}|\d+\.\d+\.\d+|10\.\d{4,}/\S+"
                   r"|(?:Sections?|section|sections) \d+\.\d+(?: (?:and|to) \d+\.\d+)?|^#+ \d+\.\d+|\(1\d\.\d\)", re.M)
 # Method constants that are not results: 1.96 (normal quantile used for the +/- 1.96 standard-error band
 # in FIG-EXP002-02, defined in experiments/analyse_confirmatory.py).

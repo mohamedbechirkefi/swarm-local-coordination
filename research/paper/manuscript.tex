@@ -86,7 +86,7 @@ preregistered simulation comparison under a heading shock}
 \subtitle{Independent research manuscript / preprint draft, not
 peer-reviewed. All results are simulated.}
 \author{Mohamed Bechir Kefi}
-\date{Draft of 2026-11-25 (M4)}
+\date{Draft of 2026-11-25 (M6 release candidate)}
 
 \begin{document}
 \maketitle
@@ -179,10 +179,14 @@ systematic.
 
 \section{2. Related work}\label{related-work}
 
-All sources below were checked for bibliographic metadata and read at
-the abstract or record level only; full texts were not read
-(\texttt{research/literature\_review.md}). Statements about them are
-limited accordingly.
+All sources below were checked for bibliographic metadata
+(\texttt{research/literature\_review.md}). In M6 (2026-11-25), a free
+legal full text was consulted for seven of the eight sources to check
+the specific statement made about each, and the page or section is
+recorded in \texttt{research/publication/evidence\_audit.md}; the
+reference list states, for each source, which version was consulted and
+how much of it. Couzin et al.~(2002) remains read at the abstract level
+only. Statements about the sources are limited to what was checked.
 
 \textbf{Alignment-only models.} Vicsek et al.~(1995) introduced
 self-driven particles that adopt the mean heading of neighbours within a
@@ -200,13 +204,13 @@ weights.
 
 \textbf{Control-theoretic flocking.} Jadbabaie, Lin and Morse (2003)
 studied the coordination of groups of mobile autonomous agents using
-nearest-neighbour rules; only the bibliographic record of this paper was
-accessed, so we cite it for its topic and do not characterise its
-results. Olfati-Saber (2006) presented flocking algorithms with
-alignment, separation and cohesion and stated that flocks need no
-leaders. Cucker and Smale (2007) studied velocity consensus with
-distance-decaying coupling. The abstract of Cucker and Smale (2007)
-relates convergence to how coupling decays with distance between agents;
+nearest-neighbour rules; its full text was consulted only to confirm the
+topic, so we cite it for its topic and do not characterise its results.
+Olfati-Saber (2006) presented flocking algorithms with alignment,
+separation and cohesion and stated that flocks need no leaders. Cucker
+and Smale (2007) studied velocity consensus with distance-decaying
+coupling. Cucker and Smale (2007; Theorem 1 of the authors' preprint)
+relate convergence to how coupling decays with distance between agents;
 this, together with the cohesion terms of Olfati-Saber (2006), motivated
 the mechanism in H1 that cohesion may preserve connectivity and so help
 recovery. None of these sources tests our specific disturbance.
@@ -693,12 +697,12 @@ inside the repulsion zone per step), so it remains a hypothesis.
 state to the cohesion weight is qualitatively consistent with the report
 of Couzin et al.~(2002) that zone parameters shift the collective state;
 we compare only qualitatively and only with the abstract-level content
-we read. The H1 mechanism, that connectivity supports alignment, is not
-supported in this model: A1 was more connected than A0 but less aligned.
-In A1 the alignment term competes with repulsion and attraction in the
-same update; whether the control-theoretic results cited above cover
-such rules was not checked, because only their abstracts or records were
-read.
+we read for that source. The H1 mechanism, that connectivity supports
+alignment, is not supported in this model: A1 was more connected than A0
+but less aligned. In A1 the alignment term competes with repulsion and
+attraction in the same update; whether the control-theoretic results
+cited above cover such rules was not checked: their full texts were
+consulted only for the statements cited in Section 2.
 
 \textbf{Practical significance.} For anyone designing local rules for
 simulated swarms, the result is a caution rather than a recommendation:
@@ -752,8 +756,9 @@ validity}\label{limitations-and-threats-to-validity}
   fidelity, of robot performance or of guarantees for distributed
   systems in general.
 \item
-  \textbf{Literature.} Sources were read at the abstract or record
-  level; the review was not systematic.
+  \textbf{Literature.} Each source was checked only for the statement
+  cited, at the level stated in the reference list (Couzin et al.~2002
+  at the abstract level); the review was not systematic.
 \end{itemize}
 
 The full list is in \texttt{research/limitations.md}.
@@ -826,7 +831,9 @@ not peer review.
   ruling animal collective behavior depends on topological rather than
   metric distance: Evidence from a field study. \emph{Proceedings of the
   National Academy of Sciences}, 105(4), 1232-1237.
-  https://doi.org/10.1073/pnas.0711437105 (abstract read)
+  https://doi.org/10.1073/pnas.0711437105 (arXiv version arXiv:0709.1916
+  consulted; cited statement checked in the abstract and on p.~5 of that
+  version)
 \item
   Couzin, I. D., Krause, J., James, R., Ruxton, G. D., and Franks, N. R.
   (2002). Collective memory and spatial sorting in animal groups.
@@ -835,30 +842,39 @@ not peer review.
 \item
   Cucker, F., and Smale, S. (2007). Emergent behavior in flocks.
   \emph{IEEE Transactions on Automatic Control}, 52(5), 852-862.
-  https://doi.org/10.1109/TAC.2007.895842 (record and abstract read)
+  https://doi.org/10.1109/TAC.2007.895842 (authors' preliminary preprint
+  consulted; cited statement checked against its Theorem 1; published
+  version not read)
 \item
   Jadbabaie, A., Lin, J., and Morse, A. S. (2003). Coordination of
   groups of mobile autonomous agents using nearest neighbor rules.
   \emph{IEEE Transactions on Automatic Control}, 48(6), 988-1001.
-  https://doi.org/10.1109/TAC.2003.812781 (metadata record only)
+  https://doi.org/10.1109/TAC.2003.812781 (published version consulted
+  in an institutional repository, for its topic only)
 \item
   Olfati-Saber, R. (2006). Flocking for multi-agent dynamic systems:
   Algorithms and theory. \emph{IEEE Transactions on Automatic Control},
   51(3), 401-420. https://doi.org/10.1109/TAC.2005.864190
-  (technical-report record and abstract read)
+  (technical-report version CIT-CDS 2004-005 consulted; cited statements
+  checked in its abstract and introduction; published version not read)
 \item
   Reynolds, C. W. (1987). Flocks, herds and schools: A distributed
   behavioral model. \emph{ACM SIGGRAPH Computer Graphics}, 21(4), 25-34.
-  https://doi.org/10.1145/37402.37406 (author's page and metadata read)
+  https://doi.org/10.1145/37402.37406 (author's reprint consulted; cited
+  rules checked in its section ``Simulated Flocks'')
 \item
   Vicsek, T., Czirok, A., Ben-Jacob, E., Cohen, I., and Shochet, O.
   (1995). Novel type of phase transition in a system of self-driven
   particles. \emph{Physical Review Letters}, 75(6), 1226-1229.
-  https://doi.org/10.1103/PhysRevLett.75.1226 (abstract read)
+  https://doi.org/10.1103/PhysRevLett.75.1226 (arXiv version
+  arXiv:cond-mat/0611743 consulted; update rule checked at its Eq. 2 and
+  the transition on pp.~5 and 6 of that version)
 \item
   Vicsek, T., and Zafeiris, A. (2012). Collective motion. \emph{Physics
   Reports}, 517(3-4), 71-140.
-  https://doi.org/10.1016/j.physrep.2012.03.004 (abstract read)
+  https://doi.org/10.1016/j.physrep.2012.03.004 (arXiv version
+  arXiv:1010.5017 consulted; Sections 2.1 and 4.1 read for the cited
+  statement)
 \end{itemize}
 
 \section{Supplementary material}\label{supplementary-material}

@@ -1,7 +1,7 @@
 <!-- SPDX-License-Identifier: LicenseRef-SWARM-NC-Research-1.0 -->
 # Supplementary material
 
-Companion to `research/paper/manuscript.md` (draft of 2026-11-25, M4). Independent research manuscript / preprint draft, not peer-reviewed. All results are simulated. Extended tables are not retyped here: they are the generated blocks in the experiment reports and the machine-readable files named below, so that every table has one generated source.
+Companion to `research/paper/manuscript.md` (draft of 2026-11-25, M6 release candidate). Independent research manuscript / preprint draft, not peer-reviewed. All results are simulated. Extended tables are not retyped here: they are the generated blocks in the experiment reports and the machine-readable files named below, so that every table has one generated source.
 
 ## S1. Complete experimental matrix
 

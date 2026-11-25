@@ -46,7 +46,7 @@ A follow-up, registered as EXP-004, would match the two rules' order before the 
 - Everything here is a property of a simulated model: two dimensions, constant speed, synchronous updates, one disturbance type, one population size. Nothing is claimed about real animals, robots or distributed systems in general.
 - A0 could not align before the shock in 10 of the 18 conditions; those conditions compare two disordered states and are kept and flagged.
 - The change-score analysis is exploratory.
-- The literature was read at abstract or record level, and the review was not systematic.
+- Each cited source was checked only for the statement made about it, at the level stated in the manuscript's reference list, and the review was not systematic.
 
 ## Figures
 

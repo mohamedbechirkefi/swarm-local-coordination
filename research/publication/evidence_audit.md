@@ -82,3 +82,20 @@ All eight references were checked for bibliographic metadata against Crossref on
 - Every numerical claim in the manuscript maps to a result file and key, a config or protocol hash and a figure or table (artifact manifest, claims register, number audit). Claims with no figure or table (CL-009, CL-010, CL-013, CL-014) map to a result file and section.
 - Every external claim maps to a source that was actually accessed, with the level read stated; the one claim that exceeded the read level (F1) was removed.
 - Contradictory, null and exploratory results are in the manuscript (Sections 5.2 to 5.4 and 7).
+
+## 7. M6 reference verification (2026-11-25)
+
+M6 tried to open a free, legal full text for every source that a manuscript statement depends on (publisher open access, arXiv, author page or an institutional repository; no paid access, no login, no shadow library). Text was extracted from the downloaded PDFs with pypdf in a scratch folder outside the repository; nothing downloaded was committed. Each cited statement was checked against the text, and the manuscript reference list now states the version consulted. Labels: **full text** means the version named was opened and the cited statement was found at the place given; it does not mean every page was studied. No source contradicted the statement made about it.
+
+| source | M6 label | version consulted | where the cited statement was checked | result |
+| --- | --- | --- | --- | --- |
+| Vicsek et al. 1995 | full text | arXiv:cond-mat/0611743 (preprint) | update rule: Eq. 2 (p. 4); transition with noise and density: pp. 5 and 6 | consistent |
+| Couzin et al. 2002 | abstract only | repository record and abstract (M4) | abstract | not re-checked; a copy hosted on a third-party course page was found through Semantic Scholar but not used, because it is neither the authors' nor the publisher's |
+| Reynolds 1987 | full text | author's reprint at red3d.com (text without figures) | section "Simulated Flocks": collision avoidance, velocity matching, flock centering | consistent |
+| Jadbabaie, Lin and Morse 2003 | full text, topic only | published version in the University of Pennsylvania repository (via Unpaywall) | abstract and Section I: coordination of agents with nearest-neighbour heading rules (Vicsek model) | consistent; still cited for its topic only (F1 stands) |
+| Olfati-Saber 2006 | full text of the technical report | CIT-CDS 2004-005 (CaltechAUTHORS, open) | abstract ("flocks need no leaders"); introduction (cohesion, separation and alignment rules of Reynolds) | consistent; the published 2006 version was not read |
+| Cucker and Smale 2007 | full text of the preprint | authors' preliminary version (TTIC author page) | Theorem 1: convergence of velocities depends on how the coupling decays with distance | consistent; the published version was not read |
+| Ballerini et al. 2008 | full text | arXiv:0709.1916 (preprint) | abstract (six to seven neighbours); p. 5 (topological range estimate) | consistent |
+| Vicsek and Zafeiris 2012 | cited sections read | arXiv:1010.5017 (preprint) | Section 2.1 (order parameters); Section 4.1 (self-propelled particle models) | consistent |
+
+Counts: full text 7 (one of them for the topic only, two of them pre-publication or report versions), abstract only 1, unverified 0. Claims qualified: none needed a change of substance; the manuscript's level-of-reading statements (Section 2 opening, the Jadbabaie and Cucker and Smale sentences, Section 6 "Relation to prior work", the literature limitation and the reference list), the EXP-002 report (dated note), `articles/medium.md`, the bib header and EXT-001 to EXT-008 in the claims register were updated to the new levels. Couzin et al. (2002) remains used only for a qualitative comparison at abstract level.

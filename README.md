@@ -11,7 +11,7 @@
 
 ## Status (2026-11-25)
 
-M0 to M4 are done and M5 (interactive page and article drafts) is done; M6 (release candidate) has not started. The owner has approved the manuscript title and the funding, competing-interest and AI-use statements (2026-11-25). Full-text owner review of the manuscript is pending and belongs to M6. Nothing has been published or pushed.
+M0 to M5 are done. M6: a release candidate (version 0.1.0-rc1) is prepared and awaits the owner's review and approval to publish; the manuscript and report PDFs are in `research/paper/` and `research/experiments/EXP-00N/`. The owner has approved the manuscript title and the funding, competing-interest and AI-use statements (2026-11-25). Nothing has been published or pushed.
 
 ## What is implemented
 
@@ -44,9 +44,11 @@ Limitations: `research/limitations.md`. Claims and their evidence: `research/cla
 
 ## Quick start
 
-    /Users/bechir/research/labs/.tools/py/bin/uv sync --frozen
-    /Users/bechir/research/labs/.tools/py/bin/uv run python -m pytest -q
-    /Users/bechir/research/labs/.tools/py/bin/uv run python -m swarm.cli smoke --config experiments/EXP-001/smoke.json
+    uv sync --frozen
+    uv run python -m pytest -q
+    uv run python -m swarm.cli smoke --config experiments/EXP-001/smoke.json
+
+(`uv` 0.9.5 was used; the PDF builder expects pandoc 3.6.3 and the `typst` Python package, located by default in `../.tools/` or set with `SWARM_PANDOC` and `SWARM_TYPST_PYTHON`.)
 
 Demo page (static, offline after the first load, no runtime service):
 
