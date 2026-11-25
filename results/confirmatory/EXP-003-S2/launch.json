@@ -1,0 +1,23 @@
+{
+ "record_type": "swarm.launch",
+ "launched_utc": "2026-11-25T00:04:14.075366Z",
+ "git_revision": "075cf7c5f571c03ede9b8d551c3ba43766172a39",
+ "git_dirty": true,
+ "package_version": "0.1.0",
+ "python": "3.12.1",
+ "numpy": "2.5.4",
+ "os": "Darwin 24.3.0 (macOS-15.3.1-arm64-arm-64bit)",
+ "cpu": "Apple M1 Pro",
+ "config_path": "experiments/EXP-003/config_S2.json",
+ "config_sha256": "24523e26029d6acdb9fa4a379a815a1e38c896c08d92db16ac8c6828b340a62b",
+ "config_canonical_sha256": "47e3e9e6edfd78f971e37d8a6b998734f0d4e4ed0f77a6bb738009f6c02d1398",
+ "data_manifest_path": "data/manifest.json",
+ "data_manifest_sha256": "94fe5a7ba3b9bfde343e967d073ca77e2bb4d100d7f62933eb608d746a623471",
+ "load_average": [
+  3.3388671875,
+  7.35546875,
+  21.0107421875
+ ],
+ "cpu_count": 10,
+ "memory_bytes": 17179869184
+}

@@ -1,0 +1,13 @@
+{
+ "label": "confirmatory",
+ "runs": 160,
+ "failed": 0,
+ "mean_runtime_s": 2.2344952012688735,
+ "projection": {
+  "full_matrix_runs": 160,
+  "serial_s": 357.5192322030198,
+  "workers_assumed": 8,
+  "parallel_s": 44.68990402537747
+ },
+ "paired_differences": []
+}

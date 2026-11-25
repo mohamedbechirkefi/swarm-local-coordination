@@ -1,0 +1,32 @@
+{
+ "record_type": "swarm.raw_manifest",
+ "generated_utc": "2026-11-24T23:34:33.497305Z",
+ "directory": "results/exploratory/EXP-001-smoke-m3",
+ "process_exit_status": 0,
+ "runs": 15,
+ "failed": 0,
+ "total_bytes": 401582,
+ "sha256": {
+  "experiment_config.json": "973b7226ec7538f4c0ecf403fa07849d5585144deb66ea7a9394cee1b120f58a",
+  "metrics.csv": "703c32be9af4da4fb5def1810446400fa5bb51c54b6c0d2335e6a9fcb46a4dac",
+  "run_manifest.json": "c8762e0559ba751ea90b18f8970fcbe2e74576698582326bead51478f8645376",
+  "execution.json": "e6d60fa311120ab336377f775ae2e74aea6fd61f5242f56eff54fd9bac2f4052",
+  "launch.json": "23eedcedeedfe88de18942081db889b8b2ecf7c7c161aa03817232af6417fceb",
+  "runs/EXP-001_A0_density1_noise0.3_radius1_s101.json": "12212465aca8ba0e8fd89348713c39024074a9f3f45eabfa259bc03c1ba4d5b2",
+  "runs/EXP-001_A0_density1_noise0.3_radius1_s102.json": "d36260ea50c272d036aeb97362ed1b6dcefb897b9f6f3233c1d37440ae45d80b",
+  "runs/EXP-001_A0_density1_noise0.3_radius1_s103.json": "e968fd27329515408144df25a10d63ca6933bfa168b46a6520263acdaf8c636f",
+  "runs/EXP-001_A0_density1_noise0.3_radius1_s104.json": "96bef8ef7a510c3684039644b9250094241b16bc89961385b687d1ea9192d054",
+  "runs/EXP-001_A0_density1_noise0.3_radius1_s105.json": "b5b5a254c79cda990c1154a44dcfd7ad6b0bb054e218e79984001fef63cd2ec0",
+  "runs/EXP-001_A1_density1_noise0.3_radius1_s101.json": "218ef94b301a7a2f1d1326cec11105bbb686af7ecc8a360cdfeec294766d7e82",
+  "runs/EXP-001_A1_density1_noise0.3_radius1_s102.json": "76d2855e13c4ce07f9022d5c79cd6fabbe3322e4e24455714471c7e0aa084a86",
+  "runs/EXP-001_A1_density1_noise0.3_radius1_s103.json": "4154199e5988b0d546065031dc6dd2d72fc391a013c2f8b64f10a270308944f9",
+  "runs/EXP-001_A1_density1_noise0.3_radius1_s104.json": "dc18f49f287584dec3ffb35c2c04b1dffbbb47c69e723df484db4917460eae07",
+  "runs/EXP-001_A1_density1_noise0.3_radius1_s105.json": "5c937f942a73ebd7f7409f9ff0dd9b43f0d1607a7ce15e3c36e1c4fb89b2f1c8",
+  "runs/EXP-001_A2_density1_noise0.3_radius1_s101.json": "05c8051d2541e04b97e776ca44ef47e3542e7f8ed2fecc4ef54f3f4b7188c2c5",
+  "runs/EXP-001_A2_density1_noise0.3_radius1_s102.json": "1a8f7ee1fbc8ad7d57bb446eff1a71043feeddbe5f8285481e63a2b8d2c7076e",
+  "runs/EXP-001_A2_density1_noise0.3_radius1_s103.json": "e5cd768061f4465b72b03aaeda67d7ab5878c8abec7bdb7fda9ba847d70571b8",
+  "runs/EXP-001_A2_density1_noise0.3_radius1_s104.json": "51e28c8c98c7ea796d030a3bb860628dd5b5be15e218a6e696c6239a39d4a232",
+  "runs/EXP-001_A2_density1_noise0.3_radius1_s105.json": "f7aa0d15d5e2e7feac6e9b3bc5c0a54c6ddd0a3900ea9bc2c510f1e3594b7bb4",
+  "provenance.csv": "61ff1f31bdf9cae172590c6e88589d68b1e970725ba26682c7c5e67034e83536"
+ }
+}

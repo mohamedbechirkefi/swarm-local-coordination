@@ -1,7 +1,7 @@
 <!-- SPDX-License-Identifier: LicenseRef-SWARM-NC-Research-1.0 -->
 # Limitations (living document, M0)
 
-No results exist yet. This file lists limitations known by design; result-dependent limitations are added in M4.
+Items 1 to 12 are known by design; items 13 to 15 were added in M3 from measured results and session events. Further result-dependent limitations are added in M4.
 
 1. **Simulation only.** Every outcome is a property of the simulated model. No claim of biological fidelity, robot performance or universal distributed-system guarantees (master prompt section 10, claims boundary).
 2. **Two dimensions, constant speed, discrete synchronous updates.** Results may not transfer to 3-D, variable-speed, asynchronous or continuous-time models.
@@ -15,3 +15,6 @@ No results exist yet. This file lists limitations known by design; result-depend
 10. **A0 is disordered before the shock in 10 of 18 cells** of the frozen design, even after the lengthened burn-in (rule R-BI, t_d = 3000; m(4000) between 0.070 and 0.347). In those cells phi_post says little about recovery; they are kept in the pooled estimand and flagged.
 11. **A1 may be weakly ordered before the shock at w_c = 0.5** (pre-freeze diagnostic: phi_pre 0.251 in the most favourable cell at T = 500). The A1 - A0 contrast can still carry a pre-shock phase difference; phi_pre is reported per arm and cell.
 12. **Primary values were seen before the freeze** in one smoke cell under the draft design (C4 disclosure in `research/protocol_freeze.json`).
+13. **The primary contrast measures a phase difference, not recovery (M3, measured).** In EXP-002, A1 is disordered before the shock in every cell (mean phi_pre 0.097 to 0.229), and phi_pre A1 - A0 (-0.312 [-0.319, -0.304]) is nearly equal to Delta (-0.307 [-0.313, -0.302]). The shock's effect on phi_post is small next to the stationary order level of each arm, so the rejection of H0 says that A1 is less polarized than A0 at w_c = 0.5, not that it recovers worse. Limitation 11 is therefore realised, and EXP-003 does not remove it (Delta_S grows with w_c).
+14. **Provenance flag on EXP-003 runs (M3).** 134 of 160 S1 runs and all 320 S2 and S3 runs record `git_dirty: true`, caused by an uncommitted journal edit during the runs; no code, configuration or protocol differed from revision 075cf7c, and 6 flagged runs re-simulated from clean code were bit-identical (DL-013).
+15. **Standalone experiment reports (11.3) for EXP-001 to EXP-003 were not written in M3** (DL-013). The analysis outputs, figures and generated run reports exist; the 12-part reports remain to be written.

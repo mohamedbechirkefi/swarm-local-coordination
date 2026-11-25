@@ -1,0 +1,54 @@
+{
+ "label": "confirmatory",
+ "runs": 160,
+ "failed": 0,
+ "mean_runtime_s": 7.38499329247461,
+ "projection": {
+  "full_matrix_runs": 160,
+  "serial_s": 1181.5989267959376,
+  "workers_assumed": 8,
+  "parallel_s": 147.6998658494922
+ },
+ "paired_differences": [
+  {
+   "contrast": "A1-A0",
+   "cell": "rho=0.5, eta=0.1, r=1, w_cohesion=0.5, neighbourhood=topological, steps=3500",
+   "pairs": 20,
+   "mean": -0.7482273957475479,
+   "sd": 0.07112345398097412,
+   "min": -0.8239448900510817,
+   "max": -0.531615405626767,
+   "projected_half_width_180_pairs": 0.010390409355874363
+  },
+  {
+   "contrast": "A1-A0",
+   "cell": "rho=0.5, eta=0.5, r=1, w_cohesion=0.5, neighbourhood=topological, steps=3500",
+   "pairs": 20,
+   "mean": -0.12311733173995443,
+   "sd": 0.017345070170619748,
+   "min": -0.15412988496611207,
+   "max": -0.08522557885444455,
+   "projected_half_width_180_pairs": 0.0025339373904326294
+  },
+  {
+   "contrast": "A1-A0",
+   "cell": "rho=2, eta=0.1, r=1, w_cohesion=0.5, neighbourhood=topological, steps=3500",
+   "pairs": 20,
+   "mean": -0.6472661593800069,
+   "sd": 0.12270939300835798,
+   "min": -0.7702706291126368,
+   "max": -0.29537901832269464,
+   "projected_half_width_180_pairs": 0.01792658755730249
+  },
+  {
+   "contrast": "A1-A0",
+   "cell": "rho=2, eta=0.5, r=1, w_cohesion=0.5, neighbourhood=topological, steps=3500",
+   "pairs": 20,
+   "mean": -0.14038234067227037,
+   "sd": 0.022232135461802336,
+   "min": -0.18165790226816264,
+   "max": -0.09201452933284665,
+   "projected_half_width_180_pairs": 0.0032478876569348152
+  }
+ ]
+}

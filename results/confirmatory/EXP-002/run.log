@@ -1,0 +1,6 @@
+launch record: revision 075cf7c5f571c03ede9b8d551c3ba43766172a39 dirty False, data manifest 94fe5a7ba3b9, load [16.34765625, 6.884765625, 3.7216796875]
+Tue Nov 24 23:34:39 UTC 2026
+1080 runs written to results/confirmatory/EXP-002 (0 failed); label confirmatory
+exit 0
+Tue Nov 24 23:54:05 UTC 2026
+provenance: 1080 runs, 0 not ok; raw_manifest.json written

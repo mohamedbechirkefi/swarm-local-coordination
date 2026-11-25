@@ -156,3 +156,34 @@ M3: run EXP-002, then EXP-003, with the frozen configs, when the coordinator sch
 ### Next action
 
 M3: run EXP-002, then EXP-003, with the frozen configs, when the coordinator schedules it.
+
+## 2026-11-25: Session M3 (frozen experiments)
+
+**Milestone:** M3, on the owner's "Start next" (2026-11-25) and `labs/_shared/M3-brief.md`.
+
+### Pre-run checks
+
+- `git status`: clean at `a8c901b`. `shasum -a 256` on the 3 protocols and 4 configs: all match `research/protocol_freeze.json`.
+- `../.tools/py/bin/uv sync --frozen --all-groups --all-extras` -> `Audited 24 packages`; `.venv/bin/python -m pytest -q` -> `122 passed`.
+- Pre-run commit `075cf7c` (DL-012): `experiments/analyse_confirmatory.py` (frozen analysis, written before any confirmatory output), `experiments/provenance.py` (launch record with data manifest SHA-256; per-run provenance and raw SHA-256 manifest), `experiments/EXP-001/smoke_m3.json`, `tests/test_confirmatory_analysis.py`, a caption-label fix in `swarm.report`, `.gitignore` for `results/confirmatory/*/runs/`. Tests: `133 passed`. Provenance revision: `075cf7c`.
+- No external data (simulation only, DL-003); `data/manifest.json` SHA-256 94fe5a7b... recorded per run. Its text still says the simulator is "not yet implemented" (stale; left unchanged so the recorded hash stays valid; update in M4).
+- Smoke (EXPL-008, exploratory seeds 101 to 105): 15 runs, 0 failed; metric check (phi_pre, phi_post, tau recomputed from series, bounds) 0 mismatches; outputs identical to the pre-freeze smoke.
+
+### Confirmatory runs (2 workers, `nice -n 10`, background with logs)
+
+- EXP-002: 1080 of 1080 runs, 0 failed, 1138.7 s (23:34:39 to 23:54:05 UTC). Metric check 1080/1080, 0 mismatches. Primary Delta = -0.307, 95% CI [-0.313, -0.302]: **rejects H0** (frozen rule, SESOI 0.05). phi_pre A1 - A0 = -0.312 [-0.319, -0.304]: A1 is disordered before the shock in all 18 cells, so the contrast is a phase difference (limitation 13).
+- EXP-003: S1 160, S2 160, S3 160 runs, 0 failed (594.7 s, 181.9 s, 293.9 s). Delta_S: S1 -0.415 [-0.429, -0.398], S2a -0.268 [-0.282, -0.257], S2b -0.507 [-0.515, -0.498], S3 -0.449 [-0.463, -0.434]; none invalidates or weakens EXP-002. S4 tau table from EXP-002 series.
+- Load average from other processes reached 37 to 39 during the runs; wall-clock figures are inflated accordingly.
+
+### Deviations and gaps (DL-013)
+
+- 454 EXP-003 runs record `git_dirty: true` because the journal was edited during S1; code and configs unchanged (git diff), 6 runs re-simulated bit-identical. Not rerun.
+- Standalone 11.3 reports for EXP-001 to EXP-003 not written: the file tool refused report files and the coordinator said not to work around it; drafts made by another route were removed.
+
+### Records and checks
+
+Journal EXPL-008, CONF-EXP002, CONF-EXP003; registry statuses; claims CL-001 to CL-006; limitations 13 to 15; DL-012, DL-013; `results/README.md`; roadmap M3 in progress. `.venv/bin/python -m pytest -q` after the runs: `133 passed`.
+
+### Next action
+
+Write the 11.3 reports for EXP-001 to EXP-003 (generated tables fill in via `experiments/analyse_confirmatory.py`), then M4. Owner attention: the primary result is a phase difference (limitation 13).

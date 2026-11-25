@@ -1,0 +1,54 @@
+{
+ "label": "confirmatory",
+ "runs": 160,
+ "failed": 0,
+ "mean_runtime_s": 3.640359571655881,
+ "projection": {
+  "full_matrix_runs": 160,
+  "serial_s": 582.457531464941,
+  "workers_assumed": 8,
+  "parallel_s": 72.80719143311762
+ },
+ "paired_differences": [
+  {
+   "contrast": "A1-A0",
+   "cell": "rho=0.5, eta=0.1, r=1, w_cohesion=0.5, boundary=reflecting, steps=3500",
+   "pairs": 20,
+   "mean": -0.7365215968729735,
+   "sd": 0.11864658671350445,
+   "min": -0.8434594219886704,
+   "max": -0.3992316873088819,
+   "projected_half_width_180_pairs": 0.017333053101728325
+  },
+  {
+   "contrast": "A1-A0",
+   "cell": "rho=0.5, eta=0.5, r=1, w_cohesion=0.5, boundary=reflecting, steps=3500",
+   "pairs": 20,
+   "mean": -0.0025199939338914094,
+   "sd": 0.010897286065072582,
+   "min": -0.019973569300802407,
+   "max": 0.015000848300364841,
+   "projected_half_width_180_pairs": 0.0015919820642352146
+  },
+  {
+   "contrast": "A1-A0",
+   "cell": "rho=2, eta=0.1, r=1, w_cohesion=0.5, boundary=reflecting, steps=3500",
+   "pairs": 20,
+   "mean": -0.8054751526361418,
+   "sd": 0.03971072989380746,
+   "min": -0.8483736275104377,
+   "max": -0.6623123587458699,
+   "projected_half_width_180_pairs": 0.005801331576607516
+  },
+  {
+   "contrast": "A1-A0",
+   "cell": "rho=2, eta=0.5, r=1, w_cohesion=0.5, boundary=reflecting, steps=3500",
+   "pairs": 20,
+   "mean": -0.25215802107879437,
+   "sd": 0.06247595584059212,
+   "min": -0.336966502300839,
+   "max": -0.14311209832083976,
+   "projected_half_width_180_pairs": 0.00912709830229748
+  }
+ ]
+}

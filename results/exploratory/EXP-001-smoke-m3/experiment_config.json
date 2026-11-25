@@ -1,0 +1,42 @@
+{
+ "schema_version": "1.0.0",
+ "experiment_id": "EXP-001",
+ "label": "exploratory",
+ "confirmatory": false,
+ "description": "M3 re-run of the EXP-001 smoke matrix (protocol section 5) at the M3 revision, identical to smoke.json except the output directory: 3 arms x 1 cell (rho=1, eta=0.3, r=1, N=200) x 5 seeds, T=1000, t_d=500, W=500. Exploratory seeds 101-105, disjoint from the confirmatory seeds 1001-1020. Checks reproduction of the pre-freeze smoke and metric validation; never pooled with confirmatory results.",
+ "protocol_path": "research/experiments/EXP-001/protocol.md",
+ "base": {
+  "n_agents": 200,
+  "speed": 0.05,
+  "steps": 1000,
+  "t_disturb": 500,
+  "window": 500,
+  "pre_window": 100
+ },
+ "grid": {
+  "arm": [
+   "A0",
+   "A1",
+   "A2"
+  ],
+  "density": [
+   1.0
+  ],
+  "noise": [
+   0.3
+  ],
+  "radius": [
+   1.0
+  ]
+ },
+ "seeds": [
+  101,
+  102,
+  103,
+  104,
+  105
+ ],
+ "output_dir": "results/exploratory/EXP-001-smoke-m3",
+ "store_series": true,
+ "full_matrix_runs": 540
+}
