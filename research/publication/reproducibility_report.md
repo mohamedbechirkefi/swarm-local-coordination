@@ -3,6 +3,8 @@
 
 Status on 2026-11-25 (M6, release candidate): a clean clone of the committed state reproduces the test suite, the exploratory smoke result, the demo build and checks, and the demo export, with no failure. Commands and their actual outputs are below. `<scratch>` stands for the session's scratch folder outside the repository; no absolute local path is recorded here.
 
+Note of 2026-11-26: the repository is public at https://github.com/mohamedbechirkefi/swarm-local-coordination since 2026-11-25 (owner, 2026-11-26, decision sheet, A1); the clones below were made before that push, from the local repository. Home paths after the B9 scrub: section 9.
+
 Checklist (M6):
 
 - [x] Clean clone into a separate directory (`git clone -q <repository> <scratch>/clone`, HEAD `8db419b`, local, no network).
@@ -103,3 +105,14 @@ Licences of all dependencies: `research/publication/dependency_licences.md` (24 
     node tools/a11y_check.mjs dist                        -> 12 PASS lines, A11Y-CHECK PASS
 
 The PDF build in a clone outside the workspace needs `SWARM_PANDOC` and `SWARM_TYPST_PYTHON`, because the default tool location is `../.tools` relative to the repository. Both clones were deleted after the checks.
+
+## 9. Home paths after the B9 scrub (2026-11-26)
+
+Owner, 2026-11-26, decision sheet, B9: local home paths are removed from editable files in a new commit; frozen, append-only and checksummed files stay untouched and history is not rewritten. Removed: the two lines of `CLAUDE.md` (tool and brief paths now relative to the repository, "the research root" in words). `README.md`, `src/swarm/report.py` and `research/feasibility.md` had already been cleaned in M6. Search: `git grep -n "/Users"` over tracked files, PDFs and results included.
+
+| file | lines | why it stays |
+| --- | --- | --- |
+| `progress.md` | 1 (M0 disk-space command) | append-only journal; dated entries stay true for their date |
+| `research/experiment_journal.jsonl` | 1 (entry EXPL-000) | append-only journal |
+
+No other tracked file, PDF, result file or run log contains a home path (`master_prompt.md`, the licence files and the frozen protocols have none).

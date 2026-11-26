@@ -7,7 +7,7 @@
 
 - Experiment: EXP-001, "Implementation verification and smoke matrix". Status: exploratory, complete. The runs before the freeze were on 2026-11-24 (EXPL-001 to EXPL-007), and the M3 smoke re-run was on 2026-11-25 (EXPL-008).
 - Protocol: `research/experiments/EXP-001/protocol.md` (draft 0.1). EXP-001 is exploratory and was not hash-frozen.
-- Author: Mohamed Bechir Kefi (owner-approved metadata, DL-010). The AI was a research and development assistant, not an author.
+- Author: Mohamed Bechir Kefi, independent researcher (owner-approved metadata, DL-010; owner, 2026-11-26, decision sheet, B3). The AI was a research and development assistant, not an author.
 - Code revisions: the pre-freeze runs used `99cc0c4` (smoke, benchmark, burn-in scans, A1 diagnostic) and `2330f79` (burn-in rule scan). The M3 smoke re-run used `075cf7c` with a clean tree.
 - The report was written after M3 from committed results only, on the owner's approval of 2026-11-25 (DL-014).
 

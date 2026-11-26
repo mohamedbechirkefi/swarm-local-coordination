@@ -5,6 +5,8 @@
 
 *A preregistered simulation of 200 agents, a robust result, and an honest account of why it does not answer the question it was built for. All results are simulated.*
 
+By Mohamed Bechir Kefi, independent researcher.
+
 ## The question
 
 Flocks of birds and schools of fish are often described as coordinating "without a leader": each individual follows a few local rules, and order appears at the level of the group. Simple models reproduce this. In the alignment-only model of Vicsek and colleagues (1995), each agent turns towards the average heading of its neighbours, plus some noise. Other models add two more rules: keep a little distance from very close neighbours (separation) and move towards the local group (cohesion).
@@ -58,6 +60,6 @@ A follow-up, registered as EXP-004, would match the two rules' order before the 
 
 ## Reproduce it
 
-Code, frozen protocols, per-run metrics, checksums and the interactive page: [repository link to be added by the owner on release]. Demo: [demo link to be added by the owner on release]. Manuscript: `research/paper/manuscript.md` in the repository.
+Code, frozen protocols, per-run metrics, checksums and the interactive page: https://github.com/mohamedbechirkefi/swarm-local-coordination. Demo: https://swarm-local-coordination.kefimohamedbechir.workers.dev. Manuscript: `research/paper/manuscript.md` in the repository.
 
 *Independent research manuscript / preprint draft, not peer-reviewed. An AI system assisted with code, analysis and drafting under the author's direction; it is not an author.*

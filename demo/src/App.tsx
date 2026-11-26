@@ -59,7 +59,9 @@ export function App() {
             makes no request to any other host.
           </p>
           <p>
-            Repository and demo URL: [to be added by the owner on release]. Source-available under the SWARM
+            Mohamed Bechir Kefi, independent researcher. Repository:{" "}
+            <a href="https://github.com/mohamedbechirkefi/swarm-local-coordination">github.com/mohamedbechirkefi/swarm-local-coordination</a>. Demo:{" "}
+            <a href="https://swarm-local-coordination.kefimohamedbechir.workers.dev">swarm-local-coordination.kefimohamedbechir.workers.dev</a>. Source-available under the SWARM
             Source-Available Non-Commercial Research License v1.0; not open source.
           </p>
         </div>

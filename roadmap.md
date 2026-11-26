@@ -20,7 +20,7 @@ Five focused development days (planning estimate). Status values: not started, i
 | EXP-001 | Implementation verification and smoke matrix (exploratory) | M2 | exploratory run 2026-11-24 (pre-freeze; V1-V4 pass; AP-1 to AP-5 decided; burn-in rule scan EXPL-007) |
 | EXP-002 | Local rules and recovery from a heading disturbance (primary) | EXP-001 | run complete 2026-11-25 (1080 runs, 0 failed); Delta -0.307 [-0.313, -0.302], rejects H0; report composed (DL-014) |
 | EXP-003 | Sensitivity of the EXP-002 contrast | EXP-001 | run complete 2026-11-25 (480 runs, 0 failed); no condition invalidates or weakens EXP-002; report composed (DL-014) |
-| EXP-004 | Recovery with matched pre-shock order | EXP-001; EXP-002 v1.0 design; calibration R-MATCH and R-SS before the freeze | registered, not frozen (2026-11-25, DL-016): protocol v0.1 and draft config, 8 parameters open for the owner; no run; freeze needs the owner's G-FREEZE word |
+| EXP-004 | Recovery with matched pre-shock order | EXP-001; EXP-002 v1.0 design; calibration R-MATCH and R-SS before the freeze | registered, not frozen (2026-11-25, DL-016): protocol v0.1 and draft config, 8 parameters open for the owner; no run; freeze needs the owner's G-FREEZE word. Owner, 2026-11-26, decision sheet: registered, not frozen, not run; the owner will freeze later |
 
 ## Cut order if the five-day target is threatened
 

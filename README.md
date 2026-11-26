@@ -9,9 +9,9 @@
 
 ![Screenshot of the SWARM demo page: the overview with the status label, the headline contrast -0.307 with its 95% CI, EXP-004 shown as registered and not run, the label key, and the per-cell forest plot of the A1 - A0 difference with confidence intervals.](docs/demo.png)
 
-## Status (2026-11-25)
+## Status (2026-11-26)
 
-M0 to M5 are done. M6: a release candidate (version 0.1.0-rc1) is prepared and awaits the owner's review and approval to publish; the manuscript and report PDFs are in `research/paper/` and `research/experiments/EXP-00N/`. The owner has approved the manuscript title and the funding, competing-interest and AI-use statements (2026-11-25). Nothing has been published or pushed.
+M0 to M5 are done. M6: a release candidate (version 0.1.0-rc1) is prepared and awaits the owner's review and approval to publish; the manuscript and report PDFs are in `research/paper/` and `research/experiments/EXP-00N/`. The owner has approved the manuscript title and the funding, competing-interest and AI-use statements (2026-11-25). The repository is public at https://github.com/mohamedbechirkefi/swarm-local-coordination since 2026-11-25 (owner, 2026-11-26, decision sheet, A1); no tag or release exists yet.
 
 ## What is implemented
 
@@ -38,7 +38,7 @@ Limitations: `research/limitations.md`. Claims and their evidence: `research/cla
 ## Research navigation
 
 - Manuscript: `research/paper/manuscript.md` (supplementary: `research/paper/supplementary.md`).
-- Experiment reports: `research/experiments/EXP-001/report.md`, `EXP-002/report.md`, `EXP-003/report.md`; EXP-004 has a draft protocol only.
+- Experiment reports: `research/experiments/EXP-001/report.md`, `EXP-002/report.md`, `EXP-003/report.md`; EXP-004 has a draft protocol only (registered, not frozen, not run; the owner will freeze later).
 - Protocols and freeze record: `research/protocol.md`, `research/protocol_freeze.json`.
 - Decisions: `research/decision_log.md`. Working journal: `progress.md`.
 
@@ -54,7 +54,7 @@ Demo page (static, offline after the first load, no runtime service):
 
     cd demo && npm ci && npm run build && npm run preview
 
-The page reads `demo/public/data/results.json`, written by `scripts/export_demo_data.py` from committed results only. The sandbox runs a browser port of the engine's update rules in a Web Worker; it is labelled sandbox output and never mixed with published results. Repository and demo URL: [to be added by the owner on release].
+The page reads `demo/public/data/results.json`, written by `scripts/export_demo_data.py` from committed results only. The sandbox runs a browser port of the engine's update rules in a Web Worker; it is labelled sandbox output and never mixed with published results. Repository: https://github.com/mohamedbechirkefi/swarm-local-coordination. Demo: https://swarm-local-coordination.kefimohamedbechir.workers.dev (Cloudflare Workers static assets, free plan; see `demo/README.md`).
 
 Full reproduction: `research/experiments/EXP-00N/reproduction.md`. All commands: `CONTRIBUTING.md`.
 
@@ -72,4 +72,4 @@ SWARM Source-Available Non-Commercial Research License v1.0 (`LicenseRef-SWARM-N
 
 ## Citation
 
-See `CITATION.cff`. Author: Mohamed Bechir Kefi (independent, no affiliation). Funding and competing interests: none declared, both to be confirmed by the author.
+See `CITATION.cff`. Author: Mohamed Bechir Kefi, independent researcher. No funding was received. The author declares no competing interests.

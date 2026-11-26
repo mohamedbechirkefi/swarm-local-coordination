@@ -7,7 +7,7 @@ All results are simulated. This is a confirmatory experiment under protocol v1.0
 
 - **Experiment.** EXP-002, the primary comparison. Runs were made on 2026-11-24/25 UTC. Report version 1.0.
 - **Status.** Complete: 1080 of 1080 planned runs, 0 failed, none excluded.
-- **Author.** Mohamed Bechir Kefi (owner-approved metadata, DL-010). The AI was a research and development assistant, not an author.
+- **Author.** Mohamed Bechir Kefi, independent researcher (owner-approved metadata, DL-010; owner, 2026-11-26, decision sheet, B3). The AI was a research and development assistant, not an author.
 - **Protocol hashes** (`research/protocol_freeze.json`):
   - `research/protocol.md`: 80c7225dc55d3065b7bd92d683cb71423c1cf511dd215385ee7a8dc59db109d4.
   - `research/experiments/EXP-002/protocol.md`: 3359f833014d145abec739d3ccb3de63587f94191dec523a38ec37f0f53b0c5e.

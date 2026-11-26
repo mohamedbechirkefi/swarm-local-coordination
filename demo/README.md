@@ -18,4 +18,8 @@ Commands (Node from the feasibility toolchain):
 
 `tools/a11y_check.mjs` is the shared template's checker with SWARM additions (Run and Pause control the animation; reduced motion computes without animating; published and sandbox labels stay apart). It must print `A11Y-CHECK PASS`.
 
-Repository and demo URL: [to be added by the owner on release].
+Repository: https://github.com/mohamedbechirkefi/swarm-local-coordination. Demo: https://swarm-local-coordination.kefimohamedbechir.workers.dev.
+
+Hosting: the built page (`dist/`) is hosted as Cloudflare Workers static assets on the free plan, configured by `wrangler.jsonc` (assets only, no Worker script). It is deployed by the coordinator, not by any script of this repository. The page loads only same-origin files (Content-Security-Policy `default-src 'self'`).
+
+Mohamed Bechir Kefi, independent researcher.

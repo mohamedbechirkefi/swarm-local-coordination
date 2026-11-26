@@ -11,5 +11,7 @@ The caveat is the point: the same gap existed before the shock (-0.312 [-0.319, 
 
 All results are simulated; nothing here is a claim about real animals or robots. Independent preprint draft, not peer-reviewed.
 
-Repository: [link to be added by the owner on release]
-Demo: [link to be added by the owner on release]
+Repository: https://github.com/mohamedbechirkefi/swarm-local-coordination
+Demo: https://swarm-local-coordination.kefimohamedbechir.workers.dev
+
+Mohamed Bechir Kefi, independent researcher

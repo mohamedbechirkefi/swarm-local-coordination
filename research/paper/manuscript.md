@@ -1,7 +1,7 @@
 ---
 title: "A zonal separation-cohesion rule sustains less order than alignment alone, and the design did not measure recovery: a preregistered simulation comparison under a heading shock"
 subtitle: "Independent research manuscript / preprint draft, not peer-reviewed. All results are simulated."
-author: "Mohamed Bechir Kefi"
+author: "Mohamed Bechir Kefi, independent researcher"
 date: "Draft of 2026-11-25 (M6 release candidate)"
 ---
 
@@ -216,11 +216,11 @@ In a preregistered simulation of 200 self-propelled agents, replacing alignment 
 
 # Data and code availability
 
-All code, frozen protocols, configurations, per-run metrics, provenance tables, raw-file checksums, analysis outputs and figures are in the project repository (unpublished; URL: [to be added by the owner on release]). Per-run raw files are not committed because of their size; they are regenerated bit for bit by the frozen configurations, and their SHA-256 values are committed. Reproduction: `uv sync --frozen`, then the commands in `research/experiments/EXP-00N/reproduction.md`; the exploratory checks are `python experiments/exploratory_m4.py`. The artifact manifest `research/publication/artifact_manifest.json` maps every number in this manuscript to its source.
+All code, frozen protocols, configurations, per-run metrics, provenance tables, raw-file checksums, analysis outputs and figures are in the project repository (https://github.com/mohamedbechirkefi/swarm-local-coordination); an interactive page is at https://swarm-local-coordination.kefimohamedbechir.workers.dev. Per-run raw files are not committed because of their size; they are regenerated bit for bit by the frozen configurations, and their SHA-256 values are committed. Reproduction: `uv sync --frozen`, then the commands in `research/experiments/EXP-00N/reproduction.md`; the exploratory checks are `python experiments/exploratory_m4.py`. The artifact manifest `research/publication/artifact_manifest.json` maps every number in this manuscript to its source.
 
 # Funding, competing interests and AI assistance
 
-The author is Mohamed Bechir Kefi (independent, no affiliation). Funding: none declared; competing interests: none declared (both to be confirmed by the author). An AI system was used as a research and development assistant for code, tests, analysis scripts, drafting and internal checking, under the author's direction; it is not an author. The author made the design decisions recorded in the decision log, including the protocol freeze and amendments. The AI's internal review, including a second pass that argued against the preferred interpretation (`research/publication/review_pass_2.md`), is quality control, not peer review.
+The author is Mohamed Bechir Kefi, independent researcher. No funding was received. The author declares no competing interests. An AI system was used as a research and development assistant for code, tests, analysis scripts, drafting and internal checking, under the author's direction; it is not an author. The author made the design decisions recorded in the decision log, including the protocol freeze and amendments. The AI's internal review, including a second pass that argued against the preferred interpretation (`research/publication/review_pass_2.md`), is quality control, not peer review.
 
 # References
 

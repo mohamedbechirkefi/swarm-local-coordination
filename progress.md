@@ -339,3 +339,38 @@ Owner: read the items in `research/publication/author_review.md` ("Prepared for 
 ### Addendum (same session): fresh clone of the M6 commit
 
 `git clone -q <repository> <scratch>/clone2` at `f454de6`: `uv sync --frozen` ok; `pytest -q` -> `147 passed in 9.84s`; `check_links.py` -> `LINK-CHECK PASS`; `audit_numbers.py` -> `total 770, unmatched 0`; `build_pdfs.py` (tool paths passed by environment variables) -> 5 PDFs, `manuscript.tex` unchanged; smoke -> 15 runs, 0 failed, 165 fields, 0 mismatches; export leaves the clone clean; demo `Tests 22 passed (22)`, built, `A11Y-CHECK PASS`. Both clones deleted. Recorded in `research/publication/reproducibility_report.md` section 8.
+
+## 2026-11-26: Session OWNER-ANSWERS (owner's answers of 2026-11-26 applied)
+
+**Authority:** owner, 2026-11-26, decision sheet; brief `labs/_shared/OWNER-ANSWERS-brief.md`. Recorded as DL-019. Wording and configuration only.
+
+### What was done
+
+- `git status` clean at `bc23a45`. Read the brief, the decision sheet, the approvals (including the follow-up section), CLAUDE.md, the M6 entry and `author_review.md`.
+- A1, B1, B2, B3, B4, B7, B8, B9, B13, R-SWARM-1 applied (list in DL-019). New file `demo/wrangler.jsonc` (assets `./dist`). Author line "Mohamed Bechir Kefi, independent researcher"; funding and competing-interest sentences filled; `CITATION.cff` `repository-code`, `affiliation`, title equal to the manuscript title.
+- First PDF build with a YAML author map (name, affiliation) produced `\author{true}` in `manuscript.tex`; replaced by the single-line author string and rebuilt.
+- `author_review.md`: section "Owner answers recorded (2026-11-26)"; no box ticked; placeholders remaining: none.
+
+### Commands and outputs
+
+    .venv/bin/python scripts/build_pdfs.py --typ-dir <scratch>/typ --png-dir <scratch>/png
+        -> manuscript 15 pages, supplementary 4, EXP-001 4, EXP-002 11, EXP-003 8; manuscript.tex regenerated
+    git checkout -- research/paper/supplementary.pdf     (source unchanged)
+    pypdf: author line / statements found on manuscript pages 1 and 14 and page 1 of each report; metadata author "Mohamed Bechir Kefi"
+    PNG inspected: manuscript pages 1 and 14, EXP-002 report page 1
+    .venv/bin/python -m pytest -q                        -> 147 passed in 5.96s
+    .venv/bin/python scripts/export_demo_data.py --check -> results.json up to date
+    .venv/bin/python scripts/check_links.py              -> LINK-CHECK PASS
+    .venv/bin/python experiments/audit_numbers.py        -> total 770, unmatched 0
+    cd demo && npm test                                  -> Test Files 2 passed (2); Tests 22 passed (22)
+    cd demo && npm run build                             -> built in 166ms
+    cd demo && node tools/a11y_check.mjs dist            -> 12 PASS lines (keyboard 30 of 30), A11Y-CHECK PASS
+    git grep -n "/Users" (tracked files)                 -> progress.md 1, research/experiment_journal.jsonl 1 (append-only)
+
+### Not done, and why
+
+- No push, deploy or tick (coordinator and owner steps). B15, B16, B18 and the EXP-004 freeze stay with the owner.
+
+### Next action
+
+Owner: full-text review and sign-off (B16), articles (B15), release (B18), EXP-004 freeze when ready.

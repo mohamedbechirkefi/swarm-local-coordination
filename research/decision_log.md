@@ -159,3 +159,22 @@ Append-only. Each entry: id, date, decision, decided by, rationale, alternatives
   6. **CITATION.cff.** The file had no `date-released` at the start of M6, so nothing was removed; a comment records the coordinator default. Version set to `0.1.0-rc1` to mark a release candidate; the title now quotes the approved manuscript title in full. A structural check against the CFF 1.2.0 keys and types passed (no YAML library is installed, so the check parsed the simple file directly).
   7. **Owner review.** No `author_review.md` box was ticked by M6, and none was found ticked. A section "Prepared for the owner (M6, 2026-11-25)" lists what to read, every open decision and every placeholder with its line.
 - **Consequences:** no protocol, configuration, seed, analysis script, raw result or frozen artifact changed; EXP-004 stays registered, not frozen and not run. M6 is "release candidate prepared, awaiting owner review and G-PUBLIC"; it is not done until the owner signs off. Nothing was pushed, tagged or released.
+
+## DL-019: Owner's answers of 2026-11-26 applied (wording and configuration only)
+
+- **Date:** 2026-11-26
+- **Decided by:** the owner: "owner, 2026-11-26, decision sheet" (`labs/_shared/owner-decision-sheet-2026-11-26.md` and `labs/_shared/owner-approvals-2026-11-26.md`, outside this repository), applied by an agent session under the coordinator's brief `labs/_shared/OWNER-ANSWERS-brief.md`.
+- **Decision (what was applied):**
+  1. **A1.** Out-of-date "no remote / nothing pushed" sentences corrected in `research/publication/author_review.md`, `release_checklist.md`, `reproducibility_report.md` and `README.md`: the repository is public since 2026-11-25. Append-only records were not edited.
+  2. **B1.** Repository URL `https://github.com/mohamedbechirkefi/swarm-local-coordination` in `CITATION.cff` (`repository-code`; placeholder removed from `message`), README, manuscript, articles, demo README and demo footer.
+  3. **B2.** Demo URL `https://swarm-local-coordination.kefimohamedbechir.workers.dev`; `demo/wrangler.jsonc` added (assets only, directory `./dist`, no Worker script); `demo/README.md` states the hosting (Cloudflare Workers static assets, free plan, deployed by the coordinator). The built page loads only same-origin files.
+  4. **B3.** Author line "Mohamed Bechir Kefi, independent researcher" in the manuscript front matter and statement, the three experiment reports (section 1), README, articles, demo README and footer; `CITATION.cff` `affiliation: "Independent researcher"`. The earlier record C3 ("no affiliation") stays in the frozen `research/protocol_freeze.json`, which is not edited.
+  5. **B4.** "No funding was received." and "The author declares no competing interests." in the manuscript and README; "to be confirmed" marks removed.
+  6. **B6 and B7.** `CITATION.cff` `title` equals the approved manuscript title.
+  7. **B8.** `0.1.0-rc1`, no `date-released`; release-step rule recorded in `release_checklist.md`.
+  8. **B9.** Home paths removed from `CLAUDE.md` (relative paths, "the research root"); one line each remains in `progress.md` and `research/experiment_journal.jsonl` (append-only), listed in `reproducibility_report.md` section 9.
+  9. **B10, B11, B13, B14.** PDFs kept; no SWARM figure is in the B11 list; build-tool licence sentence in the release notes (draft) of `release_checklist.md`; source labels accepted.
+  10. **R-SWARM-1.** EXP-004: registered, not frozen, not run; the owner will freeze later.
+  11. **PDFs.** Manuscript and the three experiment reports rebuilt with `scripts/build_pdfs.py`; `manuscript.tex` regenerated; the supplementary PDF restored (source unchanged).
+- **Not decided here:** B15 articles, B16 full-text review and sign-off, B18 release, the EXP-004 freeze. No `author_review.md` box was ticked.
+- **Consequences:** no result, analysis, figure, configuration, seed, frozen protocol, protocol hash or checksummed output changed.
