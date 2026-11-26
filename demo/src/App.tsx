@@ -2,6 +2,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { fmtEstimate, fmtInterval, loadResults, ResultsError, ARMS, type ArmId, type Estimate, type Experiment, type Results } from "./results";
 import { Sandbox } from "./Sandbox";
+import { Murmuration } from "./Murmuration";
+import { Reveal, SectionNav } from "./motion";
 import { ForestPlot, LineChart, type ForestRow, type Series } from "./charts";
 
 type State = { kind: "loading" } | { kind: "error"; message: string } | { kind: "ready"; results: Results };
@@ -24,46 +26,77 @@ export function App() {
       );
   }, []);
 
+  const r = state.kind === "ready" ? state.results : null;
+  const p = r?.design.primary ?? null;
+  const pre = r?.experiments.find((e) => e.id === "EXP-002")?.estimates.find((e) => e.label.includes("phi_pre")) ?? null;
+
   return (
     <>
       <a className="skip" href="#main">Skip to content</a>
-      <header className="site">
-        <div className="wrap">
-          <p className="kicker">SWARM · a preregistered simulation study</p>
-          <h1>How do local interaction rules affect collective coordination under disturbances?</h1>
-          <nav aria-label="Sections">
-            <a href="#overview">Overview</a>
-            <a href="#results">Published results</a>
-            <a href="#assumptions">Assumptions</a>
-            <a href="#method">Method and limitations</a>
-            <a href="#sandbox">Sandbox</a>
-          </nav>
+      <header className="bar">
+        <div className="bar-in">
+          <a className="brand" href="#top" aria-label="SWARM, back to the top">
+            <img src="./brand/swarm-mark.svg" alt="" width="30" height="30" />
+            <span className="wordmark">Swarm</span>
+          </a>
+          <SectionNav />
         </div>
       </header>
-      <main id="main" className="wrap">
-        {state.kind === "loading" && <p role="status" className="panel">Loading the published results.</p>}
-        {state.kind === "error" && (
-          <div role="alert" className="panel error">
-            <h2>Results unavailable</h2>
-            <p>The published results file failed validation, so no numbers are shown.</p>
-            <p><code>{state.message}</code></p>
+      <main id="main">
+        <div className="hero" id="top">
+          <Murmuration />
+          <div className="wrap hero-in">
+            <p className="hero-status">SWARM, a preregistered simulation study. Preprint draft, not peer-reviewed.</p>
+            <h1>How do local interaction rules affect collective coordination under disturbances?</h1>
+            {p && pre ? (
+              <p className="answer">
+                Adding separation and cohesion to alignment (A1) kept much less order than alignment alone (A0):
+                Delta = <span className="fig">{fmtEstimate(p)}</span> in post-shock polarization (95% CI{" "}
+                <span className="fig">{fmtInterval(p)}</span>), and the same gap,{" "}
+                <span className="fig">{fmtEstimate(pre)}</span>, was already there before the shock. The study measured a
+                difference in sustained order, not in recovery.
+              </p>
+            ) : null}
+            <p className="byline">Mohamed Bechir Kefi, independent researcher</p>
           </div>
-        )}
-        {state.kind === "ready" && <Published r={state.results} />}
-        <Sandbox />
+        </div>
+        <div className="wrap">
+          {state.kind === "loading" && <p role="status" className="panel">Loading the published results.</p>}
+          {state.kind === "error" && (
+            <div role="alert" className="panel error">
+              <h2>Results unavailable</h2>
+              <p>The published results file failed validation, so no numbers are shown.</p>
+              <p><code>{state.message}</code></p>
+            </div>
+          )}
+          {r && <Published r={r} />}
+          <Sandbox />
+          {r && <PublishedTail r={r} />}
+        </div>
       </main>
       <footer className="site">
-        <div className="wrap">
-          <p>
-            Runs offline after the first load. No data about visitors is collected, stored or sent anywhere; the page
-            makes no request to any other host.
-          </p>
-          <p>
-            Mohamed Bechir Kefi, independent researcher. Repository:{" "}
-            <a href="https://github.com/mohamedbechirkefi/swarm-local-coordination">github.com/mohamedbechirkefi/swarm-local-coordination</a>. Demo:{" "}
-            <a href="https://swarm-local-coordination.kefimohamedbechir.workers.dev">swarm-local-coordination.kefimohamedbechir.workers.dev</a>. Source-available under the SWARM
-            Source-Available Non-Commercial Research License v1.0; not open source.
-          </p>
+        <div className="wrap foot-grid">
+          <div className="foot-brand">
+            <img src="./brand/swarm-lockup.svg" alt="SWARM" width="140" height="40" />
+            <p>Mohamed Bechir Kefi, independent researcher.</p>
+          </div>
+          <ul className="foot-links">
+            <li><a href="https://github.com/mohamedbechirkefi/swarm-local-coordination">Repository on GitHub</a></li>
+            <li><a href="https://github.com/mohamedbechirkefi/swarm-local-coordination/blob/main/research/paper/manuscript.md">Manuscript (preprint draft)</a></li>
+            <li><a href="https://labs.kefimohamedbechir.workers.dev">All lab studies</a></li>
+            <li><a href="https://swarm-local-coordination.kefimohamedbechir.workers.dev">This demo: swarm-local-coordination.kefimohamedbechir.workers.dev</a></li>
+          </ul>
+          <div className="foot-notes">
+            <p>
+              Runs offline after the first load. No data about visitors is collected, stored or sent anywhere; the page
+              makes no request to any other host.
+            </p>
+            <p>
+              Source-available under the SWARM Source-Available Non-Commercial Research License v1.0; not open source. An
+              AI system was used as a research and development assistant; it is not an author.
+            </p>
+            <p>Type: Bodoni Moda (the Bodoni Moda Project Authors) and Schibsted Grotesk (the Schibsted Grotesk Project Authors), both under the SIL Open Font License 1.1, served from this site.</p>
+          </div>
         </div>
       </footer>
     </>
@@ -87,7 +120,7 @@ function Published({ r }: { r: Results }) {
   return (
     <>
       <section id="overview" aria-labelledby="h-overview">
-        <h2 id="h-overview">Overview</h2>
+        <h2 id="h-overview">The answer on one axis</h2>
         <p className="status-label"><span className="badge">{r.status_label}</span></p>
         <p className="lede">
           In a two-dimensional simulation of 200 self-propelled agents, a zonal rule that adds separation and cohesion
@@ -95,24 +128,26 @@ function Published({ r }: { r: Results }) {
           given random headings. The frozen test rejects the null hypothesis, but the gap was already present before
           the shock, so the study measured a difference in sustained order, not in recovery.
         </p>
-        <div className="headline">
-          <div className="headline-item">
-            <p className="label label-published">Published result</p>
-            <p className="big">{fmtEstimate(p)}</p>
-            <p className="meta">Delta, A1 - A0 in mean post-disturbance polarization; 95% CI {fmtInterval(p)}</p>
-          </div>
-          {pre && (
-            <div className="headline-item">
-              <p className="label label-published">Published result</p>
-              <p className="big">{fmtEstimate(pre)}</p>
-              <p className="meta">The same contrast before the shock (phi_pre); 95% CI {fmtInterval(pre)}</p>
+        <div className="answer-plate">
+          <p className="label label-published">Published result</p>
+          <h3 className="plate-title">A1 minus A0 in mean polarization, after and before the shock</h3>
+          <OrderAxis rows={[
+            { key: "post", name: "After the shock (Delta, primary)", e: p },
+            ...(pre ? [{ key: "pre", name: "Before the shock (phi_pre)", e: pre }] : []),
+          ]} sesoi={r.design.sesoi} />
+          <dl className="answer-figs">
+            <div>
+              <dt>Delta, A1 - A0 in mean post-disturbance polarization</dt>
+              <dd><span className="big">{fmtEstimate(p)}</span> 95% CI {fmtInterval(p)}</dd>
             </div>
-          )}
-          <div className="headline-item">
-            <p className="label label-registered">Registered, not run</p>
-            <p className="big">EXP-004</p>
-            <p className="meta">Recovery with matched pre-shock order: not frozen, no data</p>
-          </div>
+            {pre && (
+              <div>
+                <dt>The same contrast before the shock (phi_pre)</dt>
+                <dd><span className="big">{fmtEstimate(pre)}</span> 95% CI {fmtInterval(pre)}</dd>
+              </div>
+            )}
+          </dl>
+          <p className="unrun"><span className="label label-registered">Registered, not run</span> EXP-004, recovery with matched pre-shock order: not frozen, no data.</p>
         </div>
         <LabelKey />
       </section>
@@ -130,6 +165,13 @@ function Published({ r }: { r: Results }) {
         <PostHocPanel r={r} />
       </section>
 
+    </>
+  );
+}
+
+function PublishedTail({ r }: { r: Results }) {
+  return (
+    <>
       <section id="assumptions" aria-labelledby="h-assumptions">
         <h2 id="h-assumptions">Assumptions</h2>
         <p className="note"><span className="label label-assumption">Assumption</span> These are fixed inputs of the frozen design, not results.</p>
@@ -176,6 +218,44 @@ function Published({ r }: { r: Results }) {
   );
 }
 
+function OrderAxis({ rows, sesoi }: { rows: { key: string; name: string; e: Estimate }[]; sesoi: number }) {
+  const W = 640, L = 16, R = 16, RH = 44, top = 14;
+  const d0 = -0.4, d1 = 0.1;
+  const sx = (v: number) => L + ((v - d0) / (d1 - d0)) * (W - L - R);
+  const yEnd = top + rows.length * RH;
+  const H = yEnd + 46;
+  const ticks = [-0.4, -0.3, -0.2, -0.1, 0, 0.1];
+  return (
+    <Reveal>
+      <svg viewBox={`0 0 ${W} ${H}`} className="chart-svg order-axis" role="img"
+        aria-label={`Interval plot: ${rows.map((x) => `${x.name} ${fmtEstimate(x.e)}, 95% CI ${fmtInterval(x.e)}`).join("; ")}; the band marks the smallest effect of interest, plus or minus ${sesoi}.`}>
+        <rect x={sx(-sesoi)} width={sx(sesoi) - sx(-sesoi)} y={top - 6} height={yEnd - top + 12} className="sesoi-band" />
+        <line x1={sx(0)} x2={sx(0)} y1={top - 6} y2={yEnd + 6} className="axis" />
+        {ticks.map((t) => (
+          <g key={t}>
+            <line x1={sx(t)} x2={sx(t)} y1={yEnd + 6} y2={yEnd + 11} className="axis" />
+            <text x={sx(t)} y={yEnd + 26} textAnchor="middle" className="tick">{t}</text>
+          </g>
+        ))}
+        <text x={sx(-sesoi) - 8} y={top + 4} textAnchor="end" className="tick band-note">equivalence band, plus or minus {sesoi}</text>
+        <g className="series">
+          {rows.map((x, i) => {
+            const y = top + i * RH + RH / 2 + 4;
+            return (
+              <g key={x.key}>
+                <text x={sx(x.e.estimate) + 14} y={y + 5} className="tick row-name">{x.name}</text>
+                {x.e.ci_low !== null && x.e.ci_high !== null && <line x1={sx(x.e.ci_low)} x2={sx(x.e.ci_high)} y1={y} y2={y} className="ci" />}
+                <circle cx={sx(x.e.estimate)} cy={y} r={7} className="pt" />
+              </g>
+            );
+          })}
+        </g>
+        <text x={(L + W - R) / 2} y={H - 4} textAnchor="middle" className="tick">A1 - A0, difference in mean polarization phi (polarization units)</text>
+      </svg>
+    </Reveal>
+  );
+}
+
 function cellLabel(c: { density: number; noise: number; radius: number }): string {
   return `rho ${c.density}, eta ${c.noise}, r ${c.radius}`;
 }
@@ -198,14 +278,14 @@ function CellForest({ r }: { r: Results }) {
       <p className="label label-published">Published result · EXP-002, confirmatory</p>
       <h3 id="cap-forest">Per-cell difference A1 - A0 in phi_post, with 95% CIs</h3>
       <div id="fig-forest" className="scroll-x" role="region" aria-label="Per-cell forest plot, scrollable" tabIndex={0}>
-        <ForestPlot
+        <Reveal><ForestPlot
           title={`Forest plot of the A1 - A0 difference in post-disturbance polarization for ${r.per_cell.length} cells`}
           rows={rows}
           domain={[-0.9, 0.1]}
           sesoi={r.design.sesoi}
           band={p.ci_low !== null && p.ci_high !== null ? { lo: p.ci_low, hi: p.ci_high, estimate: p.estimate } : undefined}
           xLabel="A1 - A0, phi_post (polarization units)"
-        />
+        /></Reveal>
       </div>
       <figcaption>
         Each row is one cell of density rho, noise eta and radius r, with the mean paired difference over 20 seeds and
@@ -273,7 +353,7 @@ function WindowTimeline({ r }: { r: Results }) {
           ))}
         </select>
       </label>
-      <LineChart
+      <Reveal><LineChart
         title={`Mean polarization before and after the shock in the cell ${cellLabel(c)}`}
         series={series}
         markers={[d.t_disturb]}
@@ -282,7 +362,7 @@ function WindowTimeline({ r }: { r: Results }) {
         yLabel="mean phi"
         empty="No data for this cell."
         xDomain={[x0, x1]}
-      />
+      /></Reveal>
       <figcaption>
         For each rule, the cell mean over 20 seeds of phi over the {d.pre_window} steps before the shock (phi_pre) and
         over the {d.window} steps from the shock (phi_post). These are window means, not step-by-step curves: the

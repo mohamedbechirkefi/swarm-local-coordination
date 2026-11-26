@@ -374,3 +374,29 @@ Owner: read the items in `research/publication/author_review.md` ("Prepared for 
 ### Next action
 
 Owner: full-text review and sign-off (B16), articles (B15), release (B18), EXP-004 freeze when ready.
+
+## 2026-11-26: demo brand identity, motion and UI redesign (owner request)
+
+Authority: owner, 2026-11-26 ("each website unique and branded, animations, transitions, premium UI/UX"). Brief: `labs/_shared/DEMO-BRAND-brief.md`. No number, result, exported data, fixture, test or test expectation changed.
+
+### What changed
+
+- `demo/DESIGN.md` (new): plan and its review against the generated-page tells. Direction: a starling murmuration at dusk (dusk indigo, mauve and apricot afterglow, arm colours from the sky, the glow and the reeds). Dark only.
+- Fonts (Fontsource, `npm_config_before=2026-11-12`, `--save-exact`): `@fontsource/bodoni-moda` 5.3.0 (latin 500 roman, 400 italic) and `@fontsource/schibsted-grotesk` 5.3.0 (latin 400, 500, 700), both OFL 1.1. Schibsted's tabular figures also widen the comma and the period, so numbers use proportional lining figures (recorded in `DESIGN.md` as a deviation from the brief's tabular-figures rule).
+- Brand files in `demo/public/brand/`: mark (a turning murmuration with two breakaway birds), lockup (wordmark drawn as paths from Bodoni Moda italic with fontTools), dark-ink variants, favicon SVG (mark on a dusk tile) and 32 px PNG, Open Graph image 1200 x 630. `svg_audit.py`: mark 99/100, favicon 99/100; lockup 91/100 with one warning (near-miss angles from the italic slant of the type, expected).
+- `demo/index.html`: description, theme colour, icons, Open Graph tags.
+- `demo/src/Murmuration.tsx` (new): decorative boids flock in the hero, labelled "Illustration, not study data", no number; forms, is disturbed once (half the birds get random headings), regroups; a "Scatter half the flock" button repeats it; pauses off screen and in background tabs; one still frame under reduced motion. `demo/src/motion.tsx` (new): sliding section underline and once-only chart draw-in. `App.tsx`: sticky bar with the mark, hero with the question and a one-sentence answer built from the primary Delta and the phi_pre contrast in `results.json`, the two contrasts on one axis with the equivalence band, the sandbox moved before assumptions and method, footer with repository, manuscript, labs index, licence, AI-use (wording from manuscript section 11) and font credits. `charts.tsx`: series wrapped in `<g class="series">` for the draw-in. `style.css` rewritten.
+- No test markup had to be adapted: the sandbox's Run and Pause text, `data-animating`, `data-step` and the `label-published` and `label-sandbox` classes are unchanged.
+
+### Commands and actual outputs
+
+- `npm test`: "Test Files 2 passed (2)", "Tests 22 passed (22)".
+- `npm run build`: built; JS 268.72 kB (gzip 84.56 kB), CSS 12.86 kB (gzip 4.02 kB), five woff2 files 106.2 kB in total.
+- `node tools/a11y_check.mjs dist`: 13 PASS lines, "A11Y-CHECK PASS" (34 of 34 focusable elements; Run animates and Pause stops; reduced motion computes without animating). A first run failed "no horizontal page scroll at 360 px" (13 px: a fieldset's default min-width and an SVG note placed past the chart edge); both fixed.
+- `.venv/bin/python -m pytest -q tests/test_demo_export.py`: "6 passed".
+- Bytes a visitor loads at rest (uncompressed): about 0.44 MB. `og.png` (272,827 bytes) is fetched only by link previews.
+- Screenshots (headless Chrome, 1440 px desktop, a 390 px iframe, and real-time hero captures over the DevTools protocol because virtual time does not advance the flock) reviewed in critique passes; fixes: the flock first drifted off the glow into the dark sky and formed a lattice (steering, separation and anchor retuned), tabular punctuation, chart points overridden by a generic rule, the shock marker sharing A1's colour, oversized desktop charts (capped at 880 px).
+
+### Next action
+
+The coordinator pushes and deploys on the owner's word. No push from this session.

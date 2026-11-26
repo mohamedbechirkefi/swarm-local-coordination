@@ -102,9 +102,11 @@ export function LineChart({ title, series, markers = [], markerLabel, xLabel, yL
         {markers.filter((m) => m >= x0 && m <= x1).map((m, i) => (
           <line key={`m${i}`} x1={sx(m)} x2={sx(m)} y1={T} y2={sy(y0)} className="marker" />
         ))}
-        {series.map((s) => (
-          <path key={s.id} d={pathOf(s.points, sx, sy)} fill="none" stroke={s.color} strokeWidth={2.2} strokeDasharray={s.dash} />
-        ))}
+        <g className="series">
+          {series.map((s) => (
+            <path key={s.id} d={pathOf(s.points, sx, sy)} fill="none" stroke={s.color} strokeWidth={2.4} strokeDasharray={s.dash} />
+          ))}
+        </g>
       </svg>
       <ul className="legend">
         {series.map((s) => (
@@ -157,6 +159,7 @@ export function ForestPlot({ title, rows, domain, sesoi, band, xLabel, labelWidt
       {band && <line x1={sx(band.estimate)} x2={sx(band.estimate)} y1={top} y2={yEnd} className="band-line" />}
       <line x1={sx(0)} x2={sx(0)} y1={top} y2={yEnd} className="axis" />
       {[-sesoi, sesoi].map((v) => <line key={v} x1={sx(v)} x2={sx(v)} y1={top} y2={yEnd} className="sesoi" />)}
+      <g className="series">
       {rows.map((r, i) => {
         const y = top + i * RH + RH / 2;
         return (
@@ -168,6 +171,7 @@ export function ForestPlot({ title, rows, domain, sesoi, band, xLabel, labelWidt
           </g>
         );
       })}
+      </g>
       {ticks(d0, d1, 6).map((v) => (
         <text key={v} x={sx(v)} y={yEnd + 16} textAnchor="middle" className="tick">{v}</text>
       ))}

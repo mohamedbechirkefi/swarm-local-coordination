@@ -22,4 +22,15 @@ Repository: https://github.com/mohamedbechirkefi/swarm-local-coordination. Demo:
 
 Hosting: the built page (`dist/`) is hosted as Cloudflare Workers static assets on the free plan, configured by `wrangler.jsonc` (assets only, no Worker script). It is deployed by the coordinator, not by any script of this repository. The page loads only same-origin files (Content-Security-Policy `default-src 'self'`).
 
+Design (owner request of 2026-11-26): brand, typography and motion are planned in `DESIGN.md` (a starling murmuration at dusk). The hero flock (`src/Murmuration.tsx`) is a decorative boids illustration, not the research engine, labelled "Illustration, not study data"; it shows no number, pauses off screen and draws one still frame under reduced motion.
+
+Brand files in `public/brand/`: `swarm-mark.svg` (pale, for the dusk background), `swarm-mark-ink.svg` (dark, for light backgrounds), `swarm-lockup.svg` and `swarm-lockup-ink.svg` (mark and wordmark, the wordmark drawn as paths from Bodoni Moda italic), `favicon.svg`, `favicon-32.png` and `og.png` (1200 x 630, rendered from an HTML page with headless Chrome).
+
+Third-party notes: fonts are bundled from Fontsource packages (versions pinned in `package.json`) and served from this site.
+
+| Family | Package and version | Licence | Used |
+|---|---|---|---|
+| Bodoni Moda (the Bodoni Moda Project Authors) | `@fontsource/bodoni-moda` 5.3.0 | SIL Open Font License 1.1 | latin 500 roman, 400 italic: headings, wordmark |
+| Schibsted Grotesk (the Schibsted Grotesk Project Authors) | `@fontsource/schibsted-grotesk` 5.3.0 | SIL Open Font License 1.1 | latin 400, 500, 700: body, controls, figures |
+
 Mohamed Bechir Kefi, independent researcher.
